@@ -9,7 +9,7 @@ fi
 if [ ! -d $1 ]
 then
     echo $1 is not a directory
-    exir
+    exit
 fi
 
 docker run \
