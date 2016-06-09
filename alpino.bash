@@ -6,9 +6,9 @@ then
     exit
 fi
 
-if [ ! -d $1 ]
+if [ ! -d $1 -o ! -r $1 ]
 then
-    echo $1 is not a directory
+    echo $1 is not a readable directory
     exit
 fi
 
