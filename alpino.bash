@@ -18,5 +18,5 @@ docker run \
        --rm \
        -i -t \
        -e DISPLAY \
-       -v $1:/work \
+       -v $1:/work/data \
        rugcompling/alpino:latest
