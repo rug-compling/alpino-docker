@@ -1,8 +1,8 @@
 # Alpino in Docker #
 
-Met `alpino.bash` kun je Alpino in Docker draaien.
+With `alpino.bash`, you can run Alpino in Docker.
 
 * * * * *
 
-Over Alpino zelf, zie:
+About Alpino, refer to:
 http://www.let.rug.nl/vannoord/alp/Alpino/
