@@ -2,6 +2,16 @@
 
 Met `alpino.bash` kun je [Alpino](http://www.let.rug.nl/vannoord/alp/Alpino/) in Docker draaien.
 
+## Upgrade ##
+
+Als je eerder een oudere versie van `alpino.bash` hebt gebruikt, zorg er
+dan voor dat ook het Docker-image met Alpino is bijgewerkt naar de huidige
+versie:
+
+    docker pull rugcompling/alpino:latest
+
+## Starten van Alpion in Docker ##
+
 Voorbeeld van het starten van Docker met Alpino:
 
     ./alpino.bash $HOME/alpino
