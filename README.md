@@ -1,6 +1,8 @@
 # Alpino in Docker #
 
-Met `alpino.bash` kun je [Alpino](http://www.let.rug.nl/vannoord/alp/Alpino/) in Docker draaien.
+Met `alpino.bash` kun je Alpino in Docker draaien.
+
+Over Alpino zelf, zie: http://www.let.rug.nl/vannoord/alp/Alpino/
 
 ## Upgrade ##
 
@@ -51,7 +53,3 @@ resultaten in de directory `~/data/xml`:
 	cd ~/data
 	mkdir xml
     tokenize.sh < text.txt | Alpino -veryfast -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse
-
-* * * * *
-Over Alpino zelf, zie:
-http://www.let.rug.nl/vannoord/alp/Alpino/
