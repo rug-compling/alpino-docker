@@ -10,11 +10,11 @@ versie:
 
     docker pull rugcompling/alpino:latest
 
-## Starten van Alpion in Docker ##
+## Starten van Alpino in Docker ##
 
 Voorbeeld van het starten van Docker met Alpino:
 
-    ./alpino.bash $HOME/alpino
+    alpino.bash $HOME/alpino
 
 Hierna ben je in een shell in Docker, en kun je Alpino zelf aanroepen.
 
@@ -45,8 +45,8 @@ Dit start een interactieve versie van Alpino zonder GUI:
 
 ### Als command line tool ###
 
-Dit tokeniseert en parst de tekst uit `text.txt` en bewaart de resultaten
-in de directory `~/data/xml`:
+Dit tokeniseert en parst de tekst uit `~/data/text.txt` en bewaart de
+resultaten in de directory `~/data/xml`:
 
 	cd ~/data
 	mkdir xml
