@@ -6,11 +6,21 @@ then
     exit
 fi
 
-if [ ! -d $1 -o ! -r $1 ]
+if [ ! -d "$1" -o ! -r "$1" ]
 then
-    echo $1 is not a readable directory
+    echo "'$1'" is not a readable directory
     exit
 fi
+
+case $1 in
+    /*)
+	;;
+    *)
+	echo workdir must be an absolute path
+	echo "'$1'" is not an absolute path
+	exit
+	;;
+esac
 
 docker run \
        --net=host \
@@ -18,5 +28,5 @@ docker run \
        --rm \
        -i -t \
        -e DISPLAY \
-       -v $1:/work/data \
+       -v "$1":/work/data \
        rugcompling/alpino:latest
