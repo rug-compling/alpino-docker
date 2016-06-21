@@ -53,4 +53,4 @@ resultaten in de directory `~/data/xml`:
 
 	cd ~/data
 	mkdir xml
-    tokenize.sh < text.txt | Alpino -veryfast -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse
+    tokenize.sh < text.txt | Alpino -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse
