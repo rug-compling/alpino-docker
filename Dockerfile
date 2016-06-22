@@ -1,3 +1,11 @@
+#
+# Alpino in Docker
+#
+# To build and push to docker hub, put this file in an empty directory, and run:
+#
+#     docker build -t rugcompling/alpino:latest .
+#     docker push rugcompling/alpino:latest
+#
 
 FROM debian:8
 
@@ -9,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   locales \
   man
 
-RUN sed -e 's/^# en_US.UTF-8'/en_US.UTF-8'/' /etc/locale.gen > /etc/locale.gen.tmp && \
+RUN sed -e 's/^# en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen > /etc/locale.gen.tmp && \
     mv /etc/locale.gen.tmp /etc/locale.gen && \
     locale-gen
 
