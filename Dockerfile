@@ -1,7 +1,7 @@
 #
 # Alpino in Docker
 #
-# To build and push to docker hub, put this file in an empty directory, and run:
+# To build and push to docker hub, put this file in an EMPTY directory, and run:
 #
 #     docker build -t rugcompling/alpino:latest .
 #     docker push rugcompling/alpino:latest
@@ -12,6 +12,7 @@ FROM debian:8
 MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
 RUN apt-get update && apt-get install -y \
+  curl \
   libtcl8.5 \
   libtk8.5 \
   locales \
@@ -27,8 +28,7 @@ ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
 ENV LC_ALL en_US.utf8
 
-ADD http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz /alpino.tar.gz
-RUN cd / && tar vxzf alpino.tar.gz && rm -f alpino.tar.gz
+RUN cd / && curl http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz | tar vxzf -
 
 # remove incompatible libs
 RUN rm -f /Alpino/create_bin/libtcl* /Alpino/create_bin/libtk*
