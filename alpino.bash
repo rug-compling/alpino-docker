@@ -18,36 +18,39 @@ foreach $p (@parts) {
 }
 '
 
-if [ $# != 1 ]
+if [ $# -lt 1 ]
 then
-    echo Usage: $0 workdir
+    echo Usage: $0 workdir [command]
     exit
 fi
 
-if [ ! -d "$1" -o ! -r "$1" ]
+DIR="$1"
+shift
+
+if [ ! -d "$DIR" -o ! -r "$DIR" ]
 then
     echo
-    echo "'$1'" is not a readable directory
+    echo "'$DIR'" is not a readable directory
     echo
     exit
 fi
 
-case "$1" in
+case "$DIR" in
     /*)
 	;;
     *)
 	echo
 	echo workdir must be an absolute path
-	echo "'$1'" is not an absolute path
+	echo "'$DIR'" is not an absolute path
 	echo
 	exit
 	;;
 esac
 
-st=`stat -f -c %T "$1"`
+st=`stat -f -c %T "$DIR"`
 case "$st" in
     nfs*)
-	P=`dir="$1" perl -e "$script"`
+	P=`dir="$DIR" perl -e "$script"`
 	if [ "$P" != "" ]
 	then
 	    echo
@@ -67,5 +70,5 @@ docker run \
        --rm \
        -i -t \
        -e DISPLAY \
-       -v "$1":/work/data \
-       rugcompling/alpino:latest
+       -v "$DIR":/work/data \
+       rugcompling/alpino:latest "$@"
