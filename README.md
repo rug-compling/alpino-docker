@@ -1,55 +1,70 @@
 # Alpino in Docker #
 
-Met `alpino.bash` kun je Alpino in Docker draaien. Dit is getest op
+With `alpino.bash` you can run Alpino inside Docker. This was tested on
 Linux.
 
-Over Alpino zelf, zie: http://www.let.rug.nl/vannoord/alp/Alpino/
+About Alpino: http://www.let.rug.nl/vannoord/alp/Alpino/
+
 
 ## Upgrade ##
 
-Als je eerder een oudere versie van `alpino.bash` hebt gebruikt, zorg er
-dan voor dat ook het Docker-image met Alpino is bijgewerkt naar de huidige
-versie:
+If you have been using an older version of `alpino.bash`, you may need
+to update the Docker image, before using the new script:
 
     docker pull rugcompling/alpino:latest
 
-## Starten van Alpino in Docker ##
 
-Voorbeeld van het starten van Docker met Alpino:
+## Starting Alpino in Docker ##
+
+Examples of starting Alpino in Docker
+
+### Shell use ###
+
+1. This brings you into a bash shell inside Docker, where you can run
+Alpino itself:
 
     alpino.bash $HOME/alpino
 
-Hierna ben je in een shell in Docker, en kun je Alpino zelf aanroepen.
+Inside the shell, there is a virtual directory `~/data` that corresponds
+to the real directory you gave as an argument to the script, in this
+case `$HOME/alpino`. You use it to save and access data on your regular
+file system.
 
-In de shell is er een directory `~/data` die gelijk is aan de externe
-directory die je hebt opgegeven als argument, in dit geval
-`$HOME/alpino`. Die directory gebruik je om data uit te wisselen tussen
-Docker en je gewone bestandssysteem.
+### Command use ###
 
-## Voorbeelden van aanroep binnen Docker ##
+2. You can also run a single command, without going to the shell first:
 
-Eenmaal in de shell kun je Alpino interactief gebruiken, of als command
-line tool.
+    alpino.bash $HOME/alpino Alpino
 
-### Interactief gebruik ###
+In this case, there is no directory `~/data` in Docker, but there is
+`/work/data` with the same purpose.
 
-Dit start de GUI van Alpino:
+## Examples of running Alpino inside Docker ##
+
+Inside Docker, you can run Alpino interactively, or as a command line
+tool.
+
+
+### Interactive use ###
+
+This starts the Alpino GUI:
 
     Alpino
 
-De GUI is alleen beschikbaar als Docker draait op je eigen machine. Als
-je vanaf je eigen machine eerst bent ingelogd op een andere machine waar
-Docker draait, dan werkt dit niet, omdat Alpino dan geen toegang heeft
-tot je X-server. (Misschien wordt dit ooit opgelost.)
+This GUI is only available if you are running Docker on your local
+machine. If you logged in to a remote machine and run Docker there, then
+Alpino can't access the X11 server on your local machine.
+(Perhaps this will be fixed someday.)
 
-Dit start een interactieve versie van Alpino zonder GUI:
+This starts and interactive version of Alpino without the GUI:
 
     Alpino -notk
 
-### Als command line tool ###
 
-Dit tokeniseert en parst de tekst uit `~/data/text.txt` en bewaart de
-resultaten in de directory `~/data/xml`:
+### Use as a command line tool ###
+
+This tokenizes and parses the text from `~/data/text.txt` and saves the
+results in the directory `~/data/xml`:
 
 	cd ~/data
 	mkdir xml
