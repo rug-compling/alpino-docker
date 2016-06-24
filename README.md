@@ -16,11 +16,9 @@ to update the Docker image, before using the new script:
 
 ## Starting Alpino in Docker ##
 
-Examples of starting Alpino in Docker
+There are two ways of starting Alpino in Docker.
 
-### Shell use ###
-
-1. This brings you into a bash shell inside Docker, where you can run
+1: This brings you into a bash shell inside Docker, where you can run
 Alpino itself:
 
     alpino.bash $HOME/alpino
@@ -30,14 +28,13 @@ to the real directory you gave as an argument to the script, in this
 case `$HOME/alpino`. You use it to save and access data on your regular
 file system.
 
-### Command use ###
-
-2. You can also run a single command, without going to the shell first:
+2: You can also run a single command, without going to the shell first:
 
     alpino.bash $HOME/alpino Alpino
 
 In this case, there is no directory `~/data` in Docker, but there is
 `/work/data` with the same purpose.
+
 
 ## Examples of running Alpino inside Docker ##
 
