@@ -1,15 +1,9 @@
 #
 # Alpino in Docker
 #
-# To build the image, put this file in an EMPTY directory, and run:
+# To build and push to docker hub, put this file in an EMPTY directory, and run:
 #
 #     docker build -t rugcompling/alpino:latest .
-#
-# If this doesn't build a new image, even though 'latest.tar.gz' has changed,
-# increase the number after the first 'echo' below.
-#
-# Push new image to docker hub:
-#
 #     docker push rugcompling/alpino:latest
 #
 
@@ -34,7 +28,10 @@ ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
 ENV LC_ALL en_US.utf8
 
-RUN echo 1 && cd / && curl -s http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz | tar vxzf -
+# Downloading the index triggers a new download of Alpino when anything in the index has changed
+ADD http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/ /index
+RUN cd / && rm index && \
+    curl -s http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz | tar vxzf -
 
 # remove incompatible libs
 RUN rm -f /Alpino/create_bin/libtcl* /Alpino/create_bin/libtk*
