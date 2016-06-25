@@ -39,8 +39,8 @@ RUN rm -f /Alpino/create_bin/libtcl* /Alpino/create_bin/libtk*
 # Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
 
-RUN echo 'alias ll="ls -Fla"' >  /init.sh && \
-    echo 'alias rm="rm -i"'   >> /init.sh && \
+RUN echo "alias ll='ls -Fla'" >  /init.sh && \
+    echo "alias rm='rm -i'"   >> /init.sh && \
     echo "PS1='[Alpino] \w '" >> /init.sh && \
     echo 'HOME=/work'         >> /init.sh && \
     echo 'cd ~/data'          >> /init.sh
