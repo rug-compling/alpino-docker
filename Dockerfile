@@ -33,10 +33,10 @@ ADD http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/ /index
 RUN cd / && rm index && \
     curl -s http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz | tar vxzf -
 
-# remove incompatible libs
+# Remove incompatible libs
 RUN rm -f /Alpino/create_bin/libtcl* /Alpino/create_bin/libtk*
 
-# remove stale nfs files
+# Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
 
 RUN echo 'alias ll="ls -Fla"' >  /init.sh && \
