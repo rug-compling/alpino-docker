@@ -1,7 +1,7 @@
 # Alpino in Docker #
 
 With `alpino.bash` you can run Alpino inside Docker. This was tested on
-Linux.
+Linux and MacOS.
 
 About Alpino: http://www.let.rug.nl/vannoord/alp/Alpino/
 

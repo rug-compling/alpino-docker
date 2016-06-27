@@ -47,22 +47,25 @@ case "$DIR" in
 	;;
 esac
 
-st=`stat -f -c %T "$DIR"`
-case "$st" in
-    nfs*)
-	P=`dir="$DIR" perl -e "$script"`
-	if [ "$P" != "" ]
-	then
-	    echo
-	    echo path "'$P'" must be executable for everybody
-	    echo please do:
-	    echo
-	    echo "  chmod a+x $P"
-	    echo
-	    exit
-	fi
-	;;
-esac
+if [ $(uname -s) = "Linux" ]
+then
+    st=`stat -f -c %T "$DIR"`
+    case "$st" in
+	nfs*)
+	    P=`dir="$DIR" perl -e "$script"`
+	    if [ "$P" != "" ]
+	    then
+		echo
+		echo path "'$P'" must be executable for everybody
+		echo please do:
+		echo
+		echo "  chmod a+x $P"
+		echo
+		exit
+	    fi
+	    ;;
+    esac
+fi
 
 docker run \
        --net=host \
