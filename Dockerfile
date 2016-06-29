@@ -1,7 +1,7 @@
 #
 # Alpino in Docker
 #
-# To build and push to docker hub, put this file in an EMPTY directory, and run:
+# To build and push to docker hub:
 #
 #     docker build -t rugcompling/alpino:latest .
 #     docker push rugcompling/alpino:latest
@@ -38,6 +38,8 @@ RUN rm -f /Alpino/create_bin/libtcl* /Alpino/create_bin/libtk*
 
 # Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
+
+ADD voorbeelden/weerbericht.txt /work/voorbeelden/
 
 RUN echo "alias ll='ls -Fla'" >  /init.sh && \
     echo "alias rm='rm -i'"   >> /init.sh && \
