@@ -39,7 +39,7 @@ RUN rm -f /Alpino/create_bin/libtcl* /Alpino/create_bin/libtk*
 # Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
 
-ADD voorbeelden/weerbericht.txt /work/voorbeelden/
+ADD weerbericht.txt /work/voorbeelden/
 
 RUN echo "alias ll='ls -Fla'" >  /init.sh && \
     echo "alias rm='rm -i'"   >> /init.sh && \
