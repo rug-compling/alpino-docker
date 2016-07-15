@@ -47,7 +47,9 @@ case "$DIR" in
 	;;
 esac
 
-if [ $(uname -s) = "Linux" ]
+os=`docker version -f {{.Client.Os}}`
+
+if [ "$os" = "linux" ]
 then
     st=`stat -f -c %T "$DIR"`
     case "$st" in
