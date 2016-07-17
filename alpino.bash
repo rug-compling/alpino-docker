@@ -48,6 +48,16 @@ case "$DIR" in
 esac
 
 os=`docker version -f {{.Client.Os}}`
+if [ "$os" = "linux" ]
+then
+    if [ -d /Users ]
+    then
+	os=darwin
+    elif [ -d /c/Users ]
+    then
+	os=windows
+    fi
+fi
 
 if [ "$os" = "linux" ]
 then
