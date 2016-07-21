@@ -20,7 +20,7 @@ foreach $p (@parts) {
 
 if [ $# -lt 1 ]
 then
-    echo Usage: $0 workdir [command]
+    echo Usage: $0 workdir [command [arg...]]
     exit
 fi
 
@@ -35,32 +35,47 @@ then
     exit
 fi
 
-case "$DIR" in
-    /*)
-	;;
-    *)
-	echo
-	echo workdir must be an absolute path
-	echo "'$DIR'" is not an absolute path
-	echo
-	exit
-	;;
-esac
+set -e
 
 os=`docker version -f {{.Client.Os}}`
-if [ "$os" = "linux" ]
-then
-    if [ -d /Users ]
-    then
-	os=darwin
-    elif [ -d /c/Users ]
-    then
-	os=windows
-    fi
-fi
 
-if [ "$os" = "linux" ]
+if [ "$os" = "windows" ]
 then
+    case "$DIR" in
+	/c/Users|/c/Users/*)
+	    ;;
+	*)
+	    echo
+	    echo workdir must start with /c/Users
+	    echo
+	    exit
+	    ;;
+    esac
+elif [ "$os" = "darwin" ]
+then
+    case "$DIR" in
+	/Users|/Users/*)
+	    ;;
+	*)
+	    echo
+	    echo workdir must start with /Users
+	    echo
+	    exit
+	    ;;
+    esac
+elif [ "$os" = "linux" ]
+then
+    case "$DIR" in
+	/*)
+	    ;;
+	*)
+	    echo
+	    echo workdir must be an absolute path
+	    echo "'$DIR'" is not an absolute path
+	    echo
+	    exit
+	    ;;
+    esac
     st=`stat -f -c %T "$DIR"`
     case "$st" in
 	nfs*)
@@ -77,13 +92,27 @@ then
 	    fi
 	    ;;
     esac
+else
+    echo
+    echo Onbekend OS: $os
+    echo
+    exit
 fi
 
-docker run \
+if  [ "$os" = "linux" ]
+then
+    docker run \
+       -e DISPLAY \
        --net=host \
        --user=`id -u`:`id -g` \
        --rm \
        -i -t \
-       -e DISPLAY \
        -v "$DIR":/work/data \
        rugcompling/alpino:latest "$@"
+else
+    docker run \
+       --rm \
+       -i -t \
+       -v "$DIR":/work/data \
+       rugcompling/alpino:latest "$@"
+fi

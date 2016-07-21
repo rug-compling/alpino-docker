@@ -1,13 +1,9 @@
 @ECHO OFF
 
-REM 
-REM DIT IS NOG NIET GETEST
-REM
-
 SETLOCAL EnableExtensions EnableDelayedExpansion
 
 IF .%1==. (
-	ECHO Usage: %0 WORKDIR [COMMAND [ARG...]]
+	ECHO Usage: %0 workdir [command [arg...]]
 	GOTO:EOF
 )
 
@@ -27,31 +23,33 @@ IF %ok%==0 (
 	GOTO:EOF
 )
 
-CALL :pathfix "%dir%"
+CALL :dirfix "%dir%"
 
 ECHO ON
-docker run --rm -i -t -v "%path%:/work/data" rugcompling/alpino:latest %args%
+docker run --rm -i -t -v "%udir%:/work/data" rugcompling/alpino:latest %args%
 @ECHO OFF
 
 GOTO:EOF
 
 
-:pathfix
-REM verander "c:\my path\my file" in "/c/my path/my file"
+:dirfix
+REM verander uit %dir%: "C:\My path\My file" -> "/c/My path/My file"
+REM resultaat in %udir%
 SET t=%*
 FOR /F "tokens=1* delims=:" %%a IN ("%t%") DO (
-    SET path=/%%a
+	SET udir=/%%a
 	SET t=%%b
 )
-CALL :LoCase path
-:pathfixloop
+CALL :LoCase udir
+:dirfixloop
 FOR /F "tokens=1* delims=\" %%a IN ("%t%") DO (
-    SET path=!path!/%%a
+	SET udir=!udir!/%%a
 	SET t=%%b
 )
-IF DEFINED t GOTO pathfixloop
-SET path=%path:"=%
+IF DEFINED t GOTO dirfixloop
+SET udir=%udir:"=%
 GOTO:EOF
+
 
 :LoCase
 REM Subroutine to convert a variable VALUE to all lower case.
