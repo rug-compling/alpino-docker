@@ -33,21 +33,16 @@ GOTO:EOF
 
 
 :dirfix
-REM verander uit %dir%: "C:\My path\My file" -> "/c/My path/My file"
+REM verander "C:\My path\My file" -> "/c/My path/My file"
 REM resultaat in %udir%
 SET t=%*
+SET t=%t:"=%
 FOR /F "tokens=1* delims=:" %%a IN ("%t%") DO (
 	SET udir=/%%a
 	SET t=%%b
 )
 CALL :LoCase udir
-:dirfixloop
-FOR /F "tokens=1* delims=\" %%a IN ("%t%") DO (
-	SET udir=!udir!/%%a
-	SET t=%%b
-)
-IF DEFINED t GOTO dirfixloop
-SET udir=%udir:"=%
+SET udir=%udir%%t:\=/%
 GOTO:EOF
 
 
