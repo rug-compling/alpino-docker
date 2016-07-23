@@ -8,7 +8,6 @@ About Alpino: http://www.let.rug.nl/vannoord/alp/Alpino/
 
 If you are using *Docker for Windows* you need `alpino.cmd`. 
 In the examples below substitute `alpino.cmd` for `alpino.bash`.
-This has not been tested yet.
 
 If you are using *Docker Toolbox* you need `alpino.bash`.
 
