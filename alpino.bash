@@ -94,7 +94,7 @@ then
     esac
 else
     echo
-    echo Onbekend OS: $os
+    echo Unknown OS: $os
     echo
     exit
 fi
