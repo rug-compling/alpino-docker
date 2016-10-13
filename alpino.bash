@@ -113,6 +113,31 @@ then
        -i -t \
        -v "$DIR":/work/data \
        rugcompling/alpino:latest "$@"
+elif  [ "$os" = "darwin" ]
+then
+    if [ -d /tmp/.X11-unix ]
+    then
+	echo THIS WAS NOT TESTED
+	set -x
+        ip=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+        xhost + $ip
+        docker run \
+           -e DISPLAY=$ip:0 \
+           -v /tmp/.X11-unix:/tmp/.X11-unix \
+           --net=host \
+           --rm \
+           -i -t \
+           -v "$DIR":/work/data \
+           rugcompling/alpino:latest "$@"
+	set +x
+    else
+	echo Directory /tmp/.X11-unix not found, no GUI available
+	docker run \
+	    --rm \
+	    -i -t \
+	    -v "$DIR":/work/data \
+	    rugcompling/alpino:latest "$@"
+    fi
 else
     docker run \
        --rm \
