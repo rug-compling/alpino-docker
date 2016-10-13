@@ -15,8 +15,11 @@ RUN apt-get update && apt-get install -y \
   curl \
   libtcl8.5 \
   libtk8.5 \
+  libwww-perl \
+  libxslt1.1 \
   locales \
-  man
+  man \
+  python
 
 RUN sed -e 's/^# en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen > /etc/locale.gen.tmp && \
     mv /etc/locale.gen.tmp /etc/locale.gen && \
@@ -39,6 +42,24 @@ RUN rm -rf /Alpino/create_bin/tcl8.5 /Alpino/create_bin/tk8.5
 
 # Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
+
+# TrEd
+RUN cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar vxzf -
+RUN mkdir -p /work/.tred.d/extensions/alpino/contrib/alpino && \
+    mkdir    /work/.tred.d/extensions/alpino/resources && \
+    echo alpino > /work/.tred.d/extensions/extensions.lst && \
+    cp /Alpino/TreebankTools/TrEd/alpino.mak /work/.tred.d/extensions/alpino/contrib/alpino && \
+    cp /Alpino/TreebankTools/TrEd/contrib.mac /work/.tred.d/extensions/alpino/contrib/alpino && \
+    cp /Alpino/TreebankTools/TrEd/pmlbackend_conf.xml /work/.tred.d/extensions/alpino/resources/pmlbackend_conf.inc && \
+    cp /Alpino/TreebankTools/TrEd/alpino2pml.xsl /work/.tred.d/extensions/alpino/resources && \
+    cp /Alpino/TreebankTools/TrEd/alpino_schema.xml /work/.tred.d/extensions/alpino/resources && \
+    cp /Alpino/TreebankTools/TrEd/pml2alpino.xsl /work/.tred.d/extensions/alpino/resources && \
+    echo 2.5049 > /work/.tred.d/last_version && \
+    sed -e 's!@@@TRED_EXECUTABLE@@@!/TrEd/bin/start_tred!' < /Alpino/TreebankTools/bin/dttred.in > Alpino/bin/dttred
+ADD .tredrc /work
+ADD package.xml /work/.tred.d/extensions/alpino/
+RUN chmod go+w /work /work/.tredrc && \
+    find /work/.tred.d | xargs chmod go+w
 
 ADD weerbericht.txt /work/voorbeelden/
 

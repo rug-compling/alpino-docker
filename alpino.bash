@@ -20,7 +20,11 @@ foreach $p (@parts) {
 
 if [ $# -lt 1 ]
 then
+    echo
     echo Usage: $0 workdir [command [arg...]]
+    echo
+    echo See: https://github.com/rug-compling/alpino-docker
+    echo
     exit
 fi
 

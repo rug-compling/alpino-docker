@@ -3,7 +3,11 @@
 SETLOCAL EnableExtensions EnableDelayedExpansion
 
 IF .%1==. (
+	ECHO.
 	ECHO Usage: %0 workdir [command [arg...]]
+	ECHO.
+	ECHO See: https://github.com/rug-compling/alpino-docker
+	ECHO.
 	GOTO:EOF
 )
 
