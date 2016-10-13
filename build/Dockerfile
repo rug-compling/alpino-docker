@@ -19,7 +19,10 @@ RUN apt-get update && apt-get install -y \
   libxslt1.1 \
   locales \
   man \
-  python
+  python \
+  python-libxml2 \
+  python-libxslt1 \
+  tk
 
 RUN sed -e 's/^# en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen > /etc/locale.gen.tmp && \
     mv /etc/locale.gen.tmp /etc/locale.gen && \
@@ -30,6 +33,7 @@ ENV ALPINO_HOME /Alpino
 ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
 ENV LC_ALL en_US.utf8
+ENV LD_LIBRARY_PATH /Alpino/create_bin
 
 # Downloading the index triggers a new download of Alpino when anything in the index has changed
 ADD http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/ /index
