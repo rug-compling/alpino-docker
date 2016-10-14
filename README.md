@@ -54,11 +54,10 @@ tool.
 
 ### Interactive use ###
 
-This starts the Alpino GUI:
+If you have access to an X11 server, then this starts the Alpino GUI:
 
     Alpino
 
-This requires access to an X11 server.
 
 This starts and interactive version of Alpino without the GUI:
 
