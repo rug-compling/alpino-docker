@@ -6,7 +6,7 @@ About Alpino: http://www.let.rug.nl/vannoord/alp/Alpino/
 
 **Windows**
 
-If you are using *Docker for Windows* you need `alpino.cmd`. 
+If you are using *Docker for Windows* you need `alpino.cmd`.
 In the examples below substitute `alpino.cmd` for `alpino.bash`.
 
 If you are using *Docker Toolbox* you need `alpino.bash`.
@@ -54,14 +54,11 @@ tool.
 
 ### Interactive use ###
 
-This starts the Alpino GUI on Linux:
+This starts the Alpino GUI:
 
     Alpino
 
-This GUI is only available if you are running Docker on your local
-machine. If you logged in to a remote machine and run Docker there, then
-Alpino can't access the X11 server on your local machine.
-(Perhaps this will be fixed someday.)
+This requires access to an X11 server.
 
 This starts and interactive version of Alpino without the GUI:
 
@@ -76,3 +73,11 @@ and saves the results in the directory `~/data/xml`:
 	cd ~/data
 	mkdir xml
     partok ~/voorbeelden/weerbericht.txt | Alpino -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse
+
+If you have access to an X11 server, you can view the generated trees:
+
+    dtview xml/*.xml
+
+... or edit the trees:
+
+    dttred xml/*.xml
