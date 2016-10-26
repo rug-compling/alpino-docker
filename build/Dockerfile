@@ -13,16 +13,19 @@ MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
 RUN apt-get update && apt-get install -y \
   curl \
+  less \
   libtcl8.5 \
   libtk8.5 \
   libwww-perl \
   libxslt1.1 \
   locales \
   man \
+  nano \
   python \
   python-libxml2 \
   python-libxslt1 \
-  tk
+  tk \
+  vim
 
 RUN sed -e 's/^# en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen > /etc/locale.gen.tmp && \
     mv /etc/locale.gen.tmp /etc/locale.gen && \
