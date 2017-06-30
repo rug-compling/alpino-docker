@@ -69,8 +69,8 @@ This starts and interactive version of Alpino without the GUI:
 This tokenizes and parses the text from `~/voorbeelden/weerbericht.txt`
 and saves the results in the directory `~/data/xml`:
 
-	cd ~/data
-	mkdir xml
+    cd ~/data
+    mkdir xml
     partok ~/voorbeelden/weerbericht.txt | Alpino -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse
 
 If you have access to an X11 server, you can view the generated trees:
