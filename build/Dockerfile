@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y \
   python-libxml2 \
   python-libxslt1 \
   tk \
+  unzip \
   vim
 
 RUN sed -e 's/^# en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen > /etc/locale.gen.tmp && \
@@ -50,23 +51,29 @@ RUN rm -rf /Alpino/create_bin/tcl8.5 /Alpino/create_bin/tk8.5
 # Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
 
+# Extensions for TrEd
+ADD http://www.let.rug.nl/vannoord/alp/Alpino/tred/alpino.zip /
+ADD http://www.let.rug.nl/vannoord/alp/Alpino/tred/alpino_full.zip /
+RUN mkdir -p /work/.tred.d/extensions/alpino && \
+    mkdir    /work/.tred.d/extensions/alpino_full && \
+    unzip -d /work/.tred.d/extensions/alpino /alpino.zip && \
+    unzip -d /work/.tred.d/extensions/alpino_full /alpino_full.zip && \
+    rm /alpino.zip /alpino_full.zip && \
+    echo  alpino        >   /work/.tred.d/extensions/extensions.lst && \
+    echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst
+
 # TrEd
-RUN cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar vxzf -
-RUN mkdir -p /work/.tred.d/extensions/alpino/contrib/alpino && \
-    mkdir    /work/.tred.d/extensions/alpino/resources && \
-    echo alpino > /work/.tred.d/extensions/extensions.lst && \
-    cp /Alpino/TreebankTools/TrEd/alpino.mak /work/.tred.d/extensions/alpino/contrib/alpino && \
-    cp /Alpino/TreebankTools/TrEd/contrib.mac /work/.tred.d/extensions/alpino/contrib/alpino && \
-    cp /Alpino/TreebankTools/TrEd/pmlbackend_conf.xml /work/.tred.d/extensions/alpino/resources/pmlbackend_conf.inc && \
-    cp /Alpino/TreebankTools/TrEd/alpino2pml.xsl /work/.tred.d/extensions/alpino/resources && \
-    cp /Alpino/TreebankTools/TrEd/alpino_schema.xml /work/.tred.d/extensions/alpino/resources && \
-    cp /Alpino/TreebankTools/TrEd/pml2alpino.xsl /work/.tred.d/extensions/alpino/resources && \
+RUN cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar vxzf - && \
     echo 2.5049 > /work/.tred.d/last_version && \
     sed -e 's!@@@TRED_EXECUTABLE@@@!/TrEd/bin/start_tred!' < /Alpino/TreebankTools/bin/dttred.in > Alpino/bin/dttred
 ADD .tredrc /work
-ADD package.xml /work/.tred.d/extensions/alpino/
-RUN chmod go+w /work /work/.tredrc && \
-    find /work/.tred.d | xargs chmod go+w
+RUN chmod ugo+rw /work /work/.tredrc && \
+    find /work/.tred.d | xargs chmod ugo+rw && \
+    find /work/.tred.d -type d | xargs chmod ugo+x && \
+    cd /usr/local/bin && \
+    ln -s /TrEd/bin/start_tred tred && \
+    ln -s /TrEd/bin/start_btred btred && \
+    ln -s /TrEd/bin/start_ntred ntred
 
 ADD weerbericht.txt /work/voorbeelden/
 
