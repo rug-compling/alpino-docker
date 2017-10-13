@@ -44,10 +44,6 @@ ADD http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/ /index
 RUN cd / && rm index && \
     curl -s http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz | tar vxzf -
 
-# Remove incompatible libs
-RUN rm -f /Alpino/create_bin/libtcl* /Alpino/create_bin/libtk*
-RUN rm -rf /Alpino/create_bin/tcl8.5 /Alpino/create_bin/tk8.5
-
 # Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
 
