@@ -62,9 +62,10 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
     echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst
 
 # TrEd
+ADD dttred /Alpino/bin
 RUN cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar vxzf - && \
     echo 2.5049 > /work/.tred.d/last_version && \
-    sed -e 's!@@@TRED_EXECUTABLE@@@!/TrEd/bin/start_tred!' < /Alpino/TreebankTools/bin/dttred.in > Alpino/bin/dttred
+    chmod +x /Alpino/bin/dttred
 ADD .tredrc /work
 RUN chmod ugo+rw /work /work/.tredrc && \
     find /work/.tred.d | xargs chmod ugo+rw && \
