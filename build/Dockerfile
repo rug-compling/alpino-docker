@@ -36,6 +36,7 @@ RUN sed -e 's/^# en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen > /etc/locale.gen.tmp
 ENV PATH /Alpino/bin:/Alpino/Tokenization:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV ALPINO_HOME /Alpino
 ENV BROWSER netsurf
+ENV HOME /work
 ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
 ENV LC_ALL en_US.utf8
