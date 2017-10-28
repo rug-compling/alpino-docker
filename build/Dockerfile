@@ -82,6 +82,8 @@ ADD init.sh /
 ADD info.html /work/
 ADD Choices /work/.config/netsurf/
 RUN chmod 777 /work/.config/netsurf && \
-    chmod 666 /work/.config/netsurf/Choices
+    chmod 666 /work/.config/netsurf/Choices && \
+    cd /usr/local/bin && \
+    ln -s /usr/bin/netsurf netscape
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
