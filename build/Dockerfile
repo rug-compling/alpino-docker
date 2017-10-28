@@ -81,6 +81,8 @@ ADD weerbericht.txt /work/voorbeelden/
 ADD init.sh /
 RUN mkdir -p /work/.config/netsurf && \
     echo 'homepage_url:file:///work/info.html' > /work/.config/netsurf/Choices && \
-    echo 'downloads_directory:/work/data'     >> /work/.config/netsurf/Choices
+    echo 'downloads_directory:/work/data'     >> /work/.config/netsurf/Choices && \
+    chmod 777 /work/.config/netsurf && \
+    chmod 666 /work/.config/netsurf/Choices
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
