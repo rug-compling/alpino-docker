@@ -79,6 +79,7 @@ RUN chmod ugo+rw /work /work/.tredrc && \
 
 ADD weerbericht.txt /work/voorbeelden/
 ADD init.sh /
+ADD info.html /work/
 RUN mkdir -p /work/.config/netsurf && \
     echo 'homepage_url:file:///work/info.html' > /work/.config/netsurf/Choices && \
     echo 'downloads_directory:/work/data'     >> /work/.config/netsurf/Choices && \
