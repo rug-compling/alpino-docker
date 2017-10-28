@@ -48,7 +48,7 @@ RUN cd / && rm index && \
 RUN find /Alpino -name '.nfs*' | xargs rm -f
 
 # Add libraries to standard path
-RUN ldconfig /Alpino/boost /Alpino/fadd /Alpino/TreebankTools/IndexedCorpus
+RUN ldconfig /Alpino/boost /Alpino/fadd /Alpino/unix /Alpino/TreebankTools/IndexedCorpus
 
 # Extensions for TrEd
 ADD http://www.let.rug.nl/vannoord/alp/Alpino/tred/alpino.zip /
