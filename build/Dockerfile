@@ -78,11 +78,9 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     ln -s /TrEd/bin/start_ntred ntred
 
 ADD weerbericht.txt /work/voorbeelden/
-
-RUN echo "alias ll='ls -Fla'" >  /init.sh && \
-    echo "alias rm='rm -i'"   >> /init.sh && \
-    echo "PS1='[Alpino] \w '" >> /init.sh && \
-    echo 'HOME=/work'         >> /init.sh && \
-    echo 'cd ~/data'          >> /init.sh
+ADD init.sh /
+RUN mkdir -p /work/.config/netsurf
+echo 'homepage_url:file:///work/info.html' > /work/.config/netsurf/Choices && \
+echo 'downloads_directory:/work/data'     >> /work/.config/netsurf/Choices
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]

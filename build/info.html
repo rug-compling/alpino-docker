@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "//W3C/DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Help</title>
+<style type="text/css">
+<!--
+tt, pre {
+  background-color: #d0d0f0;
+}
+pre {
+  margin: 1em 0px;
+  padding: 1em 2em;
+  overflow: scroll;
+}
+-->
+</style>
+</head>
+<body>
+
+<h1>Help</h1>
+
+<h2>Alpino</h2>
+
+<ul>
+<li><a href="http://www.let.rug.nl/vannoord/alp/Alpino/">Main site</a></li>
+<li><a href="http://www.let.rug.nl/vannoord/alp/Alpino/AlpinoUserGuide.html">User Guide</a></li>
+</ul>
+
+<h2>Tree Editor TrEd</h2>
+
+<ul>
+<li><a href="https://ufal.mff.cuni.cz/tred/">Main site</a></li>
+<li><a href="/TrEd/documentation/documentation/ar01-toc.html">User Manual</a></li>
+</ul>
+
+<h2>Alpino in Docker</h2>
+
+<b>Windows</b>
+<p>
+If you are using <em>Docker for Windows</em> you need <tt>alpino.cmd</tt>. In the examples below substitute <tt>alpino.cmd</tt> for <tt>alpino.bash</tt>.
+<p>
+If you are using <em>Docker Toolbox</em> you need <tt>alpino.bash</tt>.
+<p>
+<b>Linux, Mac</b>
+<p>
+You need <tt>alpino.bash</tt>.
+
+<h3>Upgrade</h3>
+
+If you have been using an older version of <tt>alpino.bash</tt>, you may need to update the Docker image, before using the new script:
+<pre>
+docker pull rugcompling/alpino:latest
+</pre>
+
+<h3>Starting Alpino in Docker</h3>
+
+There are two ways of starting Alpino in Docker.
+<p>
+<b>1&mdash;</b> This brings you into a bash shell inside Docker, where you can run Alpino itself:
+<pre>
+alpino.bash $HOME/alpino
+</pre>
+Inside the shell, there is a virtual directory <tt>~/data</tt> that corresponds to the real directory you gave as an argument to the script, in this case <tt>$HOME/alpino</tt>. You use it to save and access data on your regular file system.
+<p>
+<b>2&mdash;</b> You can also run a single command, without going to the shell first:
+<pre>
+alpino.bash $HOME/alpino Alpino
+</pre>
+In this case, there is no directory <tt>~/data</tt> in Docker, but there is <tt>/work/data</tt> with the same purpose.
+
+<h3>Examples of running Alpino inside Docker</h3>
+
+Inside Docker, you can run Alpino interactively, or as a command line tool.
+
+<h4>Interactive use</h4>
+
+If you have access to an X11 server, then this starts the Alpino GUI:
+<pre>
+Alpino
+</pre>
+This starts and interactive version of Alpino without the GUI:
+<pre>
+Alpino -notk
+</pre>
+
+<h4>Use as a command line tool</h4>
+
+This tokenizes and parses the text from <tt>~/voorbeelden/weerbericht.txt</tt> and saves the results in the directory <tt>~/data/xml</tt>:
+<pre>
+cd ~/data
+mkdir xml
+partok ~/voorbeelden/weerbericht.txt | Alpino -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse
+</pre>
+If you have access to an X11 server, you can view the generated trees:
+<pre>
+dtview xml/*.xml
+</pre>
+... or edit the trees:
+<pre>
+dttred xml/*.xml
+</pre>
+</body>
+</html>
