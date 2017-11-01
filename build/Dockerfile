@@ -75,6 +75,7 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     find /work/.tred.d -type d | xargs chmod ugo+x && \
     cd /usr/local/bin && \
     ln -s /TrEd/bin/start_tred tred && \
+    ln -s /TrEd/bin/start_tred Tred && \
     ln -s /TrEd/bin/start_btred btred && \
     ln -s /TrEd/bin/start_ntred ntred
 

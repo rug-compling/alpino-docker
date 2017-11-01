@@ -49,16 +49,4 @@ done
 
 # call dttred with the fixed filenames
 
-if [ $(basename $0) = dttred_reduced ]
-then
-    echo
-    echo -e '\t\e[1mWAARSCHUWING:\e[0m'
-    echo
-    echo -e '\t\e[1mBij het opslaan van een Alpino-bestand worden attributen die\e[0m'
-    echo -e '\t\e[1min latere versies van alpino_ds zijn toegevoegd verwijderd.\e[0m'
-    echo
-    tred -Z $ALPINO_HOME/TreebankTools/TrEd/resources_reduced: "${files[@]}"
-else
-    tred "${files[@]}"
-fi
-
+tred "${files[@]}"
