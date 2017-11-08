@@ -7,15 +7,16 @@
 #     docker push rugcompling/alpino:latest
 #
 
-FROM debian:8
+FROM debian:9
 
 MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
 RUN apt-get update && apt-get install -y \
   curl \
+  gedit \
   less \
-  libtcl8.5 \
-  libtk8.5 \
+  libtcl8.6 \
+  libtk8.6 \
   libwww-perl \
   libxslt1.1 \
   locales \
@@ -66,7 +67,9 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
 
 # TrEd
 ADD dttred /Alpino/bin
-RUN cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar vxzf - && \
+# Downloading the index triggers a new download of sources when anything in the index has changed
+ADD http://www.let.rug.nl/alfa/docker/alpino/ /index
+RUN rm /index && cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar vxzf - && \
     echo 2.5049 > /work/.tred.d/last_version && \
     chmod +x /Alpino/bin/dttred
 ADD .tredrc /work
@@ -77,7 +80,8 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     ln -s /TrEd/bin/start_tred tred && \
     ln -s /TrEd/bin/start_tred Tred && \
     ln -s /TrEd/bin/start_btred btred && \
-    ln -s /TrEd/bin/start_ntred ntred
+    ln -s /TrEd/bin/start_ntred ntred && \
+    ln -s /usr/bin/gedit emacs
 
 ADD weerbericht.txt /work/voorbeelden/
 ADD init.sh /
