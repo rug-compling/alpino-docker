@@ -7,7 +7,7 @@
 #     docker push rugcompling/alpino:latest
 #
 
-FROM debian:9
+FROM ubuntu:xenial
 
 MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
@@ -30,9 +30,7 @@ RUN apt-get update && apt-get install -y \
   unzip \
   vim
 
-RUN sed -e 's/^# en_US.UTF-8/en_US.UTF-8/' /etc/locale.gen > /etc/locale.gen.tmp && \
-    mv /etc/locale.gen.tmp /etc/locale.gen && \
-    locale-gen
+RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV PATH /Alpino/bin:/Alpino/Tokenization:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV ALPINO_HOME /Alpino
@@ -41,7 +39,6 @@ ENV HOME /work
 ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
 ENV LC_ALL en_US.utf8
-ENV LD_LIBRARY_PATH /Alpino/create_bin
 
 # Downloading the index triggers a new download of Alpino when anything in the index has changed
 ADD http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/ /index
@@ -86,7 +83,9 @@ ADD weerbericht.txt /work/voorbeelden/
 ADD init.sh /
 ADD info.html /work/
 ADD Choices /work/.config/netsurf/
-RUN chmod 777 /work/.config/netsurf && \
+ADD emacs /usr/local/bin
+RUN chmod +x /usr/local/bin/emacs && \
+    chmod 777 /work/.config/netsurf && \
     chmod 666 /work/.config/netsurf/Choices && \
     cd /usr/local/bin && \
     ln -s /usr/bin/netsurf netscape
