@@ -13,7 +13,7 @@ MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
 RUN apt-get update && apt-get install -y \
   curl \
-  gedit \
+  emacs \
   less \
   libtcl8.6 \
   libtk8.6 \
@@ -80,8 +80,7 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     ln -s /TrEd/bin/start_tred tred && \
     ln -s /TrEd/bin/start_tred Tred && \
     ln -s /TrEd/bin/start_btred btred && \
-    ln -s /TrEd/bin/start_ntred ntred && \
-    ln -s /usr/bin/gedit emacs
+    ln -s /TrEd/bin/start_ntred ntred
 
 ADD weerbericht.txt /work/voorbeelden/
 ADD init.sh /
