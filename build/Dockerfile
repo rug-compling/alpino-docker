@@ -79,7 +79,8 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     ln -s /TrEd/bin/start_btred btred && \
     ln -s /TrEd/bin/start_ntred ntred && \
     echo Bookmarks >  /work/.tred_bookmarks && \
-    echo Bookmarks >> /work/.tred_bookmarks
+    echo Bookmarks >> /work/.tred_bookmarks && \
+    chmod ugo+rw /work/.tred_bookmarks
 
 ADD weerbericht.txt /work/voorbeelden/
 ADD init.sh /
