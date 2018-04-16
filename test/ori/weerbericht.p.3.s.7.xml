@@ -24,25 +24,23 @@
             </node>
           </node>
         </node>
-        <node begin="9" cat="ap" end="11" id="18" rel="mod">
-          <node aform="base" begin="9" buiging="zonder" end="10" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="19" infl="no_e" lcat="ap" lemma="mogelijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="mogelijk" sense="mogelijk" vform="adj" word="mogelijk"/>
-          <node aform="compar" begin="10" buiging="zonder" end="11" frame="adjective(er(locadv))" graad="comp" his="normal" his_1="normal" id="20" infl="no_e" lcat="ap" lemma="ver" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="hd" root="ver" sense="ver" vform="adj" word="verder"/>
-        </node>
-        <node begin="11" end="12" frame="particle(toe)" his="normal" his_1="normal" id="21" lcat="part" lemma="toe" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="toe" sense="toe" vztype="fin" word="toe"/>
-        <node begin="12" cat="pp" end="14" id="22" rel="pc">
-          <node begin="12" end="13" frame="preposition(tot,[],pc_adv)" his="normal" his_1="normal" id="23" lcat="pp" lemma="tot" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="tot" sc="pc_adv" sense="tot" vztype="init" word="tot"/>
-          <node aform="base" begin="13" buiging="zonder" end="14" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="24" infl="no_e" lcat="ap" lemma="hard" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="obj1" root="hard" sense="hard" vform="adj" word="hard"/>
+        <node aform="base" begin="9" buiging="zonder" end="10" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="18" infl="no_e" lcat="ap" lemma="mogelijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="mogelijk" sense="mogelijk" vform="adj" word="mogelijk"/>
+        <node aform="compar" begin="10" buiging="zonder" end="11" frame="adjective(er(locadv))" graad="comp" his="normal" his_1="normal" id="19" infl="no_e" lcat="ap" lemma="ver" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="mod" root="ver" sense="ver" vform="adj" word="verder"/>
+        <node begin="11" end="12" frame="particle(toe)" his="normal" his_1="normal" id="20" lcat="part" lemma="toe" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="toe" sense="toe" vztype="fin" word="toe"/>
+        <node begin="12" cat="pp" end="14" id="21" rel="pc">
+          <node begin="12" end="13" frame="preposition(tot,[],pc_adv)" his="normal" his_1="normal" id="22" lcat="pp" lemma="tot" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="tot" sc="pc_adv" sense="tot" vztype="init" word="tot"/>
+          <node aform="base" begin="13" buiging="zonder" end="14" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="23" infl="no_e" lcat="ap" lemma="hard" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="obj1" root="hard" sense="hard" vform="adj" word="hard"/>
         </node>
       </node>
-      <node begin="15" cat="np" end="17" id="25" rel="sat">
-        <node begin="15" end="16" frame="number(hoofd(pl_num))" his="normal" his_1="normal" id="26" infl="pl_num" lcat="detp" lemma="7" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="7" sense="7" special="hoofd" word="7"/>
-        <node begin="16" end="17" frame="proper_name(both,'LOC')" getal="mv" graad="basis" his="name" his_1="not_begin" id="27" lcat="np" lemma="Bft" neclass="LOC" ntype="eigen" num="both" pos="name" postag="N(eigen,mv,basis)" pt="n" rel="hd" rnum="pl" root="Bft" sense="Bft" word="Bft"/>
+      <node begin="15" cat="np" end="17" id="24" rel="sat">
+        <node begin="15" end="16" frame="number(hoofd(pl_num))" his="normal" his_1="normal" id="25" infl="pl_num" lcat="detp" lemma="7" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="7" sense="7" special="hoofd" word="7"/>
+        <node begin="16" end="17" frame="proper_name(both,'LOC')" getal="mv" graad="basis" his="name" his_1="not_begin" id="26" lcat="np" lemma="Bft" neclass="LOC" ntype="eigen" num="both" pos="name" postag="N(eigen,mv,basis)" pt="n" rel="hd" rnum="pl" root="Bft" sense="Bft" word="Bft"/>
       </node>
     </node>
-    <node begin="17" end="18" frame="punct(punt)" his="normal" his_1="normal" id="28" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+    <node begin="17" end="18" frame="punct(punt)" his="normal" his_1="normal" id="27" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
   </node>
   <sentence sentid="weerbericht.p.3.s.7">In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.3.s.7|In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .|1|1|-4.176456934379998</comment>
+    <comment>Q#weerbericht.p.3.s.7|In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .|1|1|-5.128329442439997</comment>
   </comments>
 </alpino_ds>
