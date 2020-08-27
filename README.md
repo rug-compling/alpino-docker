@@ -21,7 +21,7 @@ You need `alpino.bash`.
 If you have been using an older version of `alpino.bash`, you may need
 to update the Docker image, before using the new script:
 
-    docker pull rugcompling/alpino:latest
+    docker pull registry.webhosting.rug.nl/compling/alpino:latest
 
 
 ## Starting Alpino in Docker ##

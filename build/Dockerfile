@@ -1,10 +1,10 @@
 #
 # Alpino in Docker
 #
-# To build and push to docker hub:
+# To build and push to repository:
 #
-#     docker build -t rugcompling/alpino:latest .
-#     docker push rugcompling/alpino:latest
+#     docker build -t registry.webhosting.rug.nl/compling/alpino:latest .
+#     docker push registry.webhosting.rug.nl/compling/alpino:latest
 #
 
 FROM ubuntu:xenial
