@@ -30,7 +30,7 @@ IF %ok%==0 (
 CALL :dirfix "%dir%"
 
 ECHO ON
-docker run --rm -i -t -v "%udir%:/work/data" rugcompling/alpino:latest %args%
+docker run --rm -i -t -v "%udir%:/work/data" registry.webhosting.rug.nl/compling/alpino:latest %args%
 @ECHO OFF
 
 GOTO:EOF

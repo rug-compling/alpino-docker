@@ -1,4 +1,4 @@
 #!/bin/sh
 set -x
-docker push rugcompling/alpino:latest
+docker push registry.webhosting.rug.nl/compling/alpino:latest
 

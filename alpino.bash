@@ -112,7 +112,7 @@ then
        --rm \
        -i -t \
        -v "$DIR":/work/data \
-       rugcompling/alpino:latest "$@"
+       registry.webhosting.rug.nl/compling/alpino:latest "$@"
 elif  [ "$os" = "darwin" ]
 then
     if [ -d /tmp/.X11-unix ]
@@ -128,7 +128,7 @@ then
            --rm \
            -i -t \
            -v "$DIR":/work/data \
-           rugcompling/alpino:latest "$@"
+           registry.webhosting.rug.nl/compling/alpino:latest "$@"
 	set +x
     else
 	echo Directory /tmp/.X11-unix not found, no GUI available
@@ -136,12 +136,12 @@ then
 	    --rm \
 	    -i -t \
 	    -v "$DIR":/work/data \
-	    rugcompling/alpino:latest "$@"
+	    registry.webhosting.rug.nl/compling/alpino:latest "$@"
     fi
 else
     docker run \
        --rm \
        -i -t \
        -v "$DIR":/work/data \
-       rugcompling/alpino:latest "$@"
+       registry.webhosting.rug.nl/compling/alpino:latest "$@"
 fi
