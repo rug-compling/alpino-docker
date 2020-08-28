@@ -4,10 +4,18 @@ SETLOCAL EnableExtensions EnableDelayedExpansion
 
 IF .%1==. (
 	ECHO.
-	ECHO Usage: %0 workdir [command [arg...]]
+	ECHO Run:     %0 workdir [command [arg...]]
+	ECHO Upgrade: %0 -u
 	ECHO.
 	ECHO See: https://github.com/rug-compling/alpino-docker
 	ECHO.
+	GOTO:EOF
+)
+
+SET image=registry.webhosting.rug.nl/compling/alpino:latest
+
+IF .%1==.-u (
+	docker pull %image%
 	GOTO:EOF
 )
 
@@ -30,7 +38,7 @@ IF %ok%==0 (
 CALL :dirfix "%dir%"
 
 ECHO ON
-docker run --rm -i -t -v "%udir%:/work/data" registry.webhosting.rug.nl/compling/alpino:latest %args%
+docker run --rm -i -t -v "%udir%:/work/data" %image% %args%
 @ECHO OFF
 
 GOTO:EOF

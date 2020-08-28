@@ -18,13 +18,22 @@ foreach $p (@parts) {
 }
 '
 
+image='registry.webhosting.rug.nl/compling/alpino:latest'
+
 if [ $# -lt 1 ]
 then
     echo
-    echo Usage: $0 workdir [command [arg...]]
+    echo "Run:     $0 workdir [command [arg...]]"
+    echo "Upgrade: $0 -u"
     echo
     echo See: https://github.com/rug-compling/alpino-docker
     echo
+    exit
+fi
+
+if [ "$1" = "-u" ]
+then
+    docker pull $image
     exit
 fi
 
@@ -112,7 +121,7 @@ then
        --rm \
        -i -t \
        -v "$DIR":/work/data \
-       registry.webhosting.rug.nl/compling/alpino:latest "$@"
+       $image "$@"
 elif  [ "$os" = "darwin" ]
 then
     if [ -d /tmp/.X11-unix ]
@@ -128,7 +137,7 @@ then
            --rm \
            -i -t \
            -v "$DIR":/work/data \
-           registry.webhosting.rug.nl/compling/alpino:latest "$@"
+           $image "$@"
 	set +x
     else
 	echo Directory /tmp/.X11-unix not found, no GUI available
@@ -136,12 +145,12 @@ then
 	    --rm \
 	    -i -t \
 	    -v "$DIR":/work/data \
-	    registry.webhosting.rug.nl/compling/alpino:latest "$@"
+	    $image "$@"
     fi
 else
     docker run \
        --rm \
        -i -t \
        -v "$DIR":/work/data \
-       registry.webhosting.rug.nl/compling/alpino:latest "$@"
+       $image "$@"
 fi
