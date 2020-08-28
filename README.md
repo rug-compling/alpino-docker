@@ -19,9 +19,9 @@ You need `alpino.bash`.
 ## Upgrade ##
 
 If you have been using an older version of `alpino.bash`, you may need
-to update the Docker image, before using the new script:
+to update the Docker image:
 
-    docker pull registry.webhosting.rug.nl/compling/alpino:latest
+    alpino.bash -u
 
 
 ## Starting Alpino in Docker ##
