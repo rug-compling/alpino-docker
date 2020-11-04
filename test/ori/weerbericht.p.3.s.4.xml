@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
   <node begin="0" cat="top" end="14" id="0" rel="top">
     <node begin="0" cat="smain" end="13" id="1" rel="--">
       <node begin="0" cat="conj" end="4" id="2" rel="su">
@@ -36,6 +36,6 @@
   </node>
   <sentence sentid="weerbericht.p.3.s.4">De bewolking en regen breiden zich gedurende de avond over het land uit .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.3.s.4|De bewolking en regen breiden zich gedurende de avond over het land uit .|1|1|-6.298931936419995</comment>
+    <comment>Q#weerbericht.p.3.s.4|De bewolking en regen breiden zich gedurende de avond over het land uit .|1|1|-8.874847124300002</comment>
   </comments>
 </alpino_ds>

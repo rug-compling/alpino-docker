@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
   <node begin="0" cat="top" end="18" id="0" rel="top">
     <node begin="14" end="15" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
     <node begin="0" cat="du" end="17" id="2" rel="--">
@@ -33,14 +33,14 @@
         </node>
       </node>
       <node begin="15" cat="np" end="17" id="24" rel="sat">
-        <node begin="15" end="16" frame="number(hoofd(pl_num))" his="normal" his_1="normal" id="25" infl="pl_num" lcat="detp" lemma="7" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="7" sense="7" special="hoofd" word="7"/>
-        <node begin="16" end="17" frame="proper_name(both,'LOC')" getal="mv" graad="basis" his="name" his_1="not_begin" id="26" lcat="np" lemma="Bft" neclass="LOC" ntype="eigen" num="both" pos="name" postag="N(eigen,mv,basis)" pt="n" rel="hd" rnum="pl" root="Bft" sense="Bft" word="Bft"/>
+        <node begin="15" end="16" frame="number(hoofd(pl_num))" his="normal" his_1="number_expression" id="25" infl="pl_num" lcat="detp" lemma="7" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="7" sense="7" special="hoofd" word="7"/>
+        <node begin="16" end="17" frame="proper_name(both,'LOC')" getal="mv" graad="basis" his="name" his_1="begin" id="26" lcat="np" lemma="Bft" neclass="LOC" ntype="eigen" num="both" pos="name" postag="N(eigen,mv,basis)" pt="n" rel="hd" rnum="pl" root="Bft" sense="Bft" word="Bft"/>
       </node>
     </node>
     <node begin="17" end="18" frame="punct(punt)" his="normal" his_1="normal" id="27" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
   </node>
   <sentence sentid="weerbericht.p.3.s.7">In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.3.s.7|In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .|1|1|-5.128329442439997</comment>
+    <comment>Q#weerbericht.p.3.s.7|In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .|1|1|-9.3648196843</comment>
   </comments>
 </alpino_ds>
