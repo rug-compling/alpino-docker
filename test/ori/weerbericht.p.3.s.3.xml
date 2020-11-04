@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
   <node begin="0" cat="top" end="17" id="0" rel="top">
     <node begin="0" cat="conj" end="16" id="1" rel="--">
       <node begin="0" cat="smain" end="8" id="2" rel="cnj">
@@ -28,7 +28,7 @@
         <node begin="11" end="12" frame="verb(unacc,sg3,intransitive)" his="normal" his_1="normal" id="19" infl="sg3" lcat="smain" lemma="vallen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="val" sc="intransitive" sense="val" stype="declarative" tense="present" word="valt" wvorm="pv"/>
         <node begin="12" cat="np" end="15" id="20" rel="su">
           <node begin="12" end="13" frame="determiner(de)" his="normal" his_1="normal" id="21" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-          <node begin="13" end="14" frame="number(rang)" his="normal" his_1="normal" id="22" lcat="ap" lemma="eerste" naamval="stan" numtype="rang" pos="num" positie="prenom" postag="TW(rang,prenom,stan)" pt="tw" rel="mod" root="eerste" sense="eerste" special="rang" word="eerste"/>
+          <node begin="13" end="14" frame="number(rang)" his="normal" his_1="normal" id="22" lcat="ap" lemma="één" naamval="stan" numtype="rang" pos="num" positie="prenom" postag="TW(rang,prenom,stan)" pt="tw" rel="mod" root="één" sense="één" special="rang" word="eerste"/>
           <node begin="14" end="15" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="23" lcat="np" lemma="regen" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="regen" sense="regen" word="regen"/>
         </node>
         <node begin="15" end="16" frame="adverb" his="normal" his_1="normal" id="24" lcat="advp" lemma="al" pos="adv" postag="BW()" pt="bw" rel="mod" root="al" sense="al" word="al"/>
@@ -38,6 +38,6 @@
   </node>
   <sentence sentid="weerbericht.p.3.s.3">Wel neemt vanuit het zuidwesten de bewolking toe en in Zeeland valt de eerste regen al .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.3.s.3|Wel neemt vanuit het zuidwesten de bewolking toe en in Zeeland valt de eerste regen al .|1|1|-13.37530290714</comment>
+    <comment>Q#weerbericht.p.3.s.3|Wel neemt vanuit het zuidwesten de bewolking toe en in Zeeland valt de eerste regen al .|1|1|-11.602630036299999</comment>
   </comments>
 </alpino_ds>

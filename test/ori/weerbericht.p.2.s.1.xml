@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
   <node begin="0" cat="top" end="9" id="0" rel="top">
     <node begin="5" end="6" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
     <node begin="0" cat="du" end="9" id="2" rel="--">
@@ -26,6 +26,6 @@
   </node>
   <sentence sentid="weerbericht.p.2.s.1">Vanavond vanuit het westen regen , ook morgen regenachtig</sentence>
   <comments>
-    <comment>Q#weerbericht.p.2.s.1|Vanavond vanuit het westen regen , ook morgen regenachtig|1|1|1.2579012270599987</comment>
+    <comment>Q#weerbericht.p.2.s.1|Vanavond vanuit het westen regen , ook morgen regenachtig|1|1|0.9886344770999991</comment>
   </comments>
 </alpino_ds>

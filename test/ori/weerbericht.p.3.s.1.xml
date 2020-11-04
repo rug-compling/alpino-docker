@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
   <node begin="0" cat="top" end="13" id="0" rel="top">
     <node begin="0" cat="conj" end="12" id="1" rel="--">
       <node begin="0" cat="smain" end="4" id="2" rel="cnj">
@@ -18,7 +18,7 @@
           <node begin="5" end="6" frame="preposition(op,[af,na])" his="normal" his_1="normal" id="12" lcat="pp" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init" word="op"/>
           <node begin="6" cat="np" end="9" id="13" rel="obj1">
             <node begin="6" end="7" frame="determiner(de)" his="normal" his_1="normal" id="14" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-            <node aform="super" begin="7" buiging="met-e" end="8" frame="adjective(ste)" graad="sup" his="normal" his_1="normal" id="15" infl="e" lcat="ap" lemma="meest" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,met-e,agr,sup)" pt="vnw" rel="mod" root="meest" sense="meest" vform="adj" vwtype="onbep" word="meeste"/>
+            <node aform="super" begin="7" buiging="met-e" end="8" frame="adjective(ste)" graad="sup" his="normal" his_1="normal" id="15" infl="e" lcat="ap" lemma="veel" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,sup,met-e,stan)" pt="adj" rel="mod" root="veel" sense="veel" vform="adj" word="meeste"/>
             <node begin="8" end="9" frame="meas_mod_noun(de,count,pl)" gen="de" getal="mv" graad="basis" his="normal" his_1="normal" id="16" lcat="np" lemma="plaats" ntype="soort" num="pl" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" rnum="pl" root="plaats" sense="plaats" special="meas_mod" word="plaatsen"/>
           </node>
         </node>
@@ -31,6 +31,6 @@
   </node>
   <sentence sentid="weerbericht.p.3.s.1">Het is wisselend bewolkt en op de meeste plaatsen is het droog .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.3.s.1|Het is wisselend bewolkt en op de meeste plaatsen is het droog .|1|1|-7.5936379588200005</comment>
+    <comment>Q#weerbericht.p.3.s.1|Het is wisselend bewolkt en op de meeste plaatsen is het droog .|1|1|-8.155132649800002</comment>
   </comments>
 </alpino_ds>

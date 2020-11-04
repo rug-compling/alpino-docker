@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
   <node begin="0" cat="top" end="21" id="0" rel="top">
     <node begin="12" end="13" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
     <node begin="0" cat="conj" end="20" id="2" rel="--">
@@ -24,31 +24,28 @@
           <node begin="9" end="10" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="17" lcat="np" lemma="wind" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="wind" sense="wind" word="wind"/>
         </node>
         <node begin="10" end="11" frame="verb(unacc,sg_heeft,copula)" his="normal" his_1="normal" id="18" infl="sg_heeft" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sc="copula" sense="ben" stype="declarative" tense="present" word="is" wvorm="pv"/>
-        <node aform="base" begin="11" buiging="zonder" end="12" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="19" infl="no_e" lcat="ap" lemma="matig" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="matig" sense="matig" vform="adj" word="matig"/>
-        <node begin="13" cat="pp" end="16" id="20" rel="mod">
-          <node begin="13" end="14" frame="preposition(langs,[heen])" his="normal" his_1="normal" id="21" lcat="pp" lemma="langs" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="langs" sense="langs" vztype="init" word="langs"/>
-          <node begin="14" cat="np" end="16" id="22" rel="obj1">
-            <node begin="14" end="15" frame="determiner(de)" his="normal" his_1="normal" id="23" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-            <node begin="15" end="16" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="24" lcat="np" lemma="kust" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="kust" sense="kust" word="kust"/>
-          </node>
-        </node>
-        <node begin="16" cat="conj" end="20" id="25" rel="predc">
-          <node begin="16" cat="ap" end="18" id="26" rel="cnj">
-            <node aform="base" begin="16" buiging="zonder" end="17" frame="adjective(no_e(both))" graad="basis" his="normal" his_1="normal" id="27" index="1" infl="no_e" lcat="ap" lemma="vrij" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="vrij" sense="vrij" vform="adj" word="vrij"/>
+        <node begin="11" cat="conj" end="20" id="19" rel="predc">
+          <node aform="base" begin="11" buiging="zonder" end="12" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="20" infl="no_e" lcat="ap" lemma="matig" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="cnj" root="matig" sense="matig" vform="adj" word="matig"/>
+          <node begin="13" cat="ap" end="18" id="21" rel="cnj">
+            <node begin="13" cat="pp" end="16" id="22" rel="mod">
+              <node begin="13" end="14" frame="preposition(langs,[heen])" his="normal" his_1="normal" id="23" lcat="pp" lemma="langs" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="langs" sense="langs" vztype="init" word="langs"/>
+              <node begin="14" cat="np" end="16" id="24" rel="obj1">
+                <node begin="14" end="15" frame="determiner(de)" his="normal" his_1="normal" id="25" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+                <node begin="15" end="16" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="26" lcat="np" lemma="kust" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="kust" sense="kust" word="kust"/>
+              </node>
+            </node>
+            <node aform="base" begin="16" buiging="zonder" end="17" frame="adjective(no_e(both))" graad="basis" his="normal" his_1="normal" id="27" infl="no_e" lcat="ap" lemma="vrij" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="vrij" sense="vrij" vform="adj" word="vrij"/>
             <node aform="base" begin="17" buiging="zonder" end="18" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="28" infl="no_e" lcat="ap" lemma="krachtig" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="krachtig" sense="krachtig" vform="adj" word="krachtig"/>
           </node>
           <node begin="18" end="19" frame="conj(tot)" his="normal" his_1="normal" id="29" lcat="vg" lemma="tot" pos="vg" postag="VZ(init)" pt="vz" rel="crd" root="tot" sense="tot" vztype="init" word="tot"/>
-          <node begin="16" cat="ap" end="20" id="30" rel="cnj">
-            <node begin="16" end="17" id="31" index="1" rel="mod"/>
-            <node aform="base" begin="19" buiging="zonder" end="20" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="32" infl="no_e" lcat="ap" lemma="krachtig" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="krachtig" sense="krachtig" vform="adj" word="krachtig"/>
-          </node>
+          <node aform="base" begin="19" buiging="zonder" end="20" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="30" infl="no_e" lcat="ap" lemma="krachtig" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="cnj" root="krachtig" sense="krachtig" vform="adj" word="krachtig"/>
         </node>
       </node>
     </node>
-    <node begin="20" end="21" frame="punct(punt)" his="normal" his_1="normal" id="33" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+    <node begin="20" end="21" frame="punct(punt)" his="normal" his_1="normal" id="31" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
   </node>
   <sentence sentid="weerbericht.p.4.s.2">De minimumtemperatuur wordt ongeveer 14 graden en de zuidelijke wind is matig , langs de kust vrij krachtig tot krachtig .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.4.s.2|De minimumtemperatuur wordt ongeveer 14 graden en de zuidelijke wind is matig , langs de kust vrij krachtig tot krachtig .|1|1|-9.758489727400002</comment>
+    <comment>Q#weerbericht.p.4.s.2|De minimumtemperatuur wordt ongeveer 14 graden en de zuidelijke wind is matig , langs de kust vrij krachtig tot krachtig .|1|1|-9.688849284399996</comment>
   </comments>
 </alpino_ds>

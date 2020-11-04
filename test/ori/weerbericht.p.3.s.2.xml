@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
   <node begin="0" cat="top" end="12" id="0" rel="top">
     <node begin="0" cat="smain" end="11" id="1" rel="--">
       <node begin="3" end="4" frame="verb(unacc,sg_heeft,te_passive)" his="normal" his_1="normal" id="2" infl="sg_heeft" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sc="te_passive" sense="ben" stype="declarative" tense="present" word="is" wvorm="pv"/>
@@ -32,6 +32,6 @@
   </node>
   <sentence sentid="weerbericht.p.3.s.2">Op veel plaatsen is de zon af en toe te zien .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.3.s.2|Op veel plaatsen is de zon af en toe te zien .|1|1|-7.981878698759998</comment>
+    <comment>Q#weerbericht.p.3.s.2|Op veel plaatsen is de zon af en toe te zien .|1|1|-6.400431652699999</comment>
   </comments>
 </alpino_ds>

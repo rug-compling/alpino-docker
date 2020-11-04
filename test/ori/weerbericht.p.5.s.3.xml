@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="smain" end="6" id="1" rel="--">
       <node begin="0" cat="np" end="2" id="2" rel="su">
@@ -18,6 +18,6 @@
   </node>
   <sentence sentid="weerbericht.p.5.s.3">De middagtemperatuur wordt ongeveer 18 graden .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.5.s.3|De middagtemperatuur wordt ongeveer 18 graden .|1|1|-1.6074291699399998</comment>
+    <comment>Q#weerbericht.p.5.s.3|De middagtemperatuur wordt ongeveer 18 graden .|1|1|-2.0404902217000016</comment>
   </comments>
 </alpino_ds>

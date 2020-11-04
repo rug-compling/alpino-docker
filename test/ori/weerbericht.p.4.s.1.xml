@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git172-sicstus" date="2020-11-04T11:22" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
   <node begin="0" cat="top" end="14" id="0" rel="top">
     <node begin="0" cat="conj" end="13" id="1" rel="--">
       <node begin="0" cat="smain" end="6" id="2" rel="cnj">
-        <node begin="0" cat="np" end="2" id="3" rel="su">
+        <node begin="0" cat="np" end="2" id="3" rel="mod">
           <node aform="base" begin="0" buiging="met-e" end="1" frame="adjective(ende(padv))" his="normal" his_1="decap" his_1_1="V-de" his_1_1_1="normal" id="4" infl="e" lcat="ppres" lemma="komen" pos="adj" positie="prenom" postag="WW(od,prenom,met-e)" pt="ww" rel="mod" root="kom" sense="kom" vform="gerund" word="Komende" wvorm="od"/>
           <node begin="1" end="2" frame="tmp_noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="5" lcat="np" lemma="nacht" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="nacht" sense="nacht" special="tmp" word="nacht"/>
         </node>
-        <node begin="2" end="3" frame="verb(unacc,sg_heeft,copula)" his="normal" his_1="normal" id="6" infl="sg_heeft" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sc="copula" sense="ben" stype="declarative" tense="present" word="is" wvorm="pv"/>
+        <node begin="2" end="3" frame="verb(unacc,sg_heeft,intransitive)" his="normal" his_1="normal" id="6" infl="sg_heeft" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sc="intransitive" sense="ben" stype="declarative" tense="present" word="is" wvorm="pv"/>
         <node begin="3" end="4" frame="er_vp_adverb" getal="getal" his="normal" his_1="normal" id="7" lcat="advp" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="mod" root="er" sense="er" special="er" status="red" vwtype="aanw" word="er"/>
-        <node begin="4" cat="np" end="6" id="8" rel="predc">
+        <node begin="4" cat="np" end="6" id="8" rel="su">
           <node aform="base" begin="4" buiging="zonder" end="5" frame="adjective(no_e(odet_adv))" graad="basis" his="normal" his_1="normal" id="9" infl="no_e" lcat="ap" lemma="veel" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,zonder,agr,basis)" pt="vnw" rel="det" root="veel" sense="veel" vform="adj" vwtype="onbep" word="veel"/>
           <node begin="5" end="6" frame="noun(de,mass,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="bewolking" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="bewolking" sense="bewolking" word="bewolking"/>
         </node>
@@ -31,6 +31,6 @@
   </node>
   <sentence sentid="weerbericht.p.4.s.1">Komende nacht is er veel bewolking en van tijd tot tijd regent het .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.4.s.1|Komende nacht is er veel bewolking en van tijd tot tijd regent het .|1|1|-7.603248275160001</comment>
+    <comment>Q#weerbericht.p.4.s.1|Komende nacht is er veel bewolking en van tijd tot tijd regent het .|1|1|-8.564129448100001</comment>
   </comments>
 </alpino_ds>
