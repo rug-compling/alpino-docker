@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git233-sicstus" date="2020-11-06T11:31" cats="1" skips="0" />
   <node begin="0" cat="top" end="13" id="0" rel="top">
     <node begin="0" cat="conj" end="12" id="1" rel="--">
       <node begin="0" cat="smain" end="4" id="2" rel="cnj">

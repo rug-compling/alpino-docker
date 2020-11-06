@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git232-sicstus" date="2020-11-04T11:39" cats="1" skips="0" />
+  <parser build="Alpino-x86_64-linux-glibc2.5-git233-sicstus" date="2020-11-06T11:32" cats="1" skips="0" />
   <node begin="0" cat="top" end="18" id="0" rel="top">
     <node begin="14" end="15" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
     <node begin="0" cat="du" end="17" id="2" rel="--">
