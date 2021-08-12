@@ -43,7 +43,7 @@ ENV LC_ALL en_US.utf8
 # Downloading the index triggers a new download of Alpino when anything in the index has changed
 ADD http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/ /index
 RUN cd / && rm index && \
-    curl -s http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz | tar vxzf -
+    curl -s http://www.let.rug.nl/vannoord/alp/Alpino/versions/binary/latest.tar.gz | tar --no-same-owner -vxzf -
 
 # Remove stale nfs files
 RUN find /Alpino -name '.nfs*' | xargs rm -f
@@ -66,7 +66,7 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
 ADD dttred /Alpino/bin
 # Downloading the index triggers a new download of sources when anything in the index has changed
 ADD http://www.let.rug.nl/alfa/docker/alpino/ /index
-RUN rm /index && cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar vxzf - && \
+RUN rm /index && cd / && curl -s http://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar --no-same-owner -vxzf - && \
     echo 2.5049 > /work/.tred.d/last_version && \
     chmod +x /Alpino/bin/dttred
 ADD .tredrc /work
