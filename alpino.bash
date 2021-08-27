@@ -114,10 +114,18 @@ fi
 
 if  [ "$os" = "linux" ]
 then
+    case "`docker info --format '{{.SecurityOptions}}'`" in
+        *name=rootless*)
+            user=""
+            ;;
+        *)
+            user="--user=`id -u`:`id -g`"
+            ;;
+    esac
     docker run \
        -e DISPLAY \
        --net=host \
-       --user=`id -u`:`id -g` \
+       $user \
        --rm \
        -i -t \
        -v "$DIR":/work/data \
