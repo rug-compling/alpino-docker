@@ -94,4 +94,8 @@ RUN chmod +x /usr/local/bin/emacs && \
     cd /usr/local/bin && \
     ln -s /usr/bin/netsurf netscape
 
+ENV LD_LIBRARY_PATH :/Alpino/util:/Alpino/Tokenization:/Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus:/Alpino/create_bin:/Alpino/util:/Alpino/create_bin/extralibs:/Alpino/create_bin/extralibs/boost
+ENV TCL_LIBRARY /Alpino/create_bin/extralibs/tcl8.5
+ENV TK_LIBRARY /Alpino/create_bin/extralibs/tk8.5
+
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
