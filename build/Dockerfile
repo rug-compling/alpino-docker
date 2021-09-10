@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
   curl \
   emacs \
   less \
+  libpython2.7 \
   libtcl8.6 \
   libtk8.6 \
   libwww-perl \
