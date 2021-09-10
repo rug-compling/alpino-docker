@@ -11,6 +11,13 @@ FROM ubuntu:xenial
 
 MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 
+# Bij overstap naar nieuwere Ubuntu invoegen:
+#RUN apt-get update && apt-get install -y tzdata && \
+#    echo "Etc/UTC" > /etc/timezone && \
+#    ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
+#    dpkg-reconfigure -f noninteractive tzdata
+
+# Bij overstap naar nieuwere Ubuntu: netsurf vervangen door falkon
 RUN apt-get update && apt-get install -y \
   curl \
   emacs \
@@ -25,8 +32,6 @@ RUN apt-get update && apt-get install -y \
   netsurf \
   python \
   python-lxml \
-  python-libxml2 \
-  python-libxslt1 \
   tk \
   unzip \
   vim
@@ -35,6 +40,7 @@ RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV PATH /Alpino/bin:/Alpino/Tokenization:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV ALPINO_HOME /Alpino
+# Bij overstap naar nieuwere Ubuntu: netsurf vervangen door falkon
 ENV BROWSER netsurf
 ENV HOME /work
 ENV LANG en_US.utf8
@@ -84,10 +90,13 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     chmod ugo+rw /work/.tred_bookmarks
 
 ADD weerbericht.txt /work/voorbeelden/
+# Bij overstap naar nieuwere Ubuntu: init.sh aanpassen: falkon i.p.v netsurf
 ADD init.sh /
 ADD info.html /work/
+# Bij overstap naar nieuwere Ubuntu: Choices weg
 ADD Choices /work/.config/netsurf/
 ADD emacs /usr/local/bin
+# Bij overstap naar nieuwere Ubuntu: netsurf-dingen weg, /work schrijfbaar maken voor iedereen
 RUN chmod +x /usr/local/bin/emacs && \
     chmod 777 /work/.config/netsurf && \
     chmod 666 /work/.config/netsurf/Choices && \
