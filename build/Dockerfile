@@ -17,7 +17,6 @@ MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 #    ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
 #    dpkg-reconfigure -f noninteractive tzdata
 
-# Bij overstap naar nieuwere Ubuntu: netsurf vervangen door falkon
 RUN apt-get update && apt-get install -y \
   curl \
   emacs \
@@ -30,7 +29,6 @@ RUN apt-get update && apt-get install -y \
   locales \
   man \
   nano \
-  netsurf \
   python \
   python-lxml \
   tk \
@@ -93,16 +91,10 @@ RUN chmod ugo+rw /work /work/.tredrc && \
 ADD weerbericht.txt /work/voorbeelden/
 # Bij overstap naar nieuwere Ubuntu: init.sh aanpassen: falkon i.p.v netsurf
 ADD init.sh /
-ADD info.html /work/
-# Bij overstap naar nieuwere Ubuntu: Choices weg
-ADD Choices /work/.config/netsurf/
+ADD info.txt /work/
 ADD emacs /usr/local/bin
 # Bij overstap naar nieuwere Ubuntu: netsurf-dingen weg, /work schrijfbaar maken voor iedereen
-RUN chmod +x /usr/local/bin/emacs && \
-    chmod 777 /work/.config/netsurf && \
-    chmod 666 /work/.config/netsurf/Choices && \
-    cd /usr/local/bin && \
-    ln -s /usr/bin/netsurf netscape
+RUN chmod +x /usr/local/bin/emacs
 
 ENV LD_LIBRARY_PATH :/Alpino/util:/Alpino/Tokenization:/Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus:/Alpino/create_bin:/Alpino/util:/Alpino/create_bin/extralibs:/Alpino/create_bin/extralibs/boost
 ENV TCL_LIBRARY /Alpino/create_bin/extralibs/tcl8.5

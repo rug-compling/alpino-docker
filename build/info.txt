@@ -1,0 +1,107 @@
+
+Alpino
+======
+
+Main Site:
+    http://www.let.rug.nl/vannoord/alp/Alpino/
+
+User Guide:
+    http://www.let.rug.nl/vannoord/alp/Alpino/AlpinoUserGuide.html
+
+
+Tree Editor TrEd
+================
+
+Main site:
+    https://ufal.mff.cuni.cz/tred/
+
+User Manual:
+    https://ufal.mff.cuni.cz/tred/documentation/ar01-toc.html
+
+
+Alpino in Docker
+================
+
+[1mWindows[0m
+
+If you are using [3mDocker for Windows[0m you need [4malpino.cmd[0m.
+In the examples below substitute [4malpino.cmd[0m for [4malpino.bash[0m.
+
+If you are using [3mDocker Toolbox[0m you need [4malpino.bash[0m.
+
+
+[1mLinux, Mac[0m
+
+You need [4malpino.bash[0m.
+
+
+Upgrade
+-------
+
+If you have been using an older version of [4malpino.bash[0m, you may need to
+update the Docker image, before using the new script:
+
+[36m    alpino.bash -u[0m
+
+
+Starting Alpino in Docker
+-------------------------
+
+There are two ways of starting Alpino in Docker.
+
+  [1m1--[0m This brings you into a bash shell inside Docker, where you can
+      run Alpino itself:
+
+[36m    alpino.bash $HOME/alpino[0m
+
+Inside the shell, there is a virtual directory [4m~/data[0m that corresponds
+to the real directory you gave as an argument to the script, in this
+case [4m$HOME/alpino[0m. You use it to save and access data on your regular
+file system.
+
+
+  [1m2--[0m You can also run a single command, without going to the shell
+      first:
+
+[36m    alpino.bash $HOME/alpino Alpino[0m
+
+In this case, there is no directory [4m~/data[0m in Docker, but there is
+[4m/work/data[0m with the same purpose.
+
+
+Examples of running Alpino inside Docker
+----------------------------------------
+
+Inside Docker, you can run Alpino interactively, or as a command line
+tool.
+
+
+[1mInteractive use[0m
+
+If you have access to an X11 server, then this starts the Alpino GUI:
+
+[36m    Alpino[0m
+
+This starts and interactive version of Alpino without the GUI:
+
+[36m    Alpino -notk[0m
+
+
+[1mUse as a command line tool[0m
+
+This tokenizes and parses the text from [4m~/voorbeelden/weerbericht.txt[0m
+and saves the results in the directory [4m~/data/xml[0m:
+
+[36m    cd ~/data[0m
+[36m    mkdir xml[0m
+[36m    partok ~/voorbeelden/weerbericht.txt | Alpino \[0m
+[36m        -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse[0m
+
+If you have access to an X11 server, you can view the generated trees:
+
+[36m    dtview xml/*.xml[0m
+
+... or edit the trees:
+
+[36m    dttred xml/*.xml[0m
+
