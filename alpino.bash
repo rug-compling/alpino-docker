@@ -116,16 +116,15 @@ if  [ "$os" = "linux" ]
 then
     case "`docker info --format '{{.SecurityOptions}}'`" in
         *name=rootless*)
-            user=""
+            extra="--volume=/tmp/.X11-unix/:/tmp/.X11-unix/"
             ;;
         *)
-            user="--user=`id -u`:`id -g`"
+            extra="--user=`id -u`:`id -g` --net=host"
             ;;
     esac
     docker run \
        -e DISPLAY \
-       --net=host \
-       $user \
+       $extra \
        --rm \
        -i -t \
        -v "$DIR":/work/data \
