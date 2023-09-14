@@ -37,7 +37,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-ENV PATH /Alpino/bin:/Alpino/Tokenization:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH /Alpino/bin:/Alpino/Tokenization:/opt/dbxml_tools:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV ALPINO_HOME /Alpino
 # Bij overstap naar nieuwere Ubuntu: netsurf vervangen door falkon
 ENV BROWSER netsurf
@@ -87,6 +87,10 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     echo Bookmarks >  /work/.tred_bookmarks && \
     echo Bookmarks >> /work/.tred_bookmarks && \
     chmod ugo+rw /work/.tred_bookmarks
+
+# DbXML
+RUN curl -s http://www.let.rug.nl/alfa/docker/alpino/dbxml.tar.gz | tar --no-same-owner -vxzf - && \
+    curl -s http://www.let.rug.nl/alfa/docker/alpino/dbxml_tools.tar.gz | tar --no-same-owner -vxzf -
 
 ADD weerbericht.txt /work/voorbeelden/
 # Bij overstap naar nieuwere Ubuntu: init.sh aanpassen: falkon i.p.v netsurf
