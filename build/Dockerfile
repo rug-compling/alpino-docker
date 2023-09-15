@@ -37,7 +37,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-ENV PATH /Alpino/bin:/Alpino/Tokenization:/opt/dbxml_tools:/opt/alpinocorpus2/bin:/opt/alpinocorpus6/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH /Alpino/bin:/Alpino/Tokenization:/opt/dbxml_tools:/opt/alpinocorpus2/bin:/opt/alpinocorpus6/bin:/opt/dact2/bin:/opt/dact6/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV ALPINO_HOME /Alpino
 # Bij overstap naar nieuwere Ubuntu: netsurf vervangen door falkon
 ENV BROWSER netsurf
@@ -92,6 +92,10 @@ RUN chmod ugo+rw /work /work/.tredrc && \
 RUN curl -s http://www.let.rug.nl/alfa/docker/alpino/dbxml.tar.gz | tar --no-same-owner -vxzf - && \
     curl -s http://www.let.rug.nl/alfa/docker/alpino/dbxml_tools.tar.gz | tar --no-same-owner -vxzf - && \
     curl -s http://www.let.rug.nl/alfa/docker/alpino/alpinocorpus.tar.gz | tar --no-same-owner -vxzf -
+
+# Dact
+RUN curl -s http://www.let.rug.nl/alfa/docker/alpino/dact.tar.gz | tar --no-same-owner -vxzf -
+RUN apt-get install -y libqt5network5 libqt5printsupport5
 
 ADD weerbericht.txt /work/voorbeelden/
 # Bij overstap naar nieuwere Ubuntu: init.sh aanpassen: falkon i.p.v netsurf
