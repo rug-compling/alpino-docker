@@ -105,3 +105,13 @@ If you have access to an X11 server, you can view the generated trees:
 
 [36m    dttred xml/*.xml[0m
 
+Create a corpus in the DACT format:
+
+[36m    cd xml[0m
+[36m    mkcorpus ../weer.dact *.xml[0m
+[36m    cd ..[0m
+
+... and inspect the corpus with the dact program:
+
+[36m    dact weer.dact[0m
+
