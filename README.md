@@ -80,3 +80,14 @@ If you have access to an X11 server, you can view the generated trees:
 ... or edit the trees:
 
     dttred xml/*.xml
+
+Create a corpus in the DACT format:
+
+    cd xml
+    mkcorpus ../weer.dact *.xml
+    cd ..
+
+... and inspect the corpus with the dact program:
+
+    dact weer.dact
+
