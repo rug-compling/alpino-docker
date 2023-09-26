@@ -1,0 +1,11 @@
+
+IN ONTWIKKELING
+
+ - dact
+ - alpinocorpus-tools
+ - dbxml-tools
+
+... and inspect the corpus with the dact program:
+
+[36m    dact weer.dact[0m
+

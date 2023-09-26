@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /opt/info
+select i in *
+do
+    less -R "$i"
+    break
+done
+

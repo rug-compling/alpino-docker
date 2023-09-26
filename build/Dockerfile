@@ -103,7 +103,6 @@ RUN curl -s http://www.let.rug.nl/alfa/docker/alpino/bin.tar.gz | tar --no-same-
 ADD weerbericht.txt /work/voorbeelden/
 # Bij overstap naar nieuwere Ubuntu: init.sh aanpassen: falkon i.p.v netsurf
 ADD init.sh /
-ADD info.txt /work/
 ADD emacs /usr/local/bin
 # Bij overstap naar nieuwere Ubuntu: netsurf-dingen weg, /work schrijfbaar maken voor iedereen
 RUN chmod +x /usr/local/bin/emacs
@@ -113,6 +112,7 @@ ENV TCL_LIBRARY /Alpino/create_bin/extralibs/tcl8.5
 ENV TK_LIBRARY /Alpino/create_bin/extralibs/tk8.5
 
 RUN apt-get install -y libgvc6 	libcgraph6 libwebkit2gtk-4.0
-ADD alpinoviewer alparse /opt/bin/
+ADD alpinoviewer alparse info /opt/bin/
+ADD help/* /opt/info/
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
