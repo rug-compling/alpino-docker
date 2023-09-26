@@ -112,4 +112,8 @@ ENV LD_LIBRARY_PATH :/Alpino/util:/Alpino/Tokenization:/Alpino/fadd:/Alpino/Tree
 ENV TCL_LIBRARY /Alpino/create_bin/extralibs/tcl8.5
 ENV TK_LIBRARY /Alpino/create_bin/extralibs/tk8.5
 
+ADD alpinoviewer /opt/bin
+RUN apt-get install -y libgvc6 	libcgraph6 libwebkit2gtk-4.0
+#libwebkit2gtk-4.0
+
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
