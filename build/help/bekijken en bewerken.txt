@@ -1,0 +1,32 @@
+
+[4mBekijken en bewerken[0m
+
+Laat een tekst parsen:
+
+[36m    cd ~/data[0m
+[36m    mkdir weer[0m
+[36m    partok ~/voorbeelden/weerbericht.txt | alparse - weer[0m
+
+Bekijk het resultaat met [4malpinoviewer[0m:
+
+[36m    alpinoviewer weer/*.xml[0m
+
+Sneltoetsen:
+
+    Ctrl+= (is)    inzoomen
+    Ctrl+- (minus) uitzoemen
+    Ctrl+0 (nul)   zoom herstellen
+    Ctrl+Q         afsluiten
+
+Of bekijk met [4mdtview[0m:
+
+[36m    dtview weer/*.xml[0m
+
+Je kunt de resultaten bewerken met [4mdttred[0m:
+
+[36m    dttred weer/*.xml[0m
+
+[4mdttred[0m is een wrapper voor [4mTrEd[0m. Voor de handleiding van TrEd, zie:
+
+    https://ufal.mff.cuni.cz/tred/documentation/ar01-toc.html
+

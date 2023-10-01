@@ -4,6 +4,7 @@ IN ONTWIKKELING
  - dact
  - alpinocorpus-tools
  - dbxml-tools
+ - voorbeelden/macros.txt
 
 ... and inspect the corpus with the dact program:
 

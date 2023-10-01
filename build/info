@@ -1,9 +1,17 @@
 #!/bin/bash
 
 cd /opt/info
-select i in *
+select i in \
+    'introductie' \
+    'tokeniseren' \
+    'parsen' \
+    'bekijken en bewerken' \
+    'een corpus maken' \
+    'een corpus doorzoeken' \
+    'Universal Dependencies' \
+    'links'
 do
-    less -R "$i"
+    less -R "$i.txt"
     break
 done
 

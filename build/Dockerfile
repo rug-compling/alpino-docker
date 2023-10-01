@@ -33,14 +33,17 @@ RUN apt-get update && apt-get install -y \
   python-lxml \
   tk \
   unzip \
-  vim
+  vim \
+  libcgraph6 \
+  libgvc6 \
+  libqt5network5 \
+  libqt5printsupport5 \
+  libwebkit2gtk-4.0
 
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 ENV PATH /Alpino/bin:/Alpino/Tokenization:/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV ALPINO_HOME /Alpino
-# Bij overstap naar nieuwere Ubuntu: netsurf vervangen door falkon
-ENV BROWSER netsurf
 ENV HOME /work
 ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
@@ -95,23 +98,19 @@ RUN curl -s http://www.let.rug.nl/alfa/docker/alpino/dbxml.tar.gz | tar --no-sam
 
 # Dact
 RUN curl -s http://www.let.rug.nl/alfa/docker/alpino/dact.tar.gz | tar --no-same-owner -vxzf -
-RUN apt-get install -y libqt5network5 libqt5printsupport5
 
 # symlinks
 RUN curl -s http://www.let.rug.nl/alfa/docker/alpino/bin.tar.gz | tar --no-same-owner -vxzf -
 
-ADD weerbericht.txt /work/voorbeelden/
-# Bij overstap naar nieuwere Ubuntu: init.sh aanpassen: falkon i.p.v netsurf
+ADD weerbericht.txt macros.txt /work/voorbeelden/
 ADD init.sh /
 ADD emacs /usr/local/bin
-# Bij overstap naar nieuwere Ubuntu: netsurf-dingen weg, /work schrijfbaar maken voor iedereen
 RUN chmod +x /usr/local/bin/emacs
 
 ENV LD_LIBRARY_PATH :/Alpino/util:/Alpino/Tokenization:/Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus:/Alpino/create_bin:/Alpino/util:/Alpino/create_bin/extralibs:/Alpino/create_bin/extralibs/boost
 ENV TCL_LIBRARY /Alpino/create_bin/extralibs/tcl8.5
 ENV TK_LIBRARY /Alpino/create_bin/extralibs/tk8.5
 
-RUN apt-get install -y libgvc6 	libcgraph6 libwebkit2gtk-4.0
 ADD alpinoviewer alparse info /opt/bin/
 ADD help/* /opt/info/
 
