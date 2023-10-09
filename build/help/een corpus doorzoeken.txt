@@ -1,12 +1,46 @@
 
-IN ONTWIKKELING
+[4mEen corpus doorzoeken[0m
 
- - dact
- - alpinocorpus-tools
- - dbxml-tools
- - voorbeelden/macros.txt
-
-... and inspect the corpus with the dact program:
+Een corpus in het DACT-formaat kun je analyseren met [4mdact[0m, een
+grafische toepassing:
 
 [36m    dact weer.dact[0m
+
+Je kunt het corpus ook doorzoeken vanaf de command line. Een voorbeeld:
+
+[36m    alpinocorpus-xpath -c -s -q '//node[node[@root="wind"]]' weer.dact[0m
+
+Of met een ander programma:
+
+[36m    dbxml_match -l weer.dact '//node[node[@root="wind"]]'[0m
+
+Het doorzaken gaat met XPATH-expressies. Veel voorbeelden hiervan,
+speciaal voor Alpino, vind je hier:
+
+    https://rug-compling.github.io/dact/cookbook/
+
+In de directory [4m/opt/bin[0m staan meer programma's voor het
+verwerken van corpora. Met uitzondering van [4mdact[0m kun je al deze
+programma's zonder argumenten aanroepen om uitleg te krijgen.
+
+Sommige programma's kunnen voor het zoeken gebruik maken van een
+macrobestand. Met macro's kun je zoekopdrachten soms sterk vereenvoudigen.
+Een voorbeeld macrobestand vind je hier:
+
+    /work/voorbeelden/macros.txt
+
+----
+
+De meeste programma's in [4m/opt/bin[0m zijn er in twee varianten, een standaardversie,
+en een versie met de toevoeging [4m_v6[0m. Dit heeft betrekking op het
+maken en verwerken van DACT-bestanden. Een DACT-bestand is een database
+voor DbXML, die het zoeken met XPATH mogelijk maakt. Helaas is dit niet
+zonder bugs, waardoor een query in zeldzame gevallen niet oplevert wat
+zou moeten. De standaardversies van onze programma's maken gebruik van
+DbXML versie 2. De andere versies gebruiken DbXML versie 6. Zowel versie
+2 als versie 6 heeft bugs, maar niet dezelfde.
+
+[1mLet op:[0m een DACT-bestand gemaakt met DbXML versie 2 kan wel verwerkt
+worden door een programma dat DbXML versie 6 gebruikt. Maar andersom
+werkt niet.
 

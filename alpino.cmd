@@ -4,8 +4,9 @@ SETLOCAL EnableExtensions EnableDelayedExpansion
 
 IF .%1==. (
 	ECHO.
-	ECHO Run:     %0 workdir [command [arg...]]
+	ECHO Help:    %0 -h
 	ECHO Upgrade: %0 -u
+	ECHO Run:     %0 workdir [command [arg...]]
 	ECHO.
 	ECHO See: https://github.com/rug-compling/alpino-docker
 	ECHO.
@@ -13,6 +14,11 @@ IF .%1==. (
 )
 
 SET image=registry.webhosting.rug.nl/compling/alpino:latest
+
+IF .%1==.-h (
+	docker run --rm -i -t %image% info
+	GOTO:EOF
+)
 
 IF .%1==.-u (
 	docker pull %image%

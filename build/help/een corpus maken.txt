@@ -13,7 +13,7 @@ Je kunt deze bestanden samenvoegen in een corpusbestand, waarmee je weer
 andere dingen kunt doen, zoals doorzoeken met behulp van XPath.
 
 Een DACT-bestand is gewoon een DbXML-bestand, een database met daarin
-XML-bestanden gemaakt door Alpino. Je kunt zo'n bestand maken met 
+XML-bestanden gemaakt door Alpino. Je kunt zo'n bestand maken met
 [4mmkcorpus[0m :
 
 [36m    mkcorpus weer.dact weer/*.xml[0m
@@ -28,7 +28,7 @@ Het eerste argument is het uitvoer corpus. Daarna volgen de namen van
 het/de invoerbestand(en).
 
 Wanneer je zoveel xml-bestanden hebt dat de commandoregel te lang wordt
-kun je de namen ook inlezen vanaf standaard invoer. 
+kun je de namen ook inlezen vanaf standaard invoer.
 
 [36m    find weer -name '*.xml' | mkcorpus weer.dact[0m
 
@@ -38,7 +38,7 @@ directory:
 [36m    mkdir nieuw[0m
 [36m    mkcorpus nieuw weer.dact[0m
 
-Voor alle corpusformaten, run het programma zonder argumenten:
+Voor een lijst van alle corpusformaten, run het programma zonder argumenten:
 
 [36m    mkcorpus[0m
 

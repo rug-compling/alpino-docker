@@ -23,11 +23,18 @@ image='registry.webhosting.rug.nl/compling/alpino:latest'
 if [ $# -lt 1 ]
 then
     echo
-    echo "Run:     $0 workdir [command [arg...]]"
+    echo "Help:    $0 -h"
     echo "Upgrade: $0 -u"
+    echo "Run:     $0 workdir [command [arg...]]"
     echo
     echo See: https://github.com/rug-compling/alpino-docker
     echo
+    exit
+fi
+
+if [ "$1" = "-h" ]
+then
+    docker run --rm -i -t $image info 
     exit
 fi
 

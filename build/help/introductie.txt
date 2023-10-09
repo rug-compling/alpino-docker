@@ -14,10 +14,10 @@ Je komt dan in een shell waarin je programma's kunt uitvoeren.
 De tweede manier is met na de directory een programma-opdracht, eventueel
 gevolgd door argumenten, bijvoorbeeld:
 
-[36m    alpino.bash $HOME/alpino Alpino[0m
+[36m    alpino.bash $HOME/alpino ls -la /work[0m
 
-In dit geval wordt het programma direct gestart, en na het beëindigen
-stopt Alpino in Docker.
+In dit geval wordt het programma [4mls[0m direct gestart, en na het
+beëindigen stopt Alpino in Docker.
 
 ----
 

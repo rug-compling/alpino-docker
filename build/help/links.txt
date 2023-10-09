@@ -3,9 +3,9 @@ IN ONTWIKKELING
 
 Alpino
     Main Site
-        http://www.let.rug.nl/vannoord/alp/Alpino/
+        https://www.let.rug.nl/vannoord/alp/Alpino/
     User Guide
-        http://www.let.rug.nl/vannoord/alp/Alpino/AlpinoUserGuide.html
+        https://www.let.rug.nl/vannoord/alp/Alpino/AlpinoUserGuide.html
 
 Alpino in Docker
     https://github.com/rug-compling/alpino-docker
@@ -29,7 +29,7 @@ Universal Dependecies
         https://urd2.let.rug.nl/~kleiweg/conllu/
 
 PaQu
-    http://www.let.rug.nl/alfa/paqu
+    https://www.let.rug.nl/alfa/paqu
 
 AlpinoGraph
     https://urd2.let.rug.nl/~kleiweg/alpinograph/

@@ -11,7 +11,7 @@ select i in \
     'Universal Dependencies' \
     'links'
 do
-    less -R "$i.txt"
+    cat "$i.txt"
     break
 done
 
