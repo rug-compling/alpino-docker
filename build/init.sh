@@ -6,3 +6,9 @@ cd ~/data
 echo
 echo Run \'info\' to get help
 echo
+if [ "$ADVERSION" != "2" ]
+then
+    echo "There is a new version of 'alpino.bash' and 'alpino.cmd'"
+    echo Download the new version from https://github.com/rug-compling/alpino-docker
+    echo
+fi

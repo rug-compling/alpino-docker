@@ -1,5 +1,7 @@
 @ECHO OFF
 
+SET version=2
+
 SETLOCAL EnableExtensions EnableDelayedExpansion
 
 IF .%1==. (
@@ -44,7 +46,7 @@ IF %ok%==0 (
 CALL :dirfix "%dir%"
 
 ECHO ON
-docker run --rm -i -t -v "%udir%:/work/data" %image% %args%
+docker run -e ADVERSION=%version% --rm -i -t -v "%udir%:/work/data" %image% %args%
 @ECHO OFF
 
 GOTO:EOF

@@ -1,19 +1,21 @@
 #!/bin/bash
 
+version=2
+
 script='
 @parts = ("/");
 $p = "";
 foreach $part (split m!/!, $ENV{dir}) {
     if ($part ne "") {
-	$p .= "/" . $part;
-	push @parts, $p;
+        $p .= "/" . $part;
+        push @parts, $p;
     }
 }
 foreach $p (@parts) {
     $s = `stat -c %A "$p"`;
     if ($s =~ /d(...){0,2}..-/) {
         print "$p";
-	exit;
+        exit;
     }
 }
 '
@@ -34,7 +36,7 @@ fi
 
 if [ "$1" = "-h" ]
 then
-    docker run --rm -i -t $image info 
+    docker run --rm -i -t $image info
     exit
 fi
 
@@ -131,6 +133,7 @@ then
     esac
     docker run \
        -e DISPLAY \
+       -e ADVERSION=$version \
        $extra \
        --rm \
        -i -t \
@@ -146,6 +149,7 @@ then
         xhost + $ip
         docker run \
            -e DISPLAY=$ip:0 \
+           -e ADVERSION=$version \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            --net=host \
            --rm \
@@ -156,6 +160,7 @@ then
     else
 	echo Directory /tmp/.X11-unix not found, no GUI available
 	docker run \
+       -e ADVERSION=$version \
 	    --rm \
 	    -i -t \
 	    -v "$DIR":/work/data \
@@ -163,6 +168,7 @@ then
     fi
 else
     docker run \
+       -e ADVERSION=$version \
        --rm \
        -i -t \
        -v "$DIR":/work/data \
