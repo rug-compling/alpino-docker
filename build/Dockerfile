@@ -111,7 +111,7 @@ ENV LD_LIBRARY_PATH :/Alpino/util:/Alpino/Tokenization:/Alpino/fadd:/Alpino/Tree
 ENV TCL_LIBRARY /Alpino/create_bin/extralibs/tcl8.5
 ENV TK_LIBRARY /Alpino/create_bin/extralibs/tk8.5
 
-ADD alpinoviewer alparse info /opt/bin/
+ADD alpinoviewer alparse info to2 to6 /opt/bin/
 ADD help/* /opt/info/
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]

@@ -29,18 +29,3 @@ Een voorbeeld macrobestand vind je hier:
 
     /work/voorbeelden/macros.txt
 
-----
-
-De meeste programma's in [4m/opt/bin[0m zijn er in twee varianten, een standaardversie,
-en een versie met de toevoeging [4m_v6[0m. Dit heeft betrekking op het
-maken en verwerken van DACT-bestanden. Een DACT-bestand is een database
-voor DbXML, die het zoeken met XPATH mogelijk maakt. Helaas is dit niet
-zonder bugs, waardoor een query in zeldzame gevallen niet oplevert wat
-zou moeten. De standaardversies van onze programma's maken gebruik van
-DbXML versie 2. De andere versies gebruiken DbXML versie 6. Zowel versie
-2 als versie 6 heeft bugs, maar niet dezelfde.
-
-[1mLet op:[0m een DACT-bestand gemaakt met DbXML versie 2 kan wel verwerkt
-worden door een programma dat DbXML versie 6 gebruikt. Maar andersom
-werkt niet.
-
