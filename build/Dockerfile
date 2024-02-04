@@ -30,7 +30,9 @@ RUN apt-get update && apt-get install -y \
   man \
   nano \
   python \
+  python3 \
   python-lxml \
+  python3-lxml \
   tk \
   unzip \
   vim \
