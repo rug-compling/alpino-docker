@@ -108,7 +108,7 @@ ADD init.sh /
 ADD emacs /usr/local/bin
 RUN chmod +x /usr/local/bin/emacs
 
-ENV LD_LIBRARY_PATH :/Alpino/util:/Alpino/Tokenization:/Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus:/Alpino/create_bin:/Alpino/util
+ENV LD_LIBRARY_PATH /Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus
 
 ADD alpinoviewer alparse info to2 to6 /opt/bin/
 ADD help/* /opt/info/
