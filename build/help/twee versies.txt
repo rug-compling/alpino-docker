@@ -6,7 +6,7 @@ standaardversie, en een versie met de toevoeging [4m_v6[0m. Dit heeft betrekki
 op het maken en verwerken van DACT-bestanden.
 
 Een DACT-bestand is een database voor DbXML, die het zoeken met XPATH
-mogelijk maakt. Helaas is dit niet zonder bugs, waardoor een query in
+veel sneller maakt. Helaas is dit niet zonder bugs, waardoor een query in
 zeldzame gevallen niet oplevert wat zou moeten. De standaardversies van
 onze programma's maken gebruik van DbXML versie 2. De andere versies
 gebruiken DbXML versie 6. Zowel versie 2 als versie 6 heeft bugs, maar

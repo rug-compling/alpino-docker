@@ -24,14 +24,14 @@ naar Universal Dependencies. Als je dat opslaat in een bestand...
     https://urd2.let.rug.nl/~kleiweg/conllu/
 
 Voor Alpino is een formaat gedefinieerd om Universal Dependencies op te
-nemen in de parseboom van Alpino. Het programma [4mmkcorpus[0m heeft een
-optie [4m-u[0m om die data toe te voegen. Dat gaat zo:
+nemen in de parseboom van Alpino. Het programma [4malto[0m heeft een
+actie [4mds:ud[0m om die data toe te voegen. Dat gaat zo:
 
-[36m    mkcorpus -u weer-ud.dact weer/*.xml[0m
+[36m    alto -o weer-ud.dact weer/*.xml ds:ud[0m
 
 Nu kun je zoeken op basis van Universal Dependencies:
 
-[36m    dbxml_match -l weer-ud.dact '//*[@lemma="zien"]/nsubj[@lemma="zon"]'[0m
+[36m    alto weer-ud.dact fp:'//*[@lemma="zien"]/nsubj[@lemma="zon"]' tt:'%f\n%m\n\n'[0m
 
 Meer informatie en voorbeelden van het gebruik van Universal
 Dependencies in Alpino vind je hier:

@@ -6,13 +6,24 @@ grafische toepassing:
 
 [36m    dact weer.dact[0m
 
-Je kunt het corpus ook doorzoeken vanaf de command line. Een voorbeeld:
+Je kunt het corpus ook doorzoeken vanaf de command line. Dat kan met een
+corpus in elk formaat, maar het gaat veel sneller met DACT-bestanden.
+Een voorbeeld:
 
-[36m    alpinocorpus-xpath -c -s -q '//node[node[@root="wind"]]' weer.dact[0m
+[36m    alto weer.dact fp:'//node[node[@root="wind"]]' tt:'%f %S'[0m
 
-Of met een ander programma:
+De actie [4mfp[0m is een filter dat zoekt met een XPATH-expressie. De actie [4mtt[0m
+is een transformatie met een tekst-template. Hiermee geef je aan hoe je
+de uitvoer wilt zien. De manpage laat alle mogelijkheden zien. Zo voeg
+je aan de uitvoer een dependence tree van de match toe:
 
-[36m    dbxml_match -l weer.dact '//node[node[@root="wind"]]'[0m
+[36m    alto weer.dact fp:'//node[node[@root="wind"]]' tt:'%f %S\n%M'[0m
+
+Je kunt de resultaten direct in dtview bekijken als je zoekt met dtsearch:
+
+[36m    dtsearch -q '//node[node[@root="wind"]]' -v weer.dact[0m
+
+TODO: alpinoviewer
 
 Het doorzaken gaat met XPATH-expressies. Veel voorbeelden hiervan,
 speciaal voor Alpino, vind je hier:
