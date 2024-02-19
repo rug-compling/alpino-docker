@@ -110,7 +110,7 @@ RUN chmod +x /usr/local/bin/emacs
 
 ENV LD_LIBRARY_PATH /Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus
 
-ADD alpinoviewer alparse info to2 to6 /opt/bin/
+ADD alpinoviewer alpinoviewer_v6 alparse info to2 to6 /opt/bin/
 ADD help/* /opt/info/
 
 RUN cd /Alpino/create_bin && rm -fr extralibs && grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && mv env.sh.tmp env.sh
