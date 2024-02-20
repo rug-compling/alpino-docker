@@ -109,6 +109,7 @@ ADD emacs /usr/local/bin
 RUN chmod +x /usr/local/bin/emacs
 
 ENV LD_LIBRARY_PATH /Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus
+ENV NO_AT_BRIDGE 1
 
 ADD alpinoviewer alparse info to2 to6 /opt/bin/
 ADD help/* /opt/info/

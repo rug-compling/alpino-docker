@@ -1,6 +1,4 @@
 #!/bin/bash
 
-export NO_AT_BRIGDE=1
-export LD_PRELOAD='libdl.so /opt/lib/XlibNoSHM.so'
-/opt/lib/alpinoviewer.bin "$@"
+LD_PRELOAD='libdl.so /opt/lib/XlibNoSHM.so' /opt/lib/alpinoviewer.bin "$@"
 

@@ -128,7 +128,7 @@ then
             extra="--volume=/tmp/.X11-unix/:/tmp/.X11-unix/"
             ;;
         *)
-            extra="--user=`id -u`:`id -g` --net=host -v /run/user/`id -u`/at-spi:/run/user/`id -u`/at-spi"
+            extra="--user=`id -u`:`id -g` --net=host"
             ;;
     esac
     docker run \
