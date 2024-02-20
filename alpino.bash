@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=2
+version=3
 
 script='
 @parts = ("/");
@@ -128,7 +128,7 @@ then
             extra="--volume=/tmp/.X11-unix/:/tmp/.X11-unix/"
             ;;
         *)
-            extra="--user=`id -u`:`id -g` --net=host"
+            extra="--user=`id -u`:`id -g` --net=host -v /run/user/`id -u`/at-spi:/run/user/`id -u`/at-spi"
             ;;
     esac
     docker run \
