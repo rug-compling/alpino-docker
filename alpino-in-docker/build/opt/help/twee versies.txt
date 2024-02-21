@@ -1,0 +1,24 @@
+
+[4mTwee versies[0m
+
+De meeste programma's in [4m/opt/bin[0m zijn er in twee varianten, een
+standaardversie, en een versie met de toevoeging [4m_v6[0m. Dit heeft betrekking
+op het maken en verwerken van DACT-bestanden.
+
+Een DACT-bestand is een database voor DbXML, die het zoeken met XPATH
+veel sneller maakt. Helaas is dit niet zonder bugs, waardoor een query in
+zeldzame gevallen niet oplevert wat zou moeten. De standaardversies van
+onze programma's maken gebruik van DbXML versie 2. De andere versies
+gebruiken DbXML versie 6. Zowel versie 2 als versie 6 heeft bugs, maar
+niet dezelfde.
+
+[1mLet op:[0m een DACT-bestand gemaakt met DbXML versie 2 kan wel verwerkt
+worden door een programma dat DbXML versie 6 gebruikt. Maar andersom
+werkt niet.
+
+Met de programma's [4mto6[0m en [4mto2[0m kun je een DACT-bestand omzetten van de
+ene naar de andere versie:
+
+[36m    to6 weer.dact weer-v6.dact[0m
+[36m    to2 weer-v6.dact weer-v2.dact[0m
+

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ "$#" != 2 ]
+then
+    echo
+    echo Usage: $0 input_file output_directory
+    echo
+    echo "If input_file equals '-' (minus) then read from stdin"
+    echo
+    exit
+fi
+
+if [ "$1" = "-" ]
+then
+    Alpino -flag treebank "$2" debug=1 end_hook=xml user_max=900000 -parse
+else
+    Alpino -flag treebank "$2" debug=1 end_hook=xml user_max=900000 -parse < "$1"
+fi
+
+

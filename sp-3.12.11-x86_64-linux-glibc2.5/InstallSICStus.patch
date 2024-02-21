@@ -1,0 +1,14 @@
+--- InstallSICStus	2024-02-21 17:52:49.268340067 +0100
++++ InstallSICStus.new	2024-02-21 17:55:00.562697139 +0100
+@@ -1658,9 +1658,9 @@
+ 	echo "corresponding to the version of Glibc installed on your machine,"
+ 	echo "you should use that installation package."
+ 	echo " "
+-	ignore_wrong_glibc_version=no
++	ignore_wrong_glibc_version=yes
+ 	if [ "x$opt_all_questions" = "xyes" ]; then
+-	    prompt_user "Attempt an installation anyway" no yes no
++	    prompt_user "Attempt an installation anyway" yes yes no
+ 	    # [PD] 3.10 Remember the answer ...
+ 	    ignore_wrong_glibc_version=$ans
+ 	else

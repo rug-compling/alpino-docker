@@ -1,0 +1,42 @@
+
+[4mEen corpus doorzoeken[0m
+
+Een corpus in het DACT-formaat kun je analyseren met [4mdact[0m, een
+grafische toepassing:
+
+[36m    dact weer.dact[0m
+
+Je kunt het corpus ook doorzoeken vanaf de command line. Dat kan met een
+corpus in elk formaat, maar het gaat veel sneller met DACT-bestanden.
+Een voorbeeld:
+
+[36m    alto weer.dact fp:'//node[node[@root="wind"]]' tt:'%f %S'[0m
+
+De actie [4mfp[0m is een filter dat zoekt met een XPATH-expressie. De actie [4mtt[0m
+is een transformatie met een tekst-template. Hiermee geef je aan hoe je
+de uitvoer wilt zien. De manpage laat alle mogelijkheden zien. Zo voeg
+je aan de uitvoer een dependence tree van de match toe:
+
+[36m    alto weer.dact fp:'//node[node[@root="wind"]]' tt:'%f %S\n%M'[0m
+
+Je kunt de resultaten direct in dtview bekijken als je zoekt met dtsearch:
+
+[36m    dtsearch -q '//node[node[@root="wind"]]' -v weer.dact[0m
+
+TODO: alpinoviewer
+
+Het doorzaken gaat met XPATH-expressies. Veel voorbeelden hiervan,
+speciaal voor Alpino, vind je hier:
+
+    https://rug-compling.github.io/dact/cookbook/
+
+In de directory [4m/opt/bin[0m staan meer programma's voor het
+verwerken van corpora. Met uitzondering van [4mdact[0m kun je al deze
+programma's zonder argumenten aanroepen om uitleg te krijgen.
+
+Sommige programma's kunnen voor het zoeken gebruik maken van een
+macrobestand. Met macro's kun je zoekopdrachten soms sterk vereenvoudigen.
+Een voorbeeld macrobestand vind je hier:
+
+    /work/voorbeelden/macros.txt
+

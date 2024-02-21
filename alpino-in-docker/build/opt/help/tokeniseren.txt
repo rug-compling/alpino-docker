@@ -1,0 +1,23 @@
+
+[4mTokeniseren[0m
+
+Alpino kan alleen overweg met platte tekst, in de tekenset UTF-8.
+Om een tekst te kunnen parsen dient die uit één, getokeniseerde zin per
+regel te bestaan.
+
+Met het programma [4mpartok[0m kun je een doorlopende tekst omzetten
+naar het juiste formaat. Hier is een voorbeeld van een doorlopende
+tekst:
+
+[36m    cat ~/voorbeelden/weerbericht.txt[0m
+
+Zo wordt de tekst geschikt gemaakt voor Alpino: 
+
+[36m    partok ~/voorbeelden/weerbericht.txt[0m
+
+Met [4mpartok[0m wordt de tekst eerste opgedeeld in paragrafen, en
+daarna pas in zinnen. De zinnen krijgen een label met een
+paragraafnummer en het nummer van de zin binnen de paragraaf.  
+
+Het programma heeft vele optie. Run het zonder argumenten voor een overzicht.
+
