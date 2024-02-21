@@ -1,0 +1,65 @@
+#
+# Ubuntu 16 (xenial) met gcc en zo
+#
+
+FROM ubuntu:xenial
+
+MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
+
+RUN apt-get update && apt-get install -y tzdata && \
+    echo "Europe/Amsterdam" > /etc/timezone && \
+    rm -f /etc/localtime && \
+    ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get install -y \
+  autoconf \
+  automake \
+  autopoint \
+  binutils \
+  bison \
+  blt-dev \
+  build-essential \
+  curl \
+  desktop-file-utils \
+  flex \
+  gettext \
+  gfortran \
+  git \
+  golang-1.13 \
+  less \
+  libboost-all-dev \
+  libfontconfig1-dev \
+  libgraphviz-dev \
+  liblzma-dev \
+  libpng-dev \
+  libssl-dev \
+  libtool \
+  libwebkit2gtk-4.0-dev \
+  libwww-perl \
+  libx11-dev \
+  libxft-dev \
+  libxml2-dev \
+  libxslt1-dev \
+  locales \
+  man \
+  mc \
+  nano \
+  python-dev \
+  python3-dev \
+  python3-lxml \
+  python3-pip \
+  tcl-dev \
+  tk-dev \
+  unzip \
+  vim \
+  wget
+
+RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+RUN apt-get install git-lfs=3.2.0
+
+ADD init.sh /
+
+CMD ["/bin/bash", "--rcfile", "/init.sh"]

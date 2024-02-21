@@ -1,6 +1,6 @@
 # Alpino in Docker #
 
-Runing Alpino inside Docker.
+Running Alpino inside Docker.
 
 About Alpino: http://www.let.rug.nl/vannoord/alp/Alpino/
 

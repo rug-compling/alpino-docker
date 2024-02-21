@@ -44,3 +44,9 @@ step3:	## installeer en compileer Alpino
 	scripts/access.sh alpino
 	cp `ls -rt alpino/Alpino*tar.gz | tail -n 1` alpino-in-docker/build/Alpino.tar.gz
 
+step8:	## maak Alpino in Docker
+	cd alpino-in-docker/build && ./build.sh
+
+step9:	## push Alpino in Docker
+	cd alpino-in-docker/build && ./push.sh
+
