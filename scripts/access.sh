@@ -20,7 +20,10 @@ for i in "$@"
 do
     case $i in
         *work/cache*)
-            chmod -cR ug+w work/cache/go/pkg
+            if [ -d work/cache/go/pkg ]
+            then
+                chmod -cR ug+w work/cache/go/pkg
+            fi
             exit
             ;;
     esac
