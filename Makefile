@@ -57,7 +57,6 @@ step4:	## installeer DbXML
 	if [ -d work/dbxml ]; then scripts/access.sh work/dbxml; fi
 	scripts/access.sh alpino-in-docker/build/opt
 	docker run $(DOCKERARGS) --rm -i -t \
-		-e EXTERNUID=`id -u` \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \

@@ -2,12 +2,6 @@
 
 set -e
 
-SUDO=''
-if [ "`id -u`" = "0" ]
-then
-    SUDO="sudo -u #$EXTERNUID"
-fi
-
 cd /dbxml
 if [ ! -d dbxml2/.git ]
 then
