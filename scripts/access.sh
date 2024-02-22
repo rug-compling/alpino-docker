@@ -3,6 +3,7 @@
 case `hostname -f` in
     *rug*)
         chgrp -cR software "$@"
+        chmod -cR g+w "$@"
         ;;
     *)
         case `docker info --format '{{.SecurityOptions}}'` in

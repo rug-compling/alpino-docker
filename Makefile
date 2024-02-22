@@ -20,7 +20,7 @@ shell:
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/work/tools:/tools \
 		localhost/alpino-devel:latest
-	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work/cache work/sp work/tools
+	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work
 
 step0:	## update repo
 	git pull
@@ -38,7 +38,7 @@ step2:	## installeer sicstus
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11 \
 		localhost/alpino-devel:latest \
 		bash -c "cd /sp-3.12.11 && ./InstallSICStus --batch"
-	scripts/access.sh work/sp src/sp-*
+	scripts/access.sh work src/sp-*
 
 step3:	## installeer en compileer Alpino
 	if [ -d alpino     ]; then scripts/access.sh alpino    ; fi
