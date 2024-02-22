@@ -1,6 +1,10 @@
 Alpino.tar.gz
+opt/alpinocorpus2
+opt/alpinocorpus6
 opt/bin/alto
 opt/bin/alto_v6
 opt/bin/alud
 opt/bin/alud_v6
+opt/dact2
+opt/dact6
 opt/man/man1/alto.1
