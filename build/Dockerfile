@@ -50,6 +50,7 @@ RUN apt-get install -y \
   python3-lxml \
   python3-pip \
   squashfs-tools \
+  sudo \
   tcl-dev \
   tk-dev \
   unzip \

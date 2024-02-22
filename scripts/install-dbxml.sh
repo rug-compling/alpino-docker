@@ -2,6 +2,12 @@
 
 set -e
 
+SUDO=''
+if [ "`id -u`" = "0" ]
+then
+    SUDO="sudo -u #$EXTERNUID"
+fi
+
 cd /dbxml
 if [ ! -d dbxml2/.git ]
 then
@@ -33,7 +39,7 @@ then
 fi
 
 rm -fr dbxml6 dbxml-6.1.4
-tar vxzf /src/dbxml-6.1.4.tar.gz
+tar vxzf /src/dbxml-6.1.4.tar.gz --no-same-owner
 patch -p0 < /src/dbxml-6.1.4-patch_26647.diff
 mv dbxml-6.1.4 dbxml6
 cd dbxml6

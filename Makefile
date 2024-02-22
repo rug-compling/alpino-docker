@@ -11,7 +11,7 @@ help:
 	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[34m%-8s\033[0m %s\n", $$1, $$2}'
 
 shell:
-	docker run -e $(DOCKERARGS) --rm -i -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11-x86_64-linux-glibc2.5 \
@@ -33,7 +33,7 @@ step2:	## installeer sicstus
 	scripts/access.sh work/sp src/sp-*
 	rm -f src/sp-3.12.11-x86_64-linux-glibc2.5/platform.cache
 	cp src/sp-3.12.11-x86_64-linux-glibc2.5/install.cache.in src/sp-3.12.11-x86_64-linux-glibc2.5/install.cache
-	docker run -e $(DOCKERARGS) --rm -i -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11 \
 		localhost/alpino-devel:latest \
@@ -43,7 +43,7 @@ step2:	## installeer sicstus
 step3:	## installeer en compileer Alpino
 	if [ -d alpino     ]; then scripts/access.sh alpino    ; fi
 	if [ -d work/cache ]; then scripts/access.sh work/cache; fi
-	docker run -e $(DOCKERARGS) --rm -i -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/work/cache:/cache \
@@ -56,7 +56,8 @@ step3:	## installeer en compileer Alpino
 step4:	## installeer DbXML
 	if [ -d work/dbxml ]; then scripts/access.sh work/dbxml; fi
 	scripts/access.sh alpino-in-docker/build/opt
-	docker run -e $(DOCKERARGS) --rm -i -t \
+	docker run $(DOCKERARGS) --rm -i -t \
+		-e EXTERNUID=`id -u` \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
@@ -67,7 +68,7 @@ step4:	## installeer DbXML
 
 step5:	## installeer alto, alut alpinoviewer
 	if [ -d work/tools ]; then scripts/access.sh work/tools; fi
-	docker run -e $(DOCKERARGS) --rm -i -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
