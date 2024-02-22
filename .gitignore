@@ -1,3 +1,4 @@
 /alpino
-/cache
-/sp
+/alpino-in-docker/build/opt/dbxml2
+/alpino-in-docker/build/opt/dbxml6
+/work

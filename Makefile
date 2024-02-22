@@ -13,12 +13,12 @@ help:
 shell:
 	docker run -e $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino:/alpino \
-		-v $(PWD)/cache:/cache \
-		-v $(PWD)/opt:/opt \
-		-v $(PWD)/sp:/sp \
-		-v $(PWD)/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11-x86_64-linux-glibc2.5 \
+		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11-x86_64-linux-glibc2.5 \
+		-v $(PWD)/work/cache:/cache \
+		-v $(PWD)/work/sp:/sp \
 		localhost/alpino-devel:latest
-	scripts/access.sh alpino cache opt sp sp-*
+	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* work/cache work/sp
 
 step0:	## update repo
 	git pull
@@ -28,27 +28,46 @@ step1:	## build docker environment
 	build/build.sh
 
 step2:	## installeer sicstus
-	scripts/access.sh sp sp-*
-	rm -f sp-3.12.11-x86_64-linux-glibc2.5/platform.cache
-	cp sp-3.12.11-x86_64-linux-glibc2.5/install.cache.in sp-3.12.11-x86_64-linux-glibc2.5/install.cache
+	scripts/access.sh work/sp src/sp-*
+	rm -f src/sp-3.12.11-x86_64-linux-glibc2.5/platform.cache
+	cp src/sp-3.12.11-x86_64-linux-glibc2.5/install.cache.in src/sp-3.12.11-x86_64-linux-glibc2.5/install.cache
 	docker run -e $(DOCKERARGS) --rm -i -t \
-		-v $(PWD)/sp:/sp \
-		-v $(PWD)/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11-x86_64-linux-glibc2.5 \
+		-v $(PWD)/work/sp:/sp \
+		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11 \
 		localhost/alpino-devel:latest \
-		bash -c "cd /sp-3.12.11-x86_64-linux-glibc2.5 && ./InstallSICStus --batch"
-	scripts/access.sh sp sp-*
+		bash -c "cd /sp-3.12.11 && ./InstallSICStus --batch"
+	scripts/access.sh work/sp src/sp-*
 
 step3:	## installeer en compileer Alpino
-	if [ -d alpino ]; then scripts/access.sh alpino; fi
+	if [ -d alpino     ]; then scripts/access.sh alpino    ; fi
+	if [ -d work/cache ]; then scripts/access.sh work/cache; fi
 	docker run -e $(DOCKERARGS) --rm -i -t \
-		-v $(PWD)/sp:/sp \
-		-v $(PWD)/cache:/cache \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/scripts:/scripts \
+		-v $(PWD)/work/cache:/cache \
+		-v $(PWD)/work/sp:/sp \
 		localhost/alpino-devel:latest \
 		/scripts/install-alpino.sh
-	scripts/access.sh alpino cache
+	scripts/access.sh alpino work/cache
 	cp `ls -rt alpino/Alpino*tar.gz | tail -n 1` alpino-in-docker/build/Alpino.tar.gz
+
+step4:	## installeer DbXML
+	if [ -d work/dbxml ]; then scripts/access.sh work/dbxml; fi
+	scripts/access.sh alpino-in-docker/build/opt
+	docker run -e $(DOCKERARGS) --rm -i -t \
+		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
+		-v $(PWD)/src:/src \
+		-v $(PWD)/work/dbxml:/dbxml \
+		localhost/alpino-devel:latest \
+		/scripts/install-dbxml.sh
+	scripts/access.sh alpino-in-docker/build/opt work/dbxml
+
+step5:	## installeer alto, alut alpinoviewer
+	@echo TO DO
+
+step6:	## installeer dact
+	@echo TO DO
 
 step8:	## maak Alpino in Docker
 	cd alpino-in-docker/build && ./build.sh

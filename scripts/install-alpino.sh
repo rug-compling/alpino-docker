@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 PATH=/sp/bin:/go/bin:$PATH
 export LANG=en_US.utf8
 export LANGUAGE=en_US.utf8
