@@ -14,3 +14,14 @@ case `hostname -f` in
         esac
         ;;
 esac
+
+for i in "$@"
+do
+    case $i in
+        *work/cache*)
+            chmod -cR ug+w work/cache/go/pkg
+            exit
+            ;;
+    esac
+done
+

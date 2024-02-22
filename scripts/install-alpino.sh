@@ -41,6 +41,7 @@ make
 rm bin/Alpino
 make install
 
+rm -fr create_bin/extralibs
 mkdir create_bin/extralibs
 cp -d /usr/lib/x86_64-linux-gnu/libboost_filesystem.so* create_bin/extralibs
 cp -d /usr/lib/x86_64-linux-gnu/libboost_system.so* create_bin/extralibs

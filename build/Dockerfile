@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y tzdata && \
     dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get install -y \
+  appstream \
   autoconf \
   automake \
   autopoint \
@@ -48,6 +49,7 @@ RUN apt-get install -y \
   python3-dev \
   python3-lxml \
   python3-pip \
+  squashfs-tools \
   tcl-dev \
   tk-dev \
   unzip \
@@ -68,3 +70,4 @@ ENV GOPATH /cache/go
 ADD init.sh /
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
+

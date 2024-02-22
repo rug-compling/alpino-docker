@@ -1,0 +1,51 @@
+.SUFFIXES:
+
+all: \
+	/opt/bin/alto \
+	/opt/bin/alto_v6 \
+	/opt/man/man1/alto.1 \
+	alto-x86_64.AppImage \
+	alto_v6-x86_64.AppImage
+
+/opt/bin/alto: alto.go template.go alto.cc alto.h go.mod
+	CGO_CFLAGS=-I/opt/dbxml2/include \
+	CGO_CXXFLAGS=-I/opt/dbxml2/include \
+	CGO_LDFLAGS='-L/opt/dbxml2/lib -Wl,-rpath=/opt/dbxml2/lib' \
+	go build -o $@ .
+
+/opt/bin/alto_v6: alto.go template.go alto.cc alto.h go.mod
+	CGO_CFLAGS=-I/opt/dbxml6/include \
+	CGO_CXXFLAGS=-I/opt/dbxml6/include \
+	CGO_LDFLAGS='-L/opt/dbxml6/lib -Wl,-rpath=/opt/dbxml6/lib' \
+	go build -o $@ .
+
+/opt/man/man1/alto.1: man/nl/alto.1
+	mkdir -p /opt/man/man1
+	cp $< $@
+
+AppDir2/usr/bin/alto: alto.go template.go alto.cc alto.h go.mod alto.png
+	CGO_CFLAGS=-I/opt/dbxml2/include \
+	CGO_CXXFLAGS=-I/opt/dbxml2/include \
+	CGO_LDFLAGS=-L/opt/dbxml2/lib \
+	go build -o alto .
+	rm -fr AppDir2
+	LD_LIBRARY_PATH=/opt/dbxml2/lib /tools/linuxdeploy/squashfs-root/usr/bin/linuxdeploy --appdir AppDir2 -ealto -ialto.png --create-desktop-file
+	rm alto
+
+AppDir6/usr/bin/alto_v6: alto.go template.go alto.cc alto.h go.mod alto_v6.png
+	CGO_CFLAGS=-I/opt/dbxml6/include \
+	CGO_CXXFLAGS=-I/opt/dbxml6/include \
+	CGO_LDFLAGS=-L/opt/dbxml6/lib \
+	go build -o alto_v6 .
+	rm -fr AppDir6
+	LD_LIBRARY_PATH=/opt/dbxml6/lib /tools/linuxdeploy/squashfs-root/usr/bin/linuxdeploy --appdir AppDir6 -ealto_v6 -ialto_v6.png --create-desktop-file
+	rm alto_v6
+
+alto_v6.png: alto.png
+	cp alto.png alto_v6.png
+
+alto-x86_64.AppImage: AppDir2/usr/bin/alto
+	/tools/appimagetool/squashfs-root/usr/bin/appimagetool AppDir2
+
+alto_v6-x86_64.AppImage: AppDir6/usr/bin/alto_v6
+	/tools/appimagetool/squashfs-root/usr/bin/appimagetool AppDir6

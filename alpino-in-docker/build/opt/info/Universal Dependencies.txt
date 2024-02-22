@@ -1,0 +1,40 @@
+
+[4mUniversal Dependencies[0m
+
+Wanneer je de uitvoer van Alpino bekijkt met [4malpinoviewer[0m, dan zie je
+bovenin het scherm een weergave van de parseboom, zoals afgeleid door Alpino.
+Dit is de [3mdependency structure[0m zoals die voor Alpino is opgesteld.
+
+[4malpinoviewer[0m leidt uit deze boom automatisch een andere structuur af,
+bestaande uit Universal Dependencies. (Dit proces is niet foutloos,
+zoals ook Alpino zelf niet foutloos is.)
+
+Er is een standaard voor de tekstweergave van Universal Dependencies. Dat
+formaat wordt hier beschreven:
+
+    https://universaldependencies.org/format.html
+
+Met het programma [4malud[0m kun je de uitvoer van Alpino omzetten
+naar Universal Dependencies. Als je dat opslaat in een bestand...
+
+[36m    alud *.xml > ud.txt[0m
+
+... kun je het uploaden naar een online viewer voor grafische weergave:
+
+    https://urd2.let.rug.nl/~kleiweg/conllu/
+
+Voor Alpino is een formaat gedefinieerd om Universal Dependencies op te
+nemen in de parseboom van Alpino. Het programma [4malto[0m heeft een
+actie [4mds:ud[0m om die data toe te voegen. Dat gaat zo:
+
+[36m    alto -o weer-ud.dact weer/*.xml ds:ud[0m
+
+Nu kun je zoeken op basis van Universal Dependencies:
+
+[36m    alto weer-ud.dact fp:'//*[@lemma="zien"]/nsubj[@lemma="zon"]' tt:'%f\n%m\n\n'[0m
+
+Meer informatie en voorbeelden van het gebruik van Universal
+Dependencies in Alpino vind je hier:
+
+    https://urd2.let.rug.nl/~alud/
+

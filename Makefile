@@ -15,10 +15,12 @@ shell:
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11-x86_64-linux-glibc2.5 \
+		-v $(PWD)/tmp:/tmp \
 		-v $(PWD)/work/cache:/cache \
 		-v $(PWD)/work/sp:/sp \
+		-v $(PWD)/work/tools:/tools \
 		localhost/alpino-devel:latest
-	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* work/cache work/sp
+	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work/cache work/sp work/tools
 
 step0:	## update repo
 	git pull
@@ -64,9 +66,25 @@ step4:	## installeer DbXML
 	scripts/access.sh alpino-in-docker/build/opt work/dbxml
 
 step5:	## installeer alto, alut alpinoviewer
-	@echo TO DO
+	if [ -d work/tools ]; then scripts/access.sh work/tools; fi
+	docker run -e $(DOCKERARGS) --rm -i -t \
+		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
+		-v $(PWD)/src:/src \
+		-v $(PWD)/work/cache:/cache \
+		-v $(PWD)/work/tools:/tools \
+		localhost/alpino-devel:latest \
+		/scripts/install-tools.sh
+	scripts/access.sh alpino-in-docker/build/opt work/cache work/tools
 
-step6:	## installeer dact
+step6:	## installeer TrEd
+	@echo
+	@echo TO DO
+	@echo
+	@echo Voor nu gebruiken we een oude versie in alpino-in-docker/build
+	@echo
+
+step7:	## installeer dact
 	@echo TO DO
 
 step8:	## maak Alpino in Docker

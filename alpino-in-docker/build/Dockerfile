@@ -71,10 +71,8 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
 
 # TrEd
 ADD dttred /Alpino/bin
-# Downloading the index triggers a new download of sources when anything in the index has changed
-ADD https://www.let.rug.nl/alfa/docker/alpino/ /index
-RUN rm /index && cd / && curl -s https://www.let.rug.nl/alfa/docker/alpino/TrEd.tar.gz | tar --no-same-owner -vxzf - && \
-    echo 2.5049 > /work/.tred.d/last_version && \
+ADD TrEd.tar.gz /
+RUN echo 2.5049 > /work/.tred.d/last_version && \
     chmod +x /Alpino/bin/dttred
 ADD .tredrc /work
 RUN chmod ugo+rw /work /work/.tredrc && \
@@ -89,16 +87,7 @@ RUN chmod ugo+rw /work /work/.tredrc && \
     echo Bookmarks >> /work/.tred_bookmarks && \
     chmod ugo+rw /work/.tred_bookmarks
 
-# DbXML, alpinocorpus
-RUN curl -s https://www.let.rug.nl/alfa/docker/alpino/dbxml.tar.gz | tar --no-same-owner -vxzf - && \
-    curl -s https://www.let.rug.nl/alfa/docker/alpino/dbxml_tools.tar.gz | tar --no-same-owner -vxzf - && \
-    curl -s https://www.let.rug.nl/alfa/docker/alpino/alpinocorpus.tar.gz | tar --no-same-owner -vxzf -
-
-# Dact
-RUN curl -s https://www.let.rug.nl/alfa/docker/alpino/dact.tar.gz | tar --no-same-owner -vxzf -
-
-# symlinks
-RUN curl -s https://www.let.rug.nl/alfa/docker/alpino/bin.tar.gz | tar --no-same-owner -vxzf -
+# TODO: symlinks
 
 ADD weerbericht.txt macros.txt /work/voorbeelden/
 ADD init.sh /
@@ -108,8 +97,10 @@ RUN chmod +x /usr/local/bin/emacs
 ENV LD_LIBRARY_PATH /Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus
 ENV NO_AT_BRIDGE 1
 
-ADD opt /
+ADD opt /opt
 
 RUN cd /Alpino/create_bin && rm -fr extralibs && grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && mv env.sh.tmp env.sh
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
+
+RUN apt-get install -y mc
