@@ -26,7 +26,6 @@ RUN apt-get install -y \
   gettext \
   gfortran \
   git \
-  golang-1.13 \
   less \
   libboost-all-dev \
   libfontconfig1-dev \
@@ -59,6 +58,12 @@ RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 RUN apt-get install git-lfs=3.2.0
+
+ADD https://go.dev/dl/go1.22.0.linux-amd64.tar.gz /
+RUN cd / && tar vzxf go*tar.gz --no-same-owner && rm go*tar.gz
+
+ENV GOCACHE /cache/go/cache
+ENV GOPATH /cache/go
 
 ADD init.sh /
 

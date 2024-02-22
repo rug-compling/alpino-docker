@@ -50,7 +50,6 @@ ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
 ENV LC_ALL en_US.utf8
 
-# Downloading the index triggers a new download of Alpino when anything in the index has changed
 ADD Alpino.tar.gz /
 
 # Remove stale nfs files

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH=/sp/bin:/usr/lib/go-1.13/bin:$PATH
+PATH=/sp/bin:/go/bin:$PATH
 export LANG=en_US.utf8
 export LANGUAGE=en_US.utf8
 export LC_ALL=en_US.utf8
