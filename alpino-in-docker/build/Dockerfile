@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y \
   libxslt1.1 \
   locales \
   man \
+  mc \
   nano \
   python \
   python-lxml \
@@ -102,5 +103,3 @@ ADD opt /opt
 RUN cd /Alpino/create_bin && rm -fr extralibs && grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && mv env.sh.tmp env.sh
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
-
-RUN apt-get install -y mc

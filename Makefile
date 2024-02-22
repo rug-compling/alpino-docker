@@ -85,7 +85,11 @@ step6:	## installeer TrEd
 	@echo
 
 step7:	## installeer dact
+	@echo
 	@echo TO DO
+	@echo
+	@echo Voor nu gebruiken we een oude versie in alpino-in-docker/build/opt
+	@echo
 
 step8:	## maak Alpino in Docker
 	cd alpino-in-docker/build && ./build.sh
