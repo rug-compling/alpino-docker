@@ -42,18 +42,17 @@ step0:	## update repo
 step1:	## build docker environment
 	build/build.sh
 
-step2:	## installeer sicstus
-	scripts/access.sh work/sp src/sp-*
-	rm -f src/sp-3.12.11-x86_64-linux-glibc2.5/platform.cache
-	cp src/sp-3.12.11-x86_64-linux-glibc2.5/install.cache.in src/sp-3.12.11-x86_64-linux-glibc2.5/install.cache
+step2:	step1 ## installeer sicstus
+	if [ -d work/sp ]; then scripts/access.sh work/sp; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/work/sp:/sp \
+		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11 \
 		localhost/alpino-devel:latest \
-		bash -c "cd /sp-3.12.11 && ./InstallSICStus --batch"
+		/scripts/install-sp.sh
 	scripts/access.sh work src/sp-*
 
-step3:	## installeer en compileer Alpino
+step3:	step2 ## installeer en compileer Alpino
 	if [ -d alpino     ]; then scripts/access.sh alpino    ; fi
 	if [ -d work/cache ]; then scripts/access.sh work/cache; fi
 	docker run $(DOCKERARGS) --rm -i -t \
@@ -66,7 +65,7 @@ step3:	## installeer en compileer Alpino
 	scripts/access.sh alpino work/cache
 	cp `ls -rt alpino/Alpino*tar.gz | tail -n 1` alpino-in-docker/build/Alpino.tar.gz
 
-step4:	## installeer DbXML
+step4:	step1 ## installeer DbXML
 	if [ -d work/dbxml ]; then scripts/access.sh work/dbxml; fi
 	scripts/access.sh alpino-in-docker/build/opt
 	docker run $(DOCKERARGS) --rm -i -t \
@@ -78,7 +77,7 @@ step4:	## installeer DbXML
 		/scripts/install-dbxml.sh
 	scripts/access.sh alpino-in-docker/build/opt work/dbxml
 
-step5:	## installeer alto, alut alpinoviewer
+step5:	step4 ## installeer alto, alut alpinoviewer
 	if [ -d work/tools ]; then scripts/access.sh work/tools; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
@@ -90,14 +89,14 @@ step5:	## installeer alto, alut alpinoviewer
 		/scripts/install-tools.sh
 	scripts/access.sh alpino-in-docker/build/opt work/cache work/tools
 
-step6:	## installeer TrEd
+step6:	step1 ## installeer TrEd
 	@echo
 	@echo TO DO
 	@echo
 	@echo Voor nu gebruiken we een oude versie in alpino-in-docker/build
 	@echo
 
-step7:	## installeer dact
+step7:	step4 ## installeer dact
 	if [ -d work/dact ]; then scripts/access.sh work/dact; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
@@ -108,10 +107,10 @@ step7:	## installeer dact
 		/scripts/install-dact.sh
 	scripts/access.sh alpino-in-docker/build/opt work/dact
 
-step8:	## maak Alpino in Docker
+step8:	step3 step5 step6 step7  ## maak Alpino in Docker
 	cd alpino-in-docker/build && ./build.sh
 
-step9:	## push Alpino in Docker
+step9:	step8 ## push Alpino in Docker
 	@echo
 	@echo -e '\e[1mVergeet niet af en toe oude versies te verwijderen, anders is ons quotum op\e[0m'
 	@echo https://registry.webhosting.rug.nl/harbor/projects/57/repositories/alpino/artifacts-tab
