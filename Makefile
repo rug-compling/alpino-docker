@@ -21,6 +21,20 @@ shell:
 		localhost/alpino-devel:latest
 	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work
 
+distclean:
+	rm -fr \
+		alpino \
+		alpino-in-docker/build/Alpino.tar.gz \
+		alpino-in-docker/build/opt/alpinocorpus? \
+		alpino-in-docker/build/opt/bin/alto* \
+		alpino-in-docker/build/opt/bin/alud* \
+		alpino-in-docker/build/opt/dact? \
+		alpino-in-docker/build/opt/dbxml? \
+		alpino-in-docker/build/opt/lib/XlibNoSHM.so \
+		alpino-in-docker/build/opt/lib/alpinoviewer.bin \
+		alpino-in-docker/build/opt/man/man1/alto.1 \
+		work
+
 step0:	## update repo
 	git pull
 	scripts/access.sh .

@@ -163,5 +163,8 @@ else
     ninja -C builddir install
     rm -rf builddir
 
+    # undo patch
+    git checkout -- .
+
     cp .git/HEAD ../master-dact_v6
 fi
