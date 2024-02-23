@@ -1,0 +1,54 @@
+diff --git a/src/BracketedDelegates/BracketedColorDelegate.cpp b/src/BracketedDelegates/BracketedColorDelegate.cpp
+index 14a7020..480094e 100644
+--- a/src/BracketedDelegates/BracketedColorDelegate.cpp
++++ b/src/BracketedDelegates/BracketedColorDelegate.cpp
+@@ -78,21 +78,21 @@ void BracketedColorDelegate::paint(QPainter *painter, const QStyleOptionViewItem
+             }
+ 
+             std::vector<alpinocorpus::LexItem>::const_iterator next = iter + 1;
+             if (next != items.end()) {
+                 if (next->matches.size() < depth)
+                     adoptSpace = true;
+                 else
+                     word += " ";
+             }
+ 
+-            wordBox.setWidth(option.fontMetrics.horizontalAdvance(word));
++            wordBox.setWidth(option.fontMetrics.width(word));
+         
+             if (depth != prevDepth) {
+                 if (depth == 0)
+                 {
+                     painter->setPen(brush.color());
+                     painter->setBrush(brush);
+                 }
+                 else
+                 {
+                     highlightColor.setAlpha(std::min(85 + 42 * depth,
+diff --git a/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp b/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp
+index 63121d1..e63f24e 100644
+--- a/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp
++++ b/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp
+@@ -111,21 +111,21 @@ void BracketedKeywordInContextDelegate::paint(QPainter *painter, const QStyleOpt
+                     adoptSpace = false;
+                 }
+ 
+                 if (j + 1 != lexItems.size()) {
+                     if (lexItems[j + 1].matches.size() < depth)
+                         adoptSpace = true;
+                     else
+                         word += " ";
+                 }
+ 
+-                wordBox.setWidth(option.fontMetrics.horizontalAdvance(word));
++                wordBox.setWidth(option.fontMetrics.width(word));
+                 wordBox.setHeight(fontHeight);
+ 
+                 if (depth == 0 || lexItems[j].matches.count(*matchIter) == 0)
+                 {
+                     painter->setPen(brush.color());
+                     painter->setBrush(brush);
+                 }
+                 else
+                 {
+                     d_highlightColor.setAlpha(std::min(85 + 42 * depth,

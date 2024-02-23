@@ -12,13 +12,12 @@ help:
 
 shell:
 	docker run $(DOCKERARGS) --rm -i -t \
+		-e DISPLAY \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11-x86_64-linux-glibc2.5 \
 		-v $(PWD)/tmp:/tmp \
-		-v $(PWD)/work/cache:/cache \
-		-v $(PWD)/work/sp:/sp \
-		-v $(PWD)/work/tools:/tools \
+		-v $(PWD)/work:/work \
 		localhost/alpino-devel:latest
 	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work
 
@@ -85,11 +84,15 @@ step6:	## installeer TrEd
 	@echo
 
 step7:	## installeer dact
-	@echo
-	@echo TO DO
-	@echo
-	@echo Voor nu gebruiken we een oude versie in alpino-in-docker/build/opt
-	@echo
+	if [ -d work/dact ]; then scripts/access.sh work/dact; fi
+	docker run $(DOCKERARGS) --rm -i -t \
+		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
+		-v $(PWD)/src:/src \
+		-v $(PWD)/work/dact:/dact \
+		localhost/alpino-devel:latest \
+		/scripts/install-dact.sh
+	scripts/access.sh alpino-in-docker/build/opt work/dact
 
 step8:	## maak Alpino in Docker
 	cd alpino-in-docker/build && ./build.sh

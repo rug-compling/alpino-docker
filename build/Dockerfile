@@ -21,6 +21,7 @@ RUN apt-get install -y \
   bison \
   blt-dev \
   build-essential \
+  cmake \
   curl \
   desktop-file-utils \
   flex \
@@ -49,6 +50,8 @@ RUN apt-get install -y \
   python3-dev \
   python3-lxml \
   python3-pip \
+  qtbase5-dev \
+  qttools5-dev-tools \
   squashfs-tools \
   sudo \
   tcl-dev \
@@ -71,4 +74,3 @@ ENV GOPATH /cache/go
 ADD init.sh /
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
-

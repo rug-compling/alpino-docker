@@ -41,10 +41,6 @@ De volgende bestanden zijn nodig, maar alleen lokaal aanwezig:
           - InstallSICStus.orig   nieuw
           - InstallSICStus.patch  nieuw, wel in git
           - install.cache.in      nieuw
-    - alpino-in-docker/build/opt/alpinocorpus2  (tijdelijk)
-    - alpino-in-docker/build/opt/alpinocorpus6  (tijdelijk)
-    - alpino-in-docker/build/opt/dact2          (tijdelijk)
-    - alpino-in-docker/build/opt/dact6          (tijdelijk)
 
 Van de volgende bestanden zijn nieuwere versies beschikbaar in hun
 originele repo's, maar die werken niet op Ubuntu/Xenial, en de oudere
