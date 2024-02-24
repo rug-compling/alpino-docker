@@ -90,11 +90,7 @@ step5:	step4 ## installeer alto, alut alpinoviewer
 	scripts/access.sh alpino-in-docker/build/opt work/cache work/tools
 
 step6:	step1 ## installeer TrEd
-	@echo
-	@echo TO DO
-	@echo
-	@echo Voor nu gebruiken we een oude versie in alpino-in-docker/build
-	@echo
+	# momenteel wordt TrEd gecompileerd bij het maken van Alpino in Docker
 
 step7:	step4 ## installeer dact
 	if [ -d work/dact ]; then scripts/access.sh work/dact; fi

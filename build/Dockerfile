@@ -70,6 +70,7 @@ RUN cd / && tar vzxf go*tar.gz --no-same-owner && rm go*tar.gz
 
 ENV GOCACHE /cache/go/cache
 ENV GOPATH /cache/go
+ENV LIBGL_ALWAYS_INDIRECT 1
 
 ADD init.sh /
 

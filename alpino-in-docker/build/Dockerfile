@@ -18,6 +18,7 @@ MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
 #    dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get update && apt-get install -y \
+  cpanminus \
   curl \
   emacs \
   less \
@@ -51,14 +52,6 @@ ENV LANG en_US.utf8
 ENV LANGUAGE en_US.utf8
 ENV LC_ALL en_US.utf8
 
-ADD Alpino.tar.gz /
-
-# Remove stale nfs files
-RUN find /Alpino -name '.nfs*' | xargs rm -f
-
-# Add libraries to standard path
-RUN ldconfig /Alpino/boost /Alpino/fadd /Alpino/unix /Alpino/TreebankTools/IndexedCorpus
-
 # Extensions for TrEd
 ADD https://www.let.rug.nl/vannoord/alp/Alpino/tred/alpino.zip /
 ADD https://www.let.rug.nl/vannoord/alp/Alpino/tred/alpino_full.zip /
@@ -71,19 +64,17 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
     echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst
 
 # TrEd
-ADD dttred /Alpino/bin
-ADD TrEd.tar.gz /
-RUN echo 2.5049 > /work/.tred.d/last_version && \
-    chmod +x /Alpino/bin/dttred
+# ADD TrEd.tar.gz /
+ADD https://ufal.mff.cuni.cz/tred/tred_2.5236_all.deb /
+RUN cpanm XML::CompactTree UNIVERSAL::DOES XML::CompactTree::XS Treex::PML && \
+    apt-get install -y /tred_2.5236_all.deb && \
+    rm /tred_2.5236_all.deb
+#RUN echo 2.5049 > /work/.tred.d/last_version
+RUN echo 2.5236 > /work/.tred.d/last_version
 ADD .tredrc /work
 RUN chmod ugo+rw /work /work/.tredrc && \
     find /work/.tred.d | xargs chmod ugo+rw && \
     find /work/.tred.d -type d | xargs chmod ugo+x && \
-    cd /usr/local/bin && \
-    ln -s /TrEd/bin/start_tred tred && \
-    ln -s /TrEd/bin/start_tred Tred && \
-    ln -s /TrEd/bin/start_btred btred && \
-    ln -s /TrEd/bin/start_ntred ntred && \
     echo Bookmarks >  /work/.tred_bookmarks && \
     echo Bookmarks >> /work/.tred_bookmarks && \
     chmod ugo+rw /work/.tred_bookmarks
@@ -96,10 +87,23 @@ ADD emacs /usr/local/bin
 RUN chmod +x /usr/local/bin/emacs
 
 ENV LD_LIBRARY_PATH /Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus
+
+# voor probleem met alpinoviewer
 ENV NO_AT_BRIDGE 1
+
+# voor probleem met dact
+ENV LIBGL_ALWAYS_INDIRECT 1
 
 ADD opt /opt
 
-RUN cd /Alpino/create_bin && rm -fr extralibs && grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && mv env.sh.tmp env.sh
+ADD Alpino.tar.gz /
+ADD dttred /Alpino/bin
+RUN chmod +x /Alpino/bin/dttred && \
+    find /Alpino -name '.nfs*' | xargs rm -f && \
+    ldconfig /Alpino/fadd /Alpino/unix /Alpino/TreebankTools/IndexedCorpus && \
+    cd /Alpino/create_bin && \
+    rm -fr extralibs && \
+    grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && \
+    mv env.sh.tmp env.sh
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]
