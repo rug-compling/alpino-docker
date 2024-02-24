@@ -43,18 +43,15 @@ step1:	## build docker environment
 	build/build.sh
 
 step2:	step1 ## installeer sicstus
-	if [ -d work/sp ]; then scripts/access.sh work/sp; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11 \
 		localhost/alpino-devel:latest \
 		/scripts/install-sp.sh
-	scripts/access.sh work src/sp-*
+	scripts/access.sh work/sp src/sp-*
 
 step3:	step2 ## installeer en compileer Alpino
-	if [ -d alpino     ]; then scripts/access.sh alpino    ; fi
-	if [ -d work/cache ]; then scripts/access.sh work/cache; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/scripts:/scripts \
@@ -62,12 +59,10 @@ step3:	step2 ## installeer en compileer Alpino
 		-v $(PWD)/work/sp:/sp \
 		localhost/alpino-devel:latest \
 		/scripts/install-alpino.sh
-	scripts/access.sh alpino work/cache
 	cp `ls -rt alpino/Alpino*tar.gz | tail -n 1` alpino-in-docker/build/Alpino.tar.gz
+	scripts/access.sh alpino work/cache alpino-in-docker/build/Alpino.tar.gz
 
 step4:	step1 ## installeer DbXML
-	if [ -d work/dbxml ]; then scripts/access.sh work/dbxml; fi
-	scripts/access.sh alpino-in-docker/build/opt
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
@@ -78,7 +73,6 @@ step4:	step1 ## installeer DbXML
 	scripts/access.sh alpino-in-docker/build/opt work/dbxml
 
 step5:	step4 ## installeer alto, alut alpinoviewer
-	if [ -d work/tools ]; then scripts/access.sh work/tools; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
@@ -93,7 +87,6 @@ step6:	step1 ## installeer TrEd
 	# momenteel wordt TrEd gecompileerd bij het maken van Alpino in Docker
 
 step7:	step4 ## installeer dact
-	if [ -d work/dact ]; then scripts/access.sh work/dact; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
