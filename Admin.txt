@@ -14,11 +14,16 @@ targets:
 
     make
 
-Het proces bestaat uit een aantal stappen. Elke stap voert zonodig
-eerdere stappen uit. Als je alles wilt bijwerken kun je dus volstaan
-met:
-
-    make step9
+Wanneer je iets bijwerkt hoef je niet alle targets opnieuw te maken. Als
+bijvoorbeeld Alpino zelf is veranderd, dan zijn alleen deze stappen
+nodig:
+￼
+    make step1  # je docker image bijwerken, voor alle zekerheid
+    make step3  # Alpino compileren (download van github)
+    make step8  # image van Alpino in Docker maken
+    make step9  # image van Alpino in Docker naar de server pushen
+￼
+En verder moet je nog alpino/Alpino*.tar.gz op je website zetten
 
 --------------------------------------------------------------------------------
 

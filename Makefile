@@ -35,13 +35,13 @@ distclean: pre
 		alpino-in-docker/build/opt/man/man1/alto.1 \
 		work
 
-step0:	pre ## update repo
+step0:	pre ## deze repo bijwerken
 	git pull
 
-step1:	pre ## build docker environment
+step1:	pre ## maak/update het image dat in de volgende stappen gebruikt wordt
 	build/build.sh
 
-step2:	pre ## installeer sicstus
+step2:	pre ## installeer SICStus
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/scripts:/scripts \
@@ -49,7 +49,7 @@ step2:	pre ## installeer sicstus
 		localhost/alpino-devel:latest \
 		/scripts/install-sp.sh
 
-step3:	pre ## installeer en compileer Alpino
+step3:	pre ## installeer Alpino en maak alpino/Alpino*.tar.gz
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/scripts:/scripts \
@@ -68,7 +68,7 @@ step4:	pre ## installeer DbXML
 		localhost/alpino-devel:latest \
 		/scripts/install-dbxml.sh
 
-step5:	pre ## installeer alto, alut alpinoviewer
+step5:	pre ## installeer alto, alud, alpinoviewer en maak work/tools/alto/alto*.AppImage
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
@@ -81,7 +81,7 @@ step5:	pre ## installeer alto, alut alpinoviewer
 step6:	pre ## installeer TrEd
 	# momenteel wordt TrEd gecompileerd bij het maken van Alpino in Docker
 
-step7:	pre ## installeer dact
+step7:	pre ## installeer Dact
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
@@ -90,10 +90,10 @@ step7:	pre ## installeer dact
 		localhost/alpino-devel:latest \
 		/scripts/install-dact.sh
 
-step8:	pre ## maak Alpino in Docker
+step8:	pre ## maak image van Alpino in Docker
 	cd alpino-in-docker/build && ./build.sh
 
-step9:	pre ## push Alpino in Docker
+step9:	pre ## push image van Alpino in Docker naar de server
 	@echo
 	@echo -e '\e[1mVergeet niet af en toe oude versies te verwijderen, anders is ons quotum op\e[0m'
 	@echo https://registry.webhosting.rug.nl/harbor/projects/57/repositories/alpino/artifacts-tab
