@@ -64,8 +64,7 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
     echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst
 
 # TrEd
-# ADD TrEd.tar.gz /
-ADD https://ufal.mff.cuni.cz/tred/tred_2.5236_all.deb /
+ADD tred_2.5236_all.deb /
 RUN cpanm XML::CompactTree UNIVERSAL::DOES XML::CompactTree::XS Treex::PML && \
     apt-get install -y /tred_2.5236_all.deb && \
     rm /tred_2.5236_all.deb

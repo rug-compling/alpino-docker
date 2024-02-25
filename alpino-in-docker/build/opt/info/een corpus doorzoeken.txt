@@ -19,9 +19,10 @@ je aan de uitvoer een dependence tree van de match toe:
 
 [36m    alto weer.dact fp:'//node[node[@root="wind"]]' tt:'%f %S\n%M'[0m
 
-Je kunt de resultaten direct in dtview bekijken als je zoekt met dtsearch:
+Met de juiste template tt kun je de resultaten direct bekijken in
+alpinoviewer:
 
-[36m    dtsearch -q '//node[node[@root="wind"]]' -v weer.dact[0m
+[36m    alto weer.dact fp:'//node[node[@root="wind"]]' tt:'%F\t%j' | alpinoviewer -i[0m
 
 TODO: alpinoviewer
 

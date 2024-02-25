@@ -142,6 +142,7 @@ then
 fi
 
 cd dact_v6
+git restore .  ## ivm patch
 git pull
 
 if [ ! -f ../master-dact_v6 ]
@@ -164,7 +165,7 @@ else
     rm -rf builddir
 
     # undo patch
-    git checkout -- .
+    git restore .
 
     cp .git/HEAD ../master-dact_v6
 fi

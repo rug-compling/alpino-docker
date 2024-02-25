@@ -79,7 +79,8 @@ step5:	pre ## installeer alto, alud, alpinoviewer en maak work/tools/alto/alto*.
 		/scripts/install-tools.sh
 
 step6:	pre ## installeer TrEd
-	# momenteel wordt TrEd gecompileerd bij het maken van Alpino in Docker
+	if [ ! -f alpino-in-docker/build/tred_2.5236_all.deb ]; \
+		then wget -O alpino-in-docker/build/tred_2.5236_all.deb https://ufal.mff.cuni.cz/tred/tred_2.5236_all.deb; fi
 
 step7:	pre ## installeer Dact
 	docker run $(DOCKERARGS) --rm -i -t \
