@@ -64,10 +64,11 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
     echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst
 
 # TrEd
-ADD tred_2.5236_all.deb /
-RUN cpanm XML::CompactTree UNIVERSAL::DOES XML::CompactTree::XS Treex::PML && \
+ADD tred_2.5236_all.deb tred.diff /
+RUN cpanm XML::CompactTree@0.03 UNIVERSAL::DOES@0.005 XML::CompactTree::XS@0.03 Treex::PML@2.24 && \
     apt-get install -y /tred_2.5236_all.deb && \
-    rm /tred_2.5236_all.deb
+    cd / && patch -p0 < tred.diff && \
+    rm /tred_2.5236_all.deb tred.diff
 #RUN echo 2.5049 > /work/.tred.d/last_version
 RUN echo 2.5236 > /work/.tred.d/last_version
 ADD .tredrc /work

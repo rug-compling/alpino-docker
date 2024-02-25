@@ -1,0 +1,11 @@
+--- opt/tred/tred	2018-11-21 13:28:39.000000000 +0000
++++ opt/tred/tred.new	2024-02-25 13:04:07.255780827 +0000
+@@ -153,7 +153,7 @@
+     use Carp;
+ 
+ #TODO: ktore IO moduly sa vlastne pouzivaju? zistit a importovat iba tie, samotne IO je uz deprecated
+-    use IO;
++    use IO qw(Handle Seekable File Pipe Socket Dir);
+     use Cwd;
+     use File::Spec;
+     use File::Glob qw(:glob);
