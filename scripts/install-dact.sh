@@ -142,7 +142,7 @@ then
 fi
 
 cd dact_v6
-git restore .  ## ivm patch
+git checkout -- src/BracketedDelegates  ## ivm patch
 git pull
 
 if [ ! -f ../master-dact_v6 ]
@@ -165,7 +165,7 @@ else
     rm -rf builddir
 
     # undo patch
-    git restore .
+    git checkout -- src/BracketedDelegates
 
     cp .git/HEAD ../master-dact_v6
 fi
