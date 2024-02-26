@@ -42,6 +42,8 @@ step1:	## maak/update het image dat in de volgende stappen gebruikt wordt
 	build/build.sh
 
 step2:	step1 ## installeer SICStus
+	if [ ! -f src/sp-3.12.11-x86_64-linux-glibc2.5/InstallSICStus ]; \
+		then cp -van /net/corpora/docker/alpino/src/sp-3.12.11-x86_64-linux-glibc2.5 src; fi
 	docker run $(DOCKERARGS) --rm -t \
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/scripts:/scripts \
@@ -60,6 +62,8 @@ step3:	step2 ## installeer Alpino en maak alpino/Alpino*.tar.gz
 	cp `ls -rt alpino/Alpino*tar.gz | tail -n 1` alpino-in-docker/build/Alpino.tar.gz
 
 step4:	step1 ## installeer DbXML
+	if [ ! -f src/dbxml-6.1.4.tar.gz ];
+		then cp /net/corpora/docker/alpino/src/dbxml-6.1.4.tar.gz src; fi
 	docker run $(DOCKERARGS) --rm -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \

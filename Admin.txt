@@ -17,16 +17,17 @@ targets:
 Je kunt alles uitvoeren door:
 
     make step0       # deze moet eerst, apart
-    make -j 4 step9  # dit doet alle benodigde eerdere stappen, behalve step1
+    make -j 4 step9  # dit doet alle benodigde eerdere stappen, behalve step0
 ￼
-En verder moet je nog alpino/Alpino*.tar.gz op je website zetten
-
 --------------------------------------------------------------------------------
 
 Alhoewel dit een git-repository is is niet al het benodigde materiaal
-aanwezig in git.
+aanwezig in git. Daarom kun je deze repository alleen gebruiken waar je
+toegang hebt tot /net/corpora/docker/alpino .
+Werk je elders, dan zul je bestanden uit die directory zelf moeten
+kopiëren naar de juiste plek. Zie Makefile, bij step2 en step4.
 
-De volgende bestanden zijn nodig, maar alleen lokaal aanwezig:
+Het gaat om de volgende betanden:
 
     - src/dbxml-6.1.4.tar.gz
     - src/sp-3.12.11-x86_64-linux-glibc2.5/*
@@ -36,6 +37,8 @@ De volgende bestanden zijn nodig, maar alleen lokaal aanwezig:
           - InstallSICStus.orig   nieuw
           - InstallSICStus.patch  nieuw, wel in git
           - install.cache.in      nieuw
+
+--------------------------------------------------------------------------------
 
 Van de volgende bestanden zijn nieuwere versies beschikbaar in hun
 originele repo's, maar die werken niet op Ubuntu/Xenial, en de oudere
