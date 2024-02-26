@@ -15,14 +15,14 @@ shell:
 		-e DISPLAY \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
-		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11-x86_64-linux-glibc2.5 \
+		-v $(PWD)/src:/src \
 		-v $(PWD)/tmp:/tmp \
 		-v $(PWD)/work:/work \
 		localhost/alpino-devel:latest
 	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work
 
 distclean:
-	if [ -d work/cache/go ]; then chmod -cR +w work/cache/go; fi
+	if [ -d work/cache/go ]; then chmod -cR u+w work/cache/go; fi
 	rm -fr \
 		alpino \
 		alpino-in-docker/build/Alpino.tar.gz \
