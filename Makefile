@@ -22,6 +22,7 @@ shell:
 	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work
 
 distclean:
+	if [ -d work/cache/go ]; then chmod -cR +w work/cache/go; fi
 	rm -fr \
 		alpino \
 		alpino-in-docker/build/Alpino.tar.gz \
