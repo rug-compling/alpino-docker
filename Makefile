@@ -19,7 +19,6 @@ shell:
 		-v $(PWD)/tmp:/tmp \
 		-v $(PWD)/work:/work \
 		localhost/alpino-devel:latest
-	scripts/access.sh alpino alpino-in-docker/build/opt src/sp-* tmp work
 
 distclean:
 	if [ -d work/cache/go ]; then chmod -cR u+w work/cache/go; fi
