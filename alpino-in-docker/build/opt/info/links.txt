@@ -10,6 +10,9 @@ Alpino
 Alpino in Docker
     https://github.com/rug-compling/alpino-docker
 
+Corpora
+    https://www.let.rug.nl/vannoord/treebanks/
+
 Dact
     https://rug-compling.github.io/dact/
 

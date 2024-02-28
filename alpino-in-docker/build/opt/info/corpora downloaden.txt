@@ -1,0 +1,8 @@
+
+[4mCorpora downloaden[0m
+
+Op deze site kun je een aantal corpora downloaden die al geparst zijn
+met Alpino:
+
+https://www.let.rug.nl/vannoord/treebanks/
+

@@ -1,7 +1,7 @@
 
 [4mTwee versies[0m
 
-De meeste programma's in [4m/opt/bin[0m zijn er in twee varianten, een
+Een aantal programma's in [4m/opt/bin[0m zijn er in twee varianten, een
 standaardversie, en een versie met de toevoeging [4m_v6[0m. Dit heeft betrekking
 op het maken en verwerken van DACT-bestanden.
 

@@ -5,6 +5,10 @@ else
 DOCKERARGS = --volume=/tmp/.X11-unix/:/tmp/.X11-unix/
 endif
 
+# parallel execution werkt niet met -i voor docker
+# zonder -i voor docker zijn processen in docker niet te onderbreken
+.NOTPARALLEL:
+
 .PHONY: help
 help:
 	@echo Beschikbare targets voor make:
@@ -44,7 +48,7 @@ step1:	## maak/update het image dat in de volgende stappen gebruikt wordt
 step2:	step1 ## installeer SICStus
 	if [ ! -f src/sp-3.12.11-x86_64-linux-glibc2.5/InstallSICStus ]; \
 		then cp -van /net/corpora/docker/alpino/src/sp-3.12.11-x86_64-linux-glibc2.5 src; fi
-	docker run $(DOCKERARGS) --rm -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11 \
@@ -52,7 +56,7 @@ step2:	step1 ## installeer SICStus
 		/scripts/install-sp.sh
 
 step3:	step2 ## installeer Alpino en maak alpino/Alpino*.tar.gz
-	docker run $(DOCKERARGS) --rm -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/work/cache:/cache \
@@ -62,9 +66,9 @@ step3:	step2 ## installeer Alpino en maak alpino/Alpino*.tar.gz
 	cp `ls -rt alpino/Alpino*tar.gz | tail -n 1` alpino-in-docker/build/Alpino.tar.gz
 
 step4:	step1 ## installeer DbXML
-	if [ ! -f src/dbxml-6.1.4.tar.gz ];
+	if [ ! -f src/dbxml-6.1.4.tar.gz ]; \
 		then cp /net/corpora/docker/alpino/src/dbxml-6.1.4.tar.gz src; fi
-	docker run $(DOCKERARGS) --rm -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
@@ -73,7 +77,7 @@ step4:	step1 ## installeer DbXML
 		/scripts/install-dbxml.sh
 
 step5:	step4 ## installeer alto, alud, alpinoviewer en maak work/tools/alto/alto*.AppImage
-	docker run $(DOCKERARGS) --rm -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
@@ -87,7 +91,7 @@ step6:	step1 ## installeer TrEd
 		then wget -O alpino-in-docker/build/tred_2.5236_all.deb https://ufal.mff.cuni.cz/tred/tred_2.5236_all.deb; fi
 
 step7:	step4 ## installeer Dact
-	docker run $(DOCKERARGS) --rm -t \
+	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \

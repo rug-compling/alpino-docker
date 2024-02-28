@@ -16,8 +16,8 @@ targets:
 
 Je kunt alles uitvoeren door:
 
-    make step0       # deze moet eerst, apart
-    make -j 4 step9  # dit doet alle benodigde eerdere stappen, behalve step0
+    make step0    # deze moet eerst, apart
+    make step9    # dit doet alle benodigde eerdere stappen, behalve step0
 ￼
 --------------------------------------------------------------------------------
 
