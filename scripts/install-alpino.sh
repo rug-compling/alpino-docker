@@ -27,7 +27,7 @@ fi
 
 if diff -q ../master .git/refs/heads/master
 then
-    echo geen veranderingen
+    echo geen veranderingen in Alpino
     exit 0
 fi
 
