@@ -8,6 +8,7 @@ select i in \
     'bekijken en bewerken' \
     'een corpus maken' \
     'een corpus doorzoeken' \
+    'afbeeldingen opslaan' \
     'corpora downloaden' \
     'twee versies' \
     'Universal Dependencies' \
