@@ -2,19 +2,19 @@
 [4mafbeeldingen opslaan[0m
 
 Zo maak je een PNG-afbeelding van alle bestanden in een corpus. De
-afbeeldingen worden opgeslagen in de subdirectory
+afbeeldingen worden opgeslagen in de subdirectory [4moutput[0m.
 
 [36m    mkdir output[0m
 [36m    alto weer.dact vt:png -o output[0m
 
 Je kunt uiteraard eerst zoeken om de set bestanden te beperken. Als je
-dan ook de optie ^[[4m-n^[[0m gebruikt, dan krijgen de matchende nodes
-een kleurtje:
+dan ook de optie [4m-n[0m gebruikt, dan krijgen de matchende nodes een
+kleurtje:
 
 [36m    alto -n weer.dact fp:'//node[node[@root="wind"]]' vt:png -o output[0m
 
-Als je ^[[4mvm^[[0m gebruikt in plaats van ^[[4mvt^[[0m, dan krijg je
-plaatjes van alleen de subboom van de matchende nodes:
+Als je [4mvm[0m gebruikt in plaats van [4mvt[0m, dan krijg je plaatjes van alleen
+de subboom van de matchende nodes:
 
 [36m    alto weer.dact fp:'//node[node[@root="wind"]]' vm:png -o output[0m
 
