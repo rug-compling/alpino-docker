@@ -52,41 +52,6 @@ else
     cp .git/refs/heads/master ../master-alto
 fi
 
-######## alud
-
-cd /tools
-
-if [ ! -d alud/.git ]
-then
-    rm -fr alud
-    git clone --depth=1 https://github.com/rug-compling/alud
-fi
-
-cd alud
-git pull
-
-if [ ! -f ../master-alud ]
-then
-    touch ../master-alud
-fi
-
-if diff -q ../master-alud .git/refs/heads/master
-then
-    echo geen veranderingen in alud
-else
-    cd v2/cmd/alud-dact
-    CGO_CFLAGS=-I/opt/dbxml2/include \
-        CGO_CXXFLAGS=-I/opt/dbxml2/include \
-        CGO_LDFLAGS='-L/opt/dbxml2/lib -Wl,-rpath=/opt/dbxml2/lib' \
-        go build -o /opt/bin/alud .
-    CGO_CFLAGS=-I/opt/dbxml6/include \
-        CGO_CXXFLAGS=-I/opt/dbxml6/include \
-        CGO_LDFLAGS='-L/opt/dbxml6/lib -Wl,-rpath=/opt/dbxml6/lib' \
-        go build -o /opt/bin/alud_v6 .
-    cd /tools/alud
-    cp .git/refs/heads/master ../master-alud
-fi
-
 ######## alpinoviewer
 
 cd /tools

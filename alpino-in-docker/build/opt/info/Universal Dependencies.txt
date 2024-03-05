@@ -14,10 +14,10 @@ formaat wordt hier beschreven:
 
     https://universaldependencies.org/format.html
 
-Met het programma [4malud[0m kun je de uitvoer van Alpino omzetten
+Met het programma [4malto[0m kun je de uitvoer van Alpino omzetten
 naar Universal Dependencies. Als je dat opslaat in een bestand...
 
-[36m    alud *.xml > ud.txt[0m
+[36m    alto *.xml tt:%u -o ud.txt[0m
 
 ... kun je het uploaden naar een online viewer voor grafische weergave:
 
