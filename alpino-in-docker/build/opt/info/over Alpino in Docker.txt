@@ -1,0 +1,26 @@
+
+[4mOver Alpino in Docker[0m
+
+Eigenlijk is een corpus niets anders dan een hoeveelheid tekst. Als je
+een corpus wilt gebruiken voor taalkundig onderzoek, dan kun je die
+tekst eerst annoteren met bijvoorbeeld grammaticale informatie. Het
+XML-formaat [4malpino_ds[0m is een formaat dat een dependency structure
+beschrijft van een Nederlandstalige zin.
+
+Zo'n dependency structure lijkt op een taalkundige boom, waardoor je een
+verzameling in alpino_ds geannoteerde zinnen een treebank kunt noemen.
+In de rest van de documentatie gebruiken we voor het gemak de term
+corpus, maar hiermee bedoelen we zo'n treebank van met alpino_ds
+geannoteerde zinnen.
+
+Je kunt een corpus handmatig annoteren, als je je zorgvuldig aan de
+specificaties houdt, maar dat is tijdrovend en specialistisch werk.
+
+[4mAlpino[0m is een programma dat de zinnen automatisch annoteert. Omdat dit
+een automatisch proces is is het niet helemaal foutloos, maar het
+resultaat is goed genoeg voor het doen van taalkundig onderzoek.
+
+Met [4mAlpino in Docker[0m heb je niet alleen de parser Alpino, maar ook een
+set hulpmiddelen om de geparste zinnen te doorzoeken, analyseren,
+visualiseren, bewerken, en meer.
+

@@ -1,7 +1,7 @@
 
-[4mIntroductie[0m
+[4mStarten[0m
 
-Je kunt Alpino in Docker op twee manieren starten. 
+Je kunt Alpino in Docker op twee manieren starten.
 
 De eerste manier is met alleen een directory als argument, bijvoorbeeld:
 

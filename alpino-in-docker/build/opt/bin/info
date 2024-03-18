@@ -2,7 +2,8 @@
 
 cd /opt/info
 select i in \
-    'introductie' \
+    'over Alpino in Docker' \
+    'starten' \
     'tokeniseren' \
     'parsen' \
     'bekijken en bewerken' \
