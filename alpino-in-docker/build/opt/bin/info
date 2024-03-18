@@ -15,7 +15,10 @@ select i in \
     'afbeeldingen opslaan' \
     'links'
 do
-    cat "$i.txt"
+    if [ -f "$i.txt" ]
+    then
+        cat "$i.txt"
+    fi
     break
 done
 
