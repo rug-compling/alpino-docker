@@ -6,8 +6,7 @@ bovenin het scherm een weergave van de parseboom, zoals afgeleid door Alpino.
 Dit is de [3mdependency structure[0m zoals die voor Alpino is opgesteld.
 
 [4malpinoviewer[0m leidt uit deze boom automatisch een andere structuur af,
-bestaande uit Universal Dependencies. (Dit proces is niet foutloos,
-zoals ook Alpino zelf niet foutloos is.)
+bestaande uit Universal Dependencies.
 
 Er is een standaard voor de tekstweergave van Universal Dependencies. Dat
 formaat wordt hier beschreven:

@@ -1,8 +1,11 @@
 
 [4mafbeeldingen opslaan[0m
 
-Zo maak je een PNG-afbeelding van alle bestanden in een corpus. De
-afbeeldingen worden opgeslagen in de subdirectory [4moutput[0m.
+Zowel (delen van) de parseboom als de figuur van de Universal
+Dependencies (UD) kun je opslaan als afbeelding.
+
+Zo maak je een PNG-afbeelding van de parseboom voor alle bestanden in
+een corpus. De afbeeldingen worden opgeslagen in de subdirectory [4moutput[0m.
 
 [36m    mkdir output[0m
 [36m    alto weer.dact vt:png -o output[0m
@@ -18,9 +21,15 @@ de subboom van de matchende nodes:
 
 [36m    alto weer.dact fp:'//node[node[@root="wind"]]' vm:png -o output[0m
 
+Met [4mvu[0m kun je een figuur van de Universele Dependencies opslaan,
+en met [4mvx[0m die van de Extended Universal Dependencies.
+Wanneer de invoer nog geen UD bevatten worden die automatisch berekend.
+
+[36m    alto weer.dact vu:png -o output[0m
+
 Je kunt de volgende formaten kiezen voor de uitvoer:
 
-[36m    dot[0m    Graphviz DOT Language
+[36m    dot[0m    Graphviz DOT Language (niet voor UD)
 [36m    eps[0m    Encapsulated PostScript
 [36m    pdf[0m    Portable Document Format
 [36m    png[0m    Portable Network Graphics
