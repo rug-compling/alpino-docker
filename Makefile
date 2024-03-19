@@ -100,12 +100,12 @@ step7:	step4 ## installeer Dact
 		/scripts/install-dact.sh
 
 step8:	step3 step5 step6 step7 ## maak image van Alpino in Docker
-	cd alpino-in-docker/build && ./build.sh
+	alpino-in-docker/build/build.sh
 
 step9:	step8 ## push image van Alpino in Docker naar de server
 	@echo
 	@echo -e '\e[1mVergeet niet af en toe oude versies te verwijderen, anders is ons quotum op\e[0m'
 	@echo https://registry.webhosting.rug.nl/harbor/projects/57/repositories/alpino/artifacts-tab
 	@echo
-	cd alpino-in-docker/build && ./push.sh
+	alpino-in-docker/build/push.sh
 
