@@ -81,6 +81,7 @@ RUN chmod ugo+rw /work /work/.tredrc && \
 
 # TODO: symlinks
 
+ENV ALTO_MACROFILE /work/voorbeelden/macros.txt
 ADD weerbericht.txt macros.txt /work/voorbeelden/
 ADD init.sh /
 ADD emacs /usr/local/bin
