@@ -1,0 +1,38 @@
+
+[4mZoeken met macro's[0m
+
+XPath-expressies voor het zoeken in Alpino-bestanden kunnen zeer complex
+zijn. Om de dingen wat te vereenvoedigen kun je gebruik maken van
+macro's.
+
+Je gebruikt een macro door de naam tussen twee procenttekens te zetten:
+
+[36m    alto weer.dact fp:'//node[%vp%]' tt:'%f %S\n%M'[0m
+
+Veel macro's werken alleen met XPath versie 2. Wanneer je zoekt in een
+dact-bestand, dan werkt dat vanzelf. Als je in andere bestanden zoekt,
+dan moet je aangeven dat je XPath 2 wilt gebruiken. (De default is Xpath
+versie 1, omdat dat in dit geval veel sneller is.) Dit doe je door de
+optie [4m-2[0m toe te voegen:
+
+[36m    alto weer fp:'//node[%vp%]' tt:'%f %S\n%M' -2[0m
+
+Dit laat de XPath-expressie zien na het toepassen van de macro's:
+
+[36m    alto -e '//node[%vp%]'[0m
+
+Zo zie je welke macro's er zijn:
+
+[36m    less $ALTO_MACROFILE[0m
+
+Om je eigen set van macro's te gebruiken kun je programma's aanroepen
+met een optie waarmee je naar een ander macrobestand wijst.
+
+[36m    alto -m[0m [3mmacrofile[0m
+[36m    dtsearch -a[0m [3mmacrofile[0m
+[36m    dtview -a[0m [3mmacrofile[0m
+
+In plaats hiervan kun je ook de waarde van de environment variabele
+[4mALTO_MACROFILE[0m aanpassen. Wil je die aanpassing permanent maken, dan kun
+je de definitie aanpassen in het bestand [4m~/data/init.sh[0m .
+

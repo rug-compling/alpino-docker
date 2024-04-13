@@ -24,20 +24,8 @@ alpinoviewer:
 
 [36m    alto weer.dact fp:'//node[node[@root="wind"]]' tt:'%F\t%j' | alpinoviewer -i[0m
 
-TODO: alpinoviewer
-
 Het doorzaken gaat met XPATH-expressies. Veel voorbeelden hiervan,
 speciaal voor Alpino, vind je hier:
 
     https://rug-compling.github.io/dact/cookbook/
-
-In de directory [4m/opt/bin[0m staan meer programma's voor het
-verwerken van corpora. Met uitzondering van [4mdact[0m kun je al deze
-programma's zonder argumenten aanroepen om uitleg te krijgen.
-
-Sommige programma's kunnen voor het zoeken gebruik maken van een
-macrobestand. Met macro's kun je zoekopdrachten soms sterk vereenvoudigen.
-Een voorbeeld macrobestand vind je hier:
-
-    /work/voorbeelden/macros.txt
 

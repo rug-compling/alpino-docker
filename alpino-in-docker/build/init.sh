@@ -1,3 +1,7 @@
+# TODO: nano werkt niet als Docker in rootmodus draait
+# oplossing? -> https://stackoverflow.com/questions/50658883/how-to-correctly-use-system-user-in-docker-container
+
+alias ..='cd ..'
 alias ll='ls -Fla --group-directories-first'
 alias rm='rm -i'
 PS1='[Alpino] \w '
