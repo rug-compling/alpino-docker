@@ -3,7 +3,7 @@
 # GJK Mon Feb  4 12:35:24 2008
 
 
-if [ -z "$ALPINO_HOME" ]; then 
+if [ -z "$ALPINO_HOME" ]; then
     echo "dttred: Error: Please set your ALPINO_HOME environment variable" 1>&2
     exit 1
 fi
@@ -11,13 +11,13 @@ fi
 
 tred()
 {
-# a stub for the real call to tred
-#    for i in "$@"; do
-#        echo "this is tred: $i"
-#    done
-# now for real:
+    # a stub for the real call to tred
+    #    for i in "$@"; do
+    #        echo "this is tred: $i"
+    #    done
+    # now for real:
 
-/TrEd/bin/start_tred "$@"
+    /opt/tred/bin/start_tred "$@"
 
 }
 
@@ -31,7 +31,7 @@ msg()
 
 # fill up a bash-array with dereferenced files
 declare -a files
-for file in "$@" ; do 
+for file in "$@" ; do
     if [ -L "$file" ]; then
         dereferenced_file=$(readlink -f -- "$file")
 
