@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<alpino_ds version="1.6">
-  <parser build="Alpino-x86_64-linux-glibc2.5-git233-sicstus" date="2020-11-06T11:32" cats="1" skips="0" />
+<alpino_ds version="1.15">
+  <parser build="Alpino-git20240415.091229-glibc2.23-SICStus3.12.11-x86_64-linux-glibc2.5" date="2024-04-17T10:28" cats="1" skips="0" />
   <node begin="0" cat="top" end="18" id="0" rel="top">
     <node begin="14" end="15" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
     <node begin="0" cat="du" end="17" id="2" rel="--">
-      <node begin="0" cat="smain" end="14" id="3" rel="nucl">
+      <node begin="0" cat="smain" end="14" id="3" rel="dp">
         <node begin="0" cat="pp" end="3" id="4" rel="mod">
           <node begin="0" end="1" frame="preposition(in,[])" his="normal" his_1="decap" his_1_1="normal" id="5" lcat="pp" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="In"/>
           <node begin="1" cat="np" end="3" id="6" rel="obj1">
@@ -12,7 +12,7 @@
             <node begin="2" end="3" frame="tmp_noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="8" lcat="np" lemma="avond" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="avond" sense="avond" special="tmp" word="avond"/>
           </node>
         </node>
-        <node begin="3" end="4" frame="verb(zijn,sg3,part_pc_pp(toe,tot))" his="normal" his_1="normal" id="9" infl="sg3" lcat="smain" lemma="toe_nemen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="neem_toe" sc="part_pc_pp(toe,tot)" sense="neem_toe-tot" stype="declarative" tense="present" word="neemt" wvorm="pv"/>
+        <node begin="3" end="4" frame="verb(zijn,sg3,part_pc_pp(toe,tot))" his="normal" his_1="normal" id="9" infl="sg3" lcat="smain" lemma="toe_nemen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="neem_toe" sc="part_pc_pp(toe,tot)" sense="neem_toe-tot" stype="declarative" tense="present" v_per="thi" word="neemt" wvorm="pv"/>
         <node begin="4" cat="np" end="9" id="10" rel="su">
           <node begin="4" end="5" frame="determiner(de)" his="normal" his_1="normal" id="11" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
           <node begin="5" end="6" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="12" lcat="np" lemma="wind" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="wind" sense="wind" word="wind"/>
@@ -32,15 +32,15 @@
           <node aform="base" begin="13" buiging="zonder" end="14" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="23" infl="no_e" lcat="ap" lemma="hard" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="obj1" root="hard" sense="hard" vform="adj" word="hard"/>
         </node>
       </node>
-      <node begin="15" cat="np" end="17" id="24" rel="sat">
-        <node begin="15" end="16" frame="number(hoofd(pl_num))" his="normal" his_1="number_expression" id="25" infl="pl_num" lcat="detp" lemma="7" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="7" sense="7" special="hoofd" word="7"/>
-        <node begin="16" end="17" frame="proper_name(both,'LOC')" getal="mv" graad="basis" his="name" his_1="begin" id="26" lcat="np" lemma="Bft" neclass="LOC" ntype="eigen" num="both" pos="name" postag="N(eigen,mv,basis)" pt="n" rel="hd" rnum="pl" root="Bft" sense="Bft" word="Bft"/>
+      <node begin="15" cat="du" end="17" id="24" rel="dp">
+        <node begin="15" end="16" frame="enumeration" his="normal" his_1="enumeration" id="25" lcat="np" lemma="7" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="tag" root="7" sense="7" special="enumeration" word="7"/>
+        <node begin="16" end="17" frame="proper_name(both,'LOC')" genus="onz" getal="ev" graad="basis" his="name" his_1="begin" id="26" lcat="np" lemma="Bft" naamval="stan" neclass="LOC" ntype="eigen" num="both" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="nucl" root="Bft" sense="Bft" word="Bft"/>
       </node>
     </node>
     <node begin="17" end="18" frame="punct(punt)" his="normal" his_1="normal" id="27" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
   </node>
   <sentence sentid="weerbericht.p.3.s.7">In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .</sentence>
   <comments>
-    <comment>Q#weerbericht.p.3.s.7|In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .|1|1|-8.3498887378</comment>
+    <comment>Q#weerbericht.p.3.s.7|In de avond neemt de wind langs de kust mogelijk verder toe tot hard , 7 Bft .|1|1|-4.355517418900001</comment>
   </comments>
 </alpino_ds>
