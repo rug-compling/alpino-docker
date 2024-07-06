@@ -4,7 +4,7 @@
 
 FROM ubuntu:xenial
 
-MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
+LABEL org.opencontainers.image.authors="Peter Kleiweg <p.c.j.kleiweg@rug.nl>"
 
 RUN apt-get update && apt-get install -y tzdata && \
     echo "Europe/Amsterdam" > /etc/timezone && \
@@ -68,9 +68,9 @@ RUN apt-get install git-lfs=3.2.0
 ADD https://go.dev/dl/go1.22.0.linux-amd64.tar.gz /
 RUN cd / && tar vzxf go*tar.gz --no-same-owner && rm go*tar.gz
 
-ENV GOCACHE /cache/go/cache
-ENV GOPATH /cache/go
-ENV LIBGL_ALWAYS_INDIRECT 1
+ENV GOCACHE=/cache/go/cache
+ENV GOPATH=/cache/go
+ENV LIBGL_ALWAYS_INDIRECT=1
 
 ADD init.sh /
 

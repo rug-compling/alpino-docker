@@ -9,7 +9,7 @@
 
 FROM ubuntu:xenial
 
-MAINTAINER Peter Kleiweg <p.c.j.kleiweg@rug.nl>
+LABEL org.opencontainers.image.authors="Peter Kleiweg <p.c.j.kleiweg@rug.nl>"
 
 # Bij overstap naar nieuwere Ubuntu invoegen:
 #RUN apt-get update && apt-get install -y tzdata && \
@@ -45,12 +45,12 @@ RUN apt-get update && apt-get install -y \
 
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 
-ENV PATH /Alpino/bin:/Alpino/Tokenization:/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV ALPINO_HOME /Alpino
-ENV HOME /work
-ENV LANG en_US.utf8
-ENV LANGUAGE en_US.utf8
-ENV LC_ALL en_US.utf8
+ENV PATH=/Alpino/bin:/Alpino/Tokenization:/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV ALPINO_HOME=/Alpino
+ENV HOME=/work
+ENV LANG=en_US.utf8
+ENV LANGUAGE=en_US.utf8
+ENV LC_ALL=en_US.utf8
 
 # Extensions for TrEd
 ADD https://www.let.rug.nl/vannoord/alp/Alpino/tred/alpino.zip /
@@ -81,19 +81,19 @@ RUN chmod ugo+rw /work /work/.tredrc && \
 
 # TODO: symlinks
 
-ENV ALTO_MACROFILE /work/voorbeelden/macros.txt
+ENV ALTO_MACROFILE=/work/voorbeelden/macros.txt
 ADD weerbericht.txt macros.txt /work/voorbeelden/
 ADD init.sh /
 ADD emacs /usr/local/bin
 RUN chmod +x /usr/local/bin/emacs
 
-ENV LD_LIBRARY_PATH /Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus
+ENV LD_LIBRARY_PATH=/Alpino/fadd:/Alpino/TreebankTools/IndexedCorpus
 
 # voor probleem met alpinoviewer
-ENV NO_AT_BRIDGE 1
+ENV NO_AT_BRIDGE=1
 
 # voor probleem met dact
-ENV LIBGL_ALWAYS_INDIRECT 1
+ENV LIBGL_ALWAYS_INDIRECT=1
 
 ADD opt /opt
 
