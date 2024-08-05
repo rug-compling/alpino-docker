@@ -47,3 +47,10 @@ gelukkig nog had liggen, en daarom maar aan git heb toegevoegd:
 
     - src/appimagetool
     - src/linuxdeploy
+
+--------------------------------------------------------------------------------
+
+Niet gebruikt momenteel, maar voor de zekerheid toch maar bewaard:
+
+    - src/perl.tar.gz
+
