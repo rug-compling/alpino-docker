@@ -7,7 +7,7 @@
 #     docker push registry.webhosting.rug.nl/compling/alpino:latest
 #
 
-FROM ubuntu:xenial
+FROM ubuntu:jammy
 
 LABEL org.opencontainers.image.authors="Peter Kleiweg <p.c.j.kleiweg@rug.nl>"
 
@@ -22,8 +22,8 @@ RUN apt-get update && apt-get install -y \
   curl \
   emacs \
   less \
-  libboost-filesystem1.58.0 \
-  libboost-system1.58.0 \
+  libboost-filesystem1.74.0 \
+  libboost-system1.74.0 \
   libcgraph6 \
   libgvc6 \
   libqt5network5 \

@@ -1,16 +1,18 @@
 #
-# Ubuntu 16 (xenial) met gcc en zo
+# Ubuntu 22 (jammy) met gcc en zo
 #
 
-FROM ubuntu:xenial
+FROM ubuntu:jammy
 
 LABEL org.opencontainers.image.authors="Peter Kleiweg <p.c.j.kleiweg@rug.nl>"
 
-RUN apt-get update && apt-get install -y tzdata && \
-    echo "Europe/Amsterdam" > /etc/timezone && \
-    rm -f /etc/localtime && \
-    ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime && \
-    dpkg-reconfigure -f noninteractive tzdata
+RUN apt --fix-broken install && \
+  apt-get update && \
+  apt-get install -y tzdata && \
+  echo "Europe/Amsterdam" > /etc/timezone && \
+  rm -f /etc/localtime && \
+  ln -fs /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime && \
+  dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get install -y \
   appstream \
@@ -28,6 +30,8 @@ RUN apt-get install -y \
   gettext \
   gfortran \
   git \
+  git-lfs \
+  golang-go \
   less \
   libboost-all-dev \
   libfontconfig1-dev \
@@ -46,7 +50,6 @@ RUN apt-get install -y \
   man \
   mc \
   nano \
-  python-dev \
   python3-dev \
   python3-lxml \
   python3-pip \
@@ -61,12 +64,6 @@ RUN apt-get install -y \
   wget
 
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-
-RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-RUN apt-get install git-lfs=3.2.0
-
-ADD https://go.dev/dl/go1.22.0.linux-amd64.tar.gz /
-RUN cd / && tar vzxf go*tar.gz --no-same-owner && rm go*tar.gz
 
 ENV GOCACHE=/cache/go/cache
 ENV GOPATH=/cache/go

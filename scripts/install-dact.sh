@@ -42,6 +42,8 @@ then
     git clone --depth=1 https://github.com/rug-compling/alpinocorpus
 fi
 
+git config --global --add safe.directory /dact/alpinocorpus
+
 cd alpinocorpus
 git pull
 
@@ -73,6 +75,8 @@ then
     git clone --depth=1 https://github.com/rug-compling/alpinocorpus alpinocorpus_v6
 fi
 
+git config --global --add safe.directory /dact/alpinocorpus_v6
+
 cd alpinocorpus_v6
 git pull
 
@@ -103,6 +107,8 @@ then
     rm -fr dact
     git clone -b dbxml-2.5.16 --depth=1 https://github.com/rug-compling/dact
 fi
+
+git config --global --add safe.directory /dact/dact
 
 cd dact
 git pull
