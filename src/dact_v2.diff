@@ -58,6 +58,63 @@ index b2142dd..be996a9 100644
  
  DactTreeScene::DactTreeScene(QObject *parent) :
      QGraphicsScene(parent),
+diff --git a/src/SimpleDTD.cpp b/src/SimpleDTD.cpp
+index d2ebfff..f05959b 100644
+--- a/src/SimpleDTD.cpp
++++ b/src/SimpleDTD.cpp
+@@ -2,43 +2,50 @@
+ #include <iterator>
+ #include <map>
+ #include <set>
+ #include <stdexcept>
+ #include <string>
+ 
+ #include <QScopedPointer>
+ #include <QtDebug>
+ 
+ #include <libxml/tree.h>
++#include <libxml/xmlversion.h>
+ 
+ #include <SimpleDTD.hh>
+ #include <XMLDeleters.hh>
+ 
+ namespace {
+ 
+-void scanElement(void *payload, void *data, xmlChar *name)
++#if defined(LIBXML_VERSION) && (LIBXML_VERSION >= 20908)
++typedef xmlChar const *xmlCharPtr;
++#else
++typedef xmlChar *xmlCharPtr;
++#endif
++
++void scanElement(void *payload, void *data, xmlCharPtr name)
+ {
+     xmlElement *elem = reinterpret_cast<xmlElement*>(payload);
+     ElementMap *elements = reinterpret_cast<ElementMap *>(data);
+ 
+     std::string elemName = reinterpret_cast<char const *>(elem->name);
+ 
+     // Some elements do not have attributes (e.g. 'sentence' in alpino_ds).
+     if (elements->find(elemName) == elements->end())
+         (*elements)[elemName] = std::set<std::string>();
+ 
+ 
+     for (xmlAttributePtr attr = elem->attributes; attr != NULL; attr = reinterpret_cast<xmlAttributePtr>(attr->next))
+         (*elements)[elemName].insert(reinterpret_cast<char const *>(attr->name));
+ }
+ 
+-void scanAttribute(void *payload, void *data, xmlChar *name)
++void scanAttribute(void *payload, void *data, xmlCharPtr name)
+ {
+     xmlAttribute *attr = reinterpret_cast<xmlAttribute*>(payload);
+     ElementAttributeMap &attributeMap = *reinterpret_cast<ElementAttributeMap *>(data);
+ 
+     char const *elementName(reinterpret_cast<char const *>(attr->elem));
+     char const *attributeName(reinterpret_cast<char const *>(attr->name));
+ 
+     AttributeMap::iterator attributeMapPos = attributeMap[elementName].find(attributeName);
+     ElementAttributeMap::iterator elementIter = attributeMap.find(elementName);
+     
 diff --git a/src/XSLTransformer.cpp b/src/XSLTransformer.cpp
 index 9f13798..11db533 100644
 --- a/src/XSLTransformer.cpp
@@ -90,7 +147,7 @@ index 9f13798..11db533 100644
      QTextStream xslStream(file);
      initWithStylesheet(xslStream.readAll());
 diff --git a/src/main.cpp b/src/main.cpp
-index 3ad8d9e..87c1510 100644
+index 61bd13e..636bf21 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
 @@ -2,26 +2,26 @@
@@ -121,4 +178,4 @@ index 3ad8d9e..87c1510 100644
      {
          std::cerr << "Usage: " << progname << " [OPTION] corpus ..." <<
            std::endl << std::endl <<
-           "  -m filename\tMacro file, multiple files are separated by a colon (:)" << std::endl << std::endl;
+           "  -m filename\tMacro file, multiple files are separated by a colon (:)" << std::endl <<

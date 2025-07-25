@@ -122,8 +122,7 @@ step7:	step4 ## installeer Dact
 		localhost/alpino-devel:latest \
 		/scripts/install-dact.sh
 
-#step8:	step3 step5 step6 step7 ## maak image van Alpino in Docker
-step8:	step3 step5 step6 ## maak image van Alpino in Docker
+step8:	step3 step5 step6 step7 ## maak image van Alpino in Docker
 	alpino-in-docker/build/build.sh
 
 step9:	step8 ## push image van Alpino in Docker naar de server
