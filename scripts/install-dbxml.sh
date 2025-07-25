@@ -39,6 +39,6 @@ tar vxzf /src/dbxml-6.1.4.tar.gz --no-same-owner
 patch -p0 < /src/dbxml-6.1.4-patch_26647.diff
 mv dbxml-6.1.4 dbxml6
 cd dbxml6
-./buildall.sh --prefix=/opt/dbxml6 --with-configure-env="CXXFLAGS=-std=c++03 LDFLAGS=-Wl,-rpath=/opt/dbxml6"
+./buildall.sh --prefix=/opt/dbxml6 --with-configure-env="CXXFLAGS=-std=c++03 LDFLAGS=-Wl,-rpath=/opt/dbxml6/lib"
 touch ../done6
 
