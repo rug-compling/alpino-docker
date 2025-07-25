@@ -17,7 +17,7 @@ tred()
     #    done
     # now for real:
 
-    /opt/tred/bin/start_tred "$@"
+    /opt/bin/tred "$@"
 
 }
 

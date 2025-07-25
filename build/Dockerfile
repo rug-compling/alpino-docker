@@ -41,7 +41,6 @@ RUN apt-get install -y \
   libssl-dev \
   libtool \
   libwebkit2gtk-4.0-dev \
-  libwww-perl \
   libx11-dev \
   libxft-dev \
   libxml2-dev \

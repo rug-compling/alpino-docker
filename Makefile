@@ -37,6 +37,9 @@ distclean:
 		alpino-in-docker/build/opt/lib/XlibNoSHM.so \
 		alpino-in-docker/build/opt/lib/alpinoviewer.bin \
 		alpino-in-docker/build/opt/man/man1/alto.1 \
+		alpino-in-docker/build/opt/perl \
+		alpino-in-docker/build/opt/python2 \
+		alpino-in-docker/build/opt/tred \
 		work
 
 step0:	## deze repo bijwerken
@@ -86,9 +89,29 @@ step5:	step4 ## installeer alto, alud, alpinoviewer en maak work/tools/alto/alto
 		localhost/alpino-devel:latest \
 		/scripts/install-tools.sh
 
-step6:	step1 ## installeer TrEd
-	if [ ! -f alpino-in-docker/build/tred_2.5236_all.deb ]; \
-		then wget -O alpino-in-docker/build/tred_2.5236_all.deb https://ufal.mff.cuni.cz/tred/tred_2.5236_all.deb; fi
+step6a: step1 ## installeer Python2
+	docker run $(DOCKERARGS) --rm -i -t \
+		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
+		-v $(PWD)/src:/src \
+		localhost/alpino-devel:latest \
+		/scripts/install-python2.sh
+
+step6b: step1 ## installeer Perl
+	docker run $(DOCKERARGS) --rm -i -t \
+		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
+		-v $(PWD)/src:/src \
+		localhost/alpino-devel:latest \
+		/scripts/install-perl.sh
+
+step6:	step1 step6a step6b ## installeer TrEd
+	docker run $(DOCKERARGS) --rm -i -t \
+		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
+		-v $(PWD)/src:/src \
+		localhost/alpino-devel:latest \
+		/scripts/install-tred.sh
 
 step7:	step4 ## installeer Dact
 	docker run $(DOCKERARGS) --rm -i -t \
@@ -99,7 +122,8 @@ step7:	step4 ## installeer Dact
 		localhost/alpino-devel:latest \
 		/scripts/install-dact.sh
 
-step8:	step3 step5 step6 step7 ## maak image van Alpino in Docker
+#step8:	step3 step5 step6 step7 ## maak image van Alpino in Docker
+step8:	step3 step5 step6 ## maak image van Alpino in Docker
 	alpino-in-docker/build/build.sh
 
 step9:	step8 ## push image van Alpino in Docker naar de server

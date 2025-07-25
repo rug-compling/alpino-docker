@@ -11,14 +11,14 @@ FROM ubuntu:jammy
 
 LABEL org.opencontainers.image.authors="Peter Kleiweg <p.c.j.kleiweg@rug.nl>"
 
-# Bij overstap naar nieuwere Ubuntu invoegen:
-#RUN apt-get update && apt-get install -y tzdata && \
-#    echo "Etc/UTC" > /etc/timezone && \
-#    ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
-#    dpkg-reconfigure -f noninteractive tzdata
+RUN apt-get update && \
+  apt-get install -y tzdata && \
+  echo "Etc/UTC" > /etc/timezone && \
+  rm -f /etc/localtime && \
+  ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
+  dpkg-reconfigure -f noninteractive tzdata
 
 RUN apt-get update && apt-get install -y \
-  cpanminus \
   curl \
   emacs \
   less \
@@ -29,14 +29,11 @@ RUN apt-get update && apt-get install -y \
   libqt5network5 \
   libqt5printsupport5 \
   libwebkit2gtk-4.0 \
-  libwww-perl \
   libxslt1.1 \
   locales \
   man \
   mc \
   nano \
-  python \
-  python-lxml \
   python3 \
   python3-lxml \
   tk \
@@ -64,14 +61,6 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
     echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst
 
 # TrEd
-ADD tred_2.5236_all_fixed.deb tred.diff /
-# extra modules installeren vanuit tred*.deb geeft fout, dus die eerst vooraf installeren met cpanm
-RUN cpanm XML::CompactTree@0.03 UNIVERSAL::DOES@0.005 XML::CompactTree::XS@0.03 Treex::PML@2.24 && \
-    apt-get install -y /tred_2.5236_all_fixed.deb && \
-    cd / && patch -p0 < tred.diff && \
-    rm /tred_2.5236_all_fixed.deb tred.diff
-#RUN echo 2.5049 > /work/.tred.d/last_version
-RUN echo 2.5236 > /work/.tred.d/last_version
 ADD .tredrc /work
 RUN chmod ugo+rw /work /work/.tredrc && \
     find /work/.tred.d | xargs chmod ugo+rw && \
@@ -107,5 +96,7 @@ RUN chmod +x /Alpino/bin/dttred && \
     rm -fr extralibs && \
     grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && \
     mv env.sh.tmp env.sh
+
+RUN mv /usr/bin/man.REAL /usr/bin/man
 
 CMD ["/bin/bash", "--rcfile", "/init.sh"]

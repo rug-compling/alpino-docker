@@ -1,13 +1,13 @@
 
 Met deze repo doe je het volgende:
 
-- Een binaire distro van Alpino maken, gecompileerd op Ubuntu/Xenial
+- Een binaire distro van Alpino maken, gecompileerd op Ubuntu/Jammy (22.04)
     -> alpino/Alpino*.tar.gz
 - AppImages maken van alto
     -> work/tools/alto/alto-x86_64.AppImage
     -> work/tools/alto/alto_v6-x86_64.AppImage
 - Een image maken van Alpino in Docker, eveneens op basis van
-  Ubuntu/Xenial, en die pushen naar de server
+  Ubuntu/Jammy, en die pushen naar de server
 
 Alles gebeurt door 'make'. Run make zonder argumenten voor een lijst van
 targets:
@@ -47,10 +47,3 @@ gelukkig nog had liggen, en daarom maar aan git heb toegevoegd:
 
     - src/appimagetool
     - src/linuxdeploy
-
---------------------------------------------------------------------------------
-
-Niet gebruikt momenteel, maar voor de zekerheid toch maar bewaard:
-
-    - src/perl.tar.gz
-
