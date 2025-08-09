@@ -15,7 +15,7 @@ IF .%1==. (
 	GOTO:EOF
 )
 
-SET image=registry.webhosting.rug.nl/compling/alpino:latest
+SET image=registry.webhosting.rug.nl/compling/alpino-16:latest
 
 IF .%1==.-h (
 	docker run --rm -i -t %image% info

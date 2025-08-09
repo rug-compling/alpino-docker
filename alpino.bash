@@ -20,7 +20,7 @@ foreach $p (@parts) {
 }
 '
 
-image='registry.webhosting.rug.nl/compling/alpino:latest'
+image='registry.webhosting.rug.nl/compling/alpino-16:latest'
 
 if [ $# -lt 1 ]
 then

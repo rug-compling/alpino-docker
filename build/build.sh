@@ -10,5 +10,5 @@ then
     c="--no-cache"
 fi
 
-docker build $c -t localhost/alpino-devel:latest .
+docker build $c -t localhost/alpino-devel-16:latest .
 rm -f NOCACHE
