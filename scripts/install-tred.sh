@@ -11,11 +11,11 @@ fi
 PATH=/opt/bin:$PATH
 
 cd /opt
-tar vxzf /src/tred-current.tar.gz
+tar vxzf /src/tred-current.tar.gz --no-same-owner
 cd /
 patch -p0 < /src/tred.diff
 
-tar vxzf /src/tred-dep-unix.tar.gz
+tar vxzf /src/tred-dep-unix.tar.gz --no-same-owner
 cd packages_unix
 ./install
 
