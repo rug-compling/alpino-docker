@@ -6,4 +6,4 @@ script="$(readlink -f "$0")"
 cd "$(dirname "$script")"
 
 set -x
-docker push registry.webhosting.rug.nl/compling/alpino:latest
+docker push registry.webhosting.rug.nl/compling/alpino-22:latest

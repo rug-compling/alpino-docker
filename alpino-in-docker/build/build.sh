@@ -12,5 +12,5 @@ then
 fi
 
 set -x
-docker build $c -t registry.webhosting.rug.nl/compling/alpino:latest .
+docker build $c -t registry.webhosting.rug.nl/compling/alpino-22:latest .
 rm -f NOCACHE

@@ -23,7 +23,7 @@ shell:
 		-v $(PWD)/src:/src \
 		-v $(PWD)/tmp:/tmp \
 		-v $(PWD)/work:/work \
-		localhost/alpino-devel:latest
+		localhost/alpino-devel-22:latest
 
 nocache: ## bij de volgende 'docker build' geen cache gebruiken
 	touch build/NOCACHE
@@ -60,7 +60,7 @@ step2:	step1 ## installeer SICStus
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src/sp-3.12.11-x86_64-linux-glibc2.5:/sp-3.12.11 \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-sp.sh
 
 step3:	step2 ## installeer Alpino en maak alpino/Alpino*.tar.gz
@@ -69,7 +69,7 @@ step3:	step2 ## installeer Alpino en maak alpino/Alpino*.tar.gz
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/work/cache:/cache \
 		-v $(PWD)/work/sp:/sp \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-alpino.sh
 	cp `ls -rt alpino/Alpino*tar.gz | tail -n 1` alpino-in-docker/build/Alpino.tar.gz
 
@@ -81,7 +81,7 @@ step4:	step1 ## installeer DbXML
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
 		-v $(PWD)/work/dbxml:/dbxml \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-dbxml.sh
 
 step5:	step4 ## installeer alto, alud, alpinoviewer en maak work/tools/alto/alto*.AppImage
@@ -91,7 +91,7 @@ step5:	step4 ## installeer alto, alud, alpinoviewer en maak work/tools/alto/alto
 		-v $(PWD)/src:/src \
 		-v $(PWD)/work/cache:/cache \
 		-v $(PWD)/work/tools:/tools \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-tools.sh
 
 step6a: step1
@@ -99,7 +99,7 @@ step6a: step1
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-python2.sh
 
 step6b: step1
@@ -107,7 +107,7 @@ step6b: step1
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-perl.sh
 
 step6:	step6a step6b ## installeer TrEd
@@ -115,7 +115,7 @@ step6:	step6a step6b ## installeer TrEd
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-tred.sh
 
 step7:	step4 ## installeer Dact
@@ -124,7 +124,7 @@ step7:	step4 ## installeer Dact
 		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
 		-v $(PWD)/work/dact:/dact \
-		localhost/alpino-devel:latest \
+		localhost/alpino-devel-22:latest \
 		/scripts/install-dact.sh
 
 step8:	step3 step5 step6 step7 ## maak image van Alpino in Docker
