@@ -18,7 +18,21 @@ Je kunt alles uitvoeren door:
 
     make step0    # deze moet eerst, apart
     make step9    # dit doet alle benodigde eerdere stappen, behalve step0
-￼
+
+Wanneer je een 404 krijgt van 'docker build', run dan:
+
+    make nocache
+
+Dit kan nodig zijn als de gebruikte versie van Ubuntu een update heeft
+gekregen.
+
+Voordat je van branch wisselt is het goed 'make distclean' te doen, en
+daarna nog een keer:
+
+    make distclean
+    git checkout 22.04
+    make distclean
+
 --------------------------------------------------------------------------------
 
 Alhoewel dit een git-repository is is niet al het benodigde materiaal

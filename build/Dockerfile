@@ -6,7 +6,7 @@ FROM ubuntu:jammy
 
 LABEL org.opencontainers.image.authors="Peter Kleiweg <p.c.j.kleiweg@rug.nl>"
 
-RUN apt --fix-broken install && \
+RUN apt install && \
   apt-get update && \
   apt-get install -y tzdata && \
   echo "Europe/Amsterdam" > /etc/timezone && \

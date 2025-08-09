@@ -12,19 +12,24 @@ endif
 .PHONY: help
 help:
 	@echo Beschikbare targets voor make:
-	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[34m%-8s\033[0m %s\n", $$1, $$2}'
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[34m%-10s\033[0m %s\n", $$1, $$2}'
 
 shell:
 	docker run $(DOCKERARGS) --rm -i -t \
 		-e DISPLAY \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
 		-v $(PWD)/tmp:/tmp \
 		-v $(PWD)/work:/work \
 		localhost/alpino-devel:latest
 
-distclean:
+nocache: ## bij de volgende 'docker build' geen cache gebruiken
+	touch build/NOCACHE
+	touch alpino-in-docker/build/NOCACHE
+
+distclean: nocache ## verwijder alle gegenereerde bestanden om fris te kunnen beginnen
 	if [ -d work/cache/go ]; then chmod -cR u+w work/cache/go; fi
 	rm -fr \
 		alpino \
@@ -89,7 +94,7 @@ step5:	step4 ## installeer alto, alud, alpinoviewer en maak work/tools/alto/alto
 		localhost/alpino-devel:latest \
 		/scripts/install-tools.sh
 
-step6a: step1 ## installeer Python2
+step6a: step1
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
@@ -97,7 +102,7 @@ step6a: step1 ## installeer Python2
 		localhost/alpino-devel:latest \
 		/scripts/install-python2.sh
 
-step6b: step1 ## installeer Perl
+step6b: step1
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
@@ -105,7 +110,7 @@ step6b: step1 ## installeer Perl
 		localhost/alpino-devel:latest \
 		/scripts/install-perl.sh
 
-step6:	step1 step6a step6b ## installeer TrEd
+step6:	step6a step6b ## installeer TrEd
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
 		-v $(PWD)/scripts:/scripts \
