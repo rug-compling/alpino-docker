@@ -26,10 +26,8 @@ Wanneer je een 404 krijgt van 'docker build', run dan:
 Dit kan nodig zijn als de gebruikte versie van Ubuntu een update heeft
 gekregen.
 
-Voordat je van branch wisselt is het goed 'make distclean' te doen, en
-daarna nog een keer:
+Nadat je van branch bent gewisseld is het goed 'make distclean' te doen:
 
-    make distclean
     git checkout 22.04
     make distclean
 

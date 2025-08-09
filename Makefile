@@ -19,6 +19,7 @@ shell:
 		-e DISPLAY \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/alpino-in-docker/build/opt:/opt \
+		-v $(PWD)/scripts:/scripts \
 		-v $(PWD)/src:/src \
 		-v $(PWD)/tmp:/tmp \
 		-v $(PWD)/work:/work \
@@ -28,6 +29,7 @@ nocache: ## bij de volgende 'docker build' geen cache gebruiken
 	touch build/NOCACHE
 	touch alpino-in-docker/build/NOCACHE
 
+# sommige directory's hieronder worden niet door deze branch gemaakt
 distclean: nocache ## verwijder alle gegenereerde bestanden om fris te kunnen beginnen
 	if [ -d work/cache/go ]; then chmod -cR u+w work/cache/go; fi
 	rm -fr \
@@ -41,6 +43,9 @@ distclean: nocache ## verwijder alle gegenereerde bestanden om fris te kunnen be
 		alpino-in-docker/build/opt/lib/XlibNoSHM.so \
 		alpino-in-docker/build/opt/lib/alpinoviewer.bin \
 		alpino-in-docker/build/opt/man/man1/alto.1 \
+		alpino-in-docker/build/opt/perl \
+		alpino-in-docker/build/opt/python2 \
+		alpino-in-docker/build/opt/tred
 		work
 
 step0:	## deze repo bijwerken
