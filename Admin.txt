@@ -28,7 +28,7 @@ gekregen.
 
 Nadat je van branch bent gewisseld is het goed 'make distclean' te doen:
 
-    git checkout 22.04
+    git checkout master
     make distclean
 
 --------------------------------------------------------------------------------
