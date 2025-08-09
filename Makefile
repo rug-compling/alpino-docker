@@ -45,7 +45,7 @@ distclean: nocache ## verwijder alle gegenereerde bestanden om fris te kunnen be
 		alpino-in-docker/build/opt/man/man1/alto.1 \
 		alpino-in-docker/build/opt/perl \
 		alpino-in-docker/build/opt/python2 \
-		alpino-in-docker/build/opt/tred
+		alpino-in-docker/build/opt/tred \
 		work
 
 step0:	## deze repo bijwerken
