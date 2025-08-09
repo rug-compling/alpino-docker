@@ -12,7 +12,7 @@ endif
 .PHONY: help
 help:
 	@echo Beschikbare targets voor make:
-	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[34m%-8s\033[0m %s\n", $$1, $$2}'
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[34m%-10s\033[0m %s\n", $$1, $$2}'
 
 shell:
 	docker run $(DOCKERARGS) --rm -i -t \
@@ -24,7 +24,11 @@ shell:
 		-v $(PWD)/work:/work \
 		localhost/alpino-devel:latest
 
-distclean:
+nocache: ## bij de volgende 'docker build' geen cache gebruiken
+	touch build/NOCACHE
+	touch alpino-in-docker/build/NOCACHE
+
+distclean: nocache ## verwijder alle gegenereerde bestanden om fris te kunnen beginnen
 	if [ -d work/cache/go ]; then chmod -cR u+w work/cache/go; fi
 	rm -fr \
 		alpino \
