@@ -20,7 +20,11 @@ foreach $p (@parts) {
 }
 '
 
+<<<<<<< HEAD
 image='registry.webhosting.rug.nl/compling/alpino-16:latest'
+=======
+image='registry.webhosting.rug.nl/compling/alpino-22:latest'
+>>>>>>> 22.04
 
 if [ $# -lt 1 ]
 then

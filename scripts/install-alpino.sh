@@ -2,7 +2,7 @@
 
 set -e
 
-PATH=/sp/bin:/go/bin:$PATH
+PATH=/scripts:/sp/bin:/go/bin:$PATH
 export LANG=en_US.utf8
 export LANGUAGE=en_US.utf8
 export LC_ALL=en_US.utf8
@@ -16,6 +16,8 @@ then
     rm -fr Alpino
     git clone --depth=1 https://github.com/rug-compling/Alpino
 fi
+
+git config --global --add safe.directory /alpino/Alpino
 
 cd Alpino
 git pull

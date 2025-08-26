@@ -1,54 +1,124 @@
-diff --git a/src/BracketedDelegates/BracketedColorDelegate.cpp b/src/BracketedDelegates/BracketedColorDelegate.cpp
-index 14a7020..480094e 100644
---- a/src/BracketedDelegates/BracketedColorDelegate.cpp
-+++ b/src/BracketedDelegates/BracketedColorDelegate.cpp
-@@ -78,21 +78,21 @@ void BracketedColorDelegate::paint(QPainter *painter, const QStyleOptionViewItem
-             }
+diff --git a/include/DactTreeScene.hh b/include/DactTreeScene.hh
+index 8b5bae2..95b35a6 100644
+--- a/include/DactTreeScene.hh
++++ b/include/DactTreeScene.hh
+@@ -1,24 +1,24 @@
+ #ifndef DACTTREESCENE_H
+ #define DACTTREESCENE_H
  
-             std::vector<alpinocorpus::LexItem>::const_iterator next = iter + 1;
-             if (next != items.end()) {
-                 if (next->matches.size() < depth)
-                     adoptSpace = true;
-                 else
-                     word += " ";
-             }
+ #include <QFont>
+ #include <QGraphicsItem>
+ #include <QGraphicsScene>
+ #include <QHash>
+ #include <QList>
+ #include <QStack>
  
--            wordBox.setWidth(option.fontMetrics.horizontalAdvance(word));
-+            wordBox.setWidth(option.fontMetrics.width(word));
-         
-             if (depth != prevDepth) {
-                 if (depth == 0)
-                 {
-                     painter->setPen(brush.color());
-                     painter->setBrush(brush);
-                 }
-                 else
-                 {
-                     highlightColor.setAlpha(std::min(85 + 42 * depth,
-diff --git a/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp b/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp
-index 63121d1..e63f24e 100644
---- a/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp
-+++ b/src/BracketedDelegates/BracketedKeywordInContextDelegate.cpp
-@@ -111,21 +111,21 @@ void BracketedKeywordInContextDelegate::paint(QPainter *painter, const QStyleOpt
-                     adoptSpace = false;
-                 }
+-extern "C" {
++//extern "C" {
+     #include <libxml/parser.h>
+     #include <libxml/tree.h>
+-};
++//};
  
-                 if (j + 1 != lexItems.size()) {
-                     if (lexItems[j + 1].matches.size() < depth)
-                         adoptSpace = true;
-                     else
-                         word += " ";
-                 }
+ extern int qt_defaultDpi();
  
--                wordBox.setWidth(option.fontMetrics.horizontalAdvance(word));
-+                wordBox.setWidth(option.fontMetrics.width(word));
-                 wordBox.setHeight(fontHeight);
+ class TreeNode;
+ class SecEdge;
+ class PopupItem;
  
-                 if (depth == 0 || lexItems[j].matches.count(*matchIter) == 0)
-                 {
-                     painter->setPen(brush.color());
-                     painter->setBrush(brush);
-                 }
-                 else
-                 {
-                     d_highlightColor.setAlpha(std::min(85 + 42 * depth,
+ class DactTreeScene : public QGraphicsScene
+ {
+     Q_OBJECT
+diff --git a/src/DactTreeScene.cpp b/src/DactTreeScene.cpp
+index b2142dd..be996a9 100644
+--- a/src/DactTreeScene.cpp
++++ b/src/DactTreeScene.cpp
+@@ -1,22 +1,22 @@
+ #include <algorithm>
+ #include <QDebug>
+ #include <QFontMetrics>
+ #include <QGraphicsSceneHoverEvent>
+ #include <QGraphicsView>
+ #include <QPainter>
+ #include <QSettings>
+ 
+-extern "C" {
++//extern "C" {
+ #include <libxml/parser.h>
+ #include <libxml/tree.h>
+-}
++//}
+ 
+ #include "DactTreeScene.hh"
+ #include "Edge.hh"
+ #include "SecEdge.hh"
+ #include "TreeNode.hh"
+ #include "PopupItem.hh"
+ #include "XMLDeleters.hh"
+ 
+ DactTreeScene::DactTreeScene(QObject *parent) :
+     QGraphicsScene(parent),
+diff --git a/src/XSLTransformer.cpp b/src/XSLTransformer.cpp
+index 9f13798..11db533 100644
+--- a/src/XSLTransformer.cpp
++++ b/src/XSLTransformer.cpp
+@@ -1,24 +1,24 @@
+ #include <QByteArray>
+ #include <QScopedPointer>
+ #include <QTextStream>
+ 
+ #include <stdexcept>
+ 
+-extern "C" {
++//extern "C" {
+ #include <libxml/globals.h>
+ #include <libxml/parser.h>
+ #include <libxml/tree.h>
+ #include <libxslt/xslt.h>
+ #include <libxslt/transform.h>
+ #include <libxslt/xsltutils.h>
+-}
++//}
+ 
+ #include <XMLDeleters.hh>
+ #include <XSLTransformer.hh>
+ #include <QtDebug>
+ 
+ XSLTransformer::XSLTransformer(QFile *file)
+ {
+     file->open(QIODevice::ReadOnly);
+     QTextStream xslStream(file);
+     initWithStylesheet(xslStream.readAll());
+diff --git a/src/main.cpp b/src/main.cpp
+index 3ad8d9e..87c1510 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -2,26 +2,26 @@
+ #include <QFileInfo>
+ #include <QFont>
+ #include <QSettings>
+ #include <QVariant>
+ 
+ #include <cstdlib>
+ #include <iostream>
+ #include <stdexcept>
+ #include <vector>
+ 
+-extern "C" {
++//extern "C" {
+ #include <libxslt/xslt.h>
+ #include <libxml/parser.h>
+ #include <libxml/xpath.h>
+ #include <libexslt/exslt.h>
+-}
++//}
+ 
+ #include <DactApplication.hh>
+ #include <ProgramOptions.hh>
+ 
+ namespace {
+     void usage(char const *progname)
+     {
+         std::cerr << "Usage: " << progname << " [OPTION] corpus ..." <<
+           std::endl << std::endl <<
+           "  -m filename\tMacro file, multiple files are separated by a colon (:)" << std::endl << std::endl;

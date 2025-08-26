@@ -42,6 +42,8 @@ then
     git clone --depth=1 https://github.com/rug-compling/alpinocorpus
 fi
 
+git config --global --add safe.directory /dact/alpinocorpus
+
 cd alpinocorpus
 git pull
 
@@ -72,6 +74,8 @@ then
     rm -fr alpinocorpus_v6
     git clone --depth=1 https://github.com/rug-compling/alpinocorpus alpinocorpus_v6
 fi
+
+git config --global --add safe.directory /dact/alpinocorpus_v6
 
 cd alpinocorpus_v6
 git pull
@@ -104,7 +108,16 @@ then
     git clone -b dbxml-2.5.16 --depth=1 https://github.com/rug-compling/dact
 fi
 
+git config --global --add safe.directory /dact/dact
+
 cd dact
+## ivm patch
+git restore -- \
+    include/DactTreeScene.hh \
+    src/DactTreeScene.cpp \
+    src/SimpleDTD.cpp \
+    src/XSLTransformer.cpp \
+    src/main.cpp
 git pull
 
 if [ ! -f ../dbxml-2.5.16-dact ]
@@ -116,6 +129,7 @@ if diff -q ../dbxml-2.5.16-dact .git/refs/heads/dbxml-2.5.16
 then
     echo geen veranderingen in dact
 else
+    patch -p1 < /src/dact_v2.diff
     cmake \
         -DALPINOCORPUS_INCLUDE_DIR=/opt/alpinocorpus2/include \
         -DALPINOCORPUS_LIBRARIES=/opt/alpinocorpus2/lib/x86_64-linux-gnu/libalpinocorpus.so \
@@ -141,8 +155,15 @@ then
     git clone --depth=1 https://github.com/rug-compling/dact dact_v6
 fi
 
+git config --global --add safe.directory /dact/dact_v6
+
 cd dact_v6
-git checkout -- src/BracketedDelegates  ## ivm patch
+## ivm patch
+git restore -- \
+    include/DactTreeScene.hh \
+    src/DactTreeScene.cpp \
+    src/XSLTransformer.cpp \
+    src/main.cpp
 git pull
 
 if [ ! -f ../master-dact_v6 ]
@@ -154,7 +175,6 @@ if diff -q ../master-dact_v6 .git/HEAD
 then
     echo geen veranderingen in dact_v6
 else
-    # qt5 op Xenial is te oud:
     patch -p1 < /src/dact_v6.diff
 
     export LDFLAGS="-Wl,-rpath=/opt/alpinocorpus6/lib/x86_64-linux-gnu:/opt/dbxml6/lib"
@@ -163,9 +183,6 @@ else
     meson.py builddir -D dbxml_bundle=/opt/dbxml6 --prefix=/opt/dact6
     ninja -C builddir install
     rm -rf builddir
-
-    # undo patch
-    git checkout -- src/BracketedDelegates
 
     cp .git/HEAD ../master-dact_v6
 fi

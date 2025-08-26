@@ -1,1 +1,4 @@
-../tred/bin/start_tred
+#!/bin/bash
+
+export "LD_LIBRARY_PATH=/opt/tred/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+/opt/tred/`basename $0` "$@"

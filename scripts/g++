@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/g++ -fno-pie -no-pie "$@"
+

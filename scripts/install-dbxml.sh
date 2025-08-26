@@ -9,6 +9,8 @@ then
     git clone --depth=1 https://github.com/rug-compling/dbxml dbxml2
 fi
 
+git config --global --add safe.directory /dbxml/dbxml2
+
 cd dbxml2
 git pull
 
