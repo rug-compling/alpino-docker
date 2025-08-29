@@ -1,4 +1,4 @@
-# Alpino in Docker #
+# Alpino in Docker
 
 Running Alpino inside Docker.
 
@@ -16,7 +16,7 @@ If you are using *Docker Toolbox* you need `alpino.bash`.
 You need `alpino.bash`.
 
 
-## Upgrade ##
+## Upgrade
 
 If you have been using an older version of `alpino.bash`, you may need
 to update the Docker image:
@@ -24,19 +24,22 @@ to update the Docker image:
     alpino.bash -u
 
 
-## Starting Alpino in Docker ##
+## Starting Docker
 
 There are two ways of starting Alpino in Docker.
+
 
 **1—** This brings you into a bash shell inside Docker, where you can run
 Alpino itself:
 
     alpino.bash $HOME/alpino
 
+
 Inside the shell, there is a virtual directory `~/data` that corresponds
 to the real directory you gave as an argument to the script, in this
 case `$HOME/alpino`. You use it to save and access data on your regular
 file system.
+
 
 **2—** You can also run a single command, without going to the shell first:
 
@@ -46,15 +49,11 @@ In this case, there is no directory `~/data` in Docker, but there is
 `/work/data` with the same purpose.
 
 
-## Examples of running Alpino inside Docker ##
+## Running Alpino inside Docker
 
-Inside Docker, you can run Alpino interactively, or as a command line
-tool.
+Inside Docker, you can run Alpino (the actual application) interactively.
 
-
-### Interactive use ###
-
-If you have access to an X11 server, then this starts the Alpino GUI:
+If you have access to an X11 server, this will start the Alpino GUI:
 
     Alpino
 
@@ -64,30 +63,17 @@ This starts and interactive version of Alpino without the GUI:
     Alpino -notk
 
 
-### Use as a command line tool ###
+But mostly you will use Alpino as a command line tool, along with a
+number of other tools for doing things with corpora.
 
-This tokenizes and parses the text from `~/voorbeelden/weerbericht.txt`
-and saves the results in the directory `~/data/xml`:
+There are a lot of things you can do, beyond tokenizing en parsing text.
 
-    cd ~/data
-    mkdir xml
-    partok ~/voorbeelden/weerbericht.txt | Alpino -flag treebank xml debug=1 end_hook=xml user_max=900000 -parse
+- there are tools for editing, searching, transforming and visualizing
+  parsed documents
+- you can view [Universal Dependencies](https://universaldependencies.org/)
+- you can save whole or partial parse trees, as well as Universal
+  Dependencies, as bitmap or vector images
 
-If you have access to an X11 server, you can view the generated trees:
+For a step by step introduction, run:
 
-    dtview xml/*.xml
-
-... or edit the trees:
-
-    dttred xml/*.xml
-
-Create a corpus in the DACT format:
-
-    cd xml
-    mkcorpus ../weer.dact *.xml
-    cd ..
-
-... and inspect the corpus with the dact program:
-
-    dact weer.dact
-
+    info
