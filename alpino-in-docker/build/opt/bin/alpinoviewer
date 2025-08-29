@@ -1,4 +1,4 @@
 #!/bin/bash
 
-LD_PRELOAD='libdl.so /opt/lib/XlibNoSHM.so' /opt/lib/alpinoviewer.bin "$@"
+LD_PRELOAD='libdl.so.2 /opt/lib/XlibNoSHM.so' /opt/lib/alpinoviewer.bin "$@"
 
