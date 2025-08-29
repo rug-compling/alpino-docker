@@ -36,3 +36,13 @@ Om van stdin te lezen, gebruik een min-teken als eerste argument:
 [36m    mkdir weer[0m
 [36m    partok ~/voorbeelden/weerbericht.txt | alparse - weer[0m
 
+----
+
+Je kunt Alpino ook interactief gebruiken. Met GUI:
+
+[36m    Alpino[0m
+
+Of zonder GUI:
+
+[36m    Alpino -notk[0m
+
