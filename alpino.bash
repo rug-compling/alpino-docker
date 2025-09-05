@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=3
+version=4
 
 script='
 @parts = ("/");
@@ -133,6 +133,7 @@ then
     esac
     docker run \
        -e DISPLAY \
+       -e TZ \
        -e ADVERSION=$version \
        $extra \
        --rm \
@@ -149,6 +150,7 @@ then
         xhost + $ip
         docker run \
            -e DISPLAY=$ip:0 \
+           -e TZ
            -e ADVERSION=$version \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            --net=host \

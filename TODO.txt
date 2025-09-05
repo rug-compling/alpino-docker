@@ -1,0 +1,3 @@
+info:
+ - environmentvariabelen in init.sh
+ - menu in mc

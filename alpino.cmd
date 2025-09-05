@@ -1,6 +1,6 @@
 @ECHO OFF
 
-SET version=2
+SET version=4
 
 SETLOCAL EnableExtensions EnableDelayedExpansion
 

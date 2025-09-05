@@ -1,4 +1,4 @@
-; AppName			= "TRee EDitor"		;; do other programs let you set this? 
+; AppName			= "TRee EDitor"		;; do other programs let you set this?
 
 ;; Note: ';' (semicolon) starts a comment
 
@@ -30,7 +30,7 @@
 ;;    vLineFont - sets font of the value line and status line
 
 ;; ------------------------------------------------------------
-;; Colors may be given either by name of the color or using a 
+;; Colors may be given either by name of the color or using a
 ;; #rrggbb code (i.e. hexadecimal red grean blue)
 ;; ------------------------------------------------------------
 
@@ -51,21 +51,21 @@
 
 ;; ---- FS-format specific coloring for compatibility with the old Graph program  ----
 ;;UseFSColors = 0			;; set to 1 to enable FS-format coloring
-;;TextColorShadow = darkgrey		;; (FS-format) shadow attribute color 
+;;TextColorShadow = darkgrey		;; (FS-format) shadow attribute color
 ;;TextColorHilite = darkgreen		;; (FS-format) highlited attribute color
 ;;TextColorXHilite = darkred		;; (FS-format) extra-highlited attribute color
 
 ;; ---- 10 more colors for styling attributes in TrEd, e.g with #{custom1} ----
-;;CustomColor1 = darkblue		;; 1st custom attribute color 
-;;CustomColor2 = darkmagenta		;; 2nd custom attribute color 
-;;CustomColor3 = orange			;; 3rd custom attribute color 
-;;CustomColor4 = black			;; 4th custom attribute color 
-;;CustomColor5 = DodgerBlue4		;; 5th custom attribute color 
+;;CustomColor1 = darkblue		;; 1st custom attribute color
+;;CustomColor2 = darkmagenta		;; 2nd custom attribute color
+;;CustomColor3 = orange			;; 3rd custom attribute color
+;;CustomColor4 = black			;; 4th custom attribute color
+;;CustomColor5 = DodgerBlue4		;; 5th custom attribute color
 ;;CustomColor6 = red			;; 6th custom attribute color
-;;CustomColor7 = gold			;; 7th custom attribute color 
-;;CustomColor8 = cyan			;; 8th custom attribute color 
-;;CustomColor9 = midnightblue		;; 9th custom attribute color 
-;;CustomColor0 = darkgreen		;; 10th custom attribute color 
+;;CustomColor7 = gold			;; 7th custom attribute color
+;;CustomColor8 = cyan			;; 8th custom attribute color
+;;CustomColor9 = midnightblue		;; 9th custom attribute color
+;;CustomColor0 = darkgreen		;; 10th custom attribute color
 
 ;; --------- Other view options ---------
 
@@ -89,7 +89,7 @@
 ;; BaseYPos = 15
 
 ;; ------------------------------------------------------------
-;; Set file/display character encodings 
+;; Set file/display character encodings
 ;; e.g. iso-8859-2/windows-1250 or iso-8859-6/windows-1256
 ;; (see Convert.pm for a list of supported encodings)
 ;; and text orientation of non-ascii characters (i.e. set
@@ -151,7 +151,7 @@
 ;; and groove
 ;; ------------------------------------------------------------
 
-; ButtonsRelief = flat			
+; ButtonsRelief = flat
 ; MenubarRelief = flat
 ; ButtonBorderWidth = 2
 
@@ -166,7 +166,7 @@
 ;; So if you follow this naming convention, you only have to
 ;; set the PsFontFile option bellow (and optionally PsFontSize).
 
-;; The following are also default: 
+;; The following are also default:
 
 ; PsFontFile = fonts/ariam___.pfa
 ; PsFontAFMFile = fonts/afm/ariam___.afm
@@ -188,7 +188,7 @@
 ; SearchMethod = R		 ;; R=Regular Expression, W=Wildcards,
 				 ;; L=Literal E=Exhaustive regexp
 
-; LibDir		= "/usr/local/lib/tred" 
+; LibDir		= "/usr/local/lib/tred"
 ; UseCzechLocales	= 1
 
 
@@ -208,11 +208,10 @@
 ;
 ; CstsParserCommand  ="%s %o %d %f";
 ; CstsParserZCommand ="%z < %f | %s %o %d %f";
-extensionRepos	=	http://ufal.mff.cuni.cz/tred/extensions/core/ http://ufal.mff.cuni.cz/tred/extensions/external/
+extensionRepos	=	http://www.let.rug.nl/vannoord/alp/Alpino/tred/
 
 ;; Options changed by TrEd on every close (DO NOT EDIT)
-Geometry	=       1000x600+200+100
+Geometry	=	1411x927+173+115
 ShowSidePanel	=	1
 CanvasHeight	=	12c
 CanvasWidth	=	18c
-filelist0	=	/work/.tred_bookmarks

@@ -9,7 +9,7 @@ Laat een tekst parsen:
 
 Bekijk het resultaat met [4malpinoviewer[0m:
 
-[36m    alpinoviewer weer/*.xml[0m
+[36m    alpinoviewer weer[0m
 
 Sneltoetsen:
 
@@ -20,7 +20,7 @@ Sneltoetsen:
 
 Of bekijk met [4mdtview[0m:
 
-[36m    dtview weer/*.xml[0m
+[36m    dtview weer[0m
 
 Je kunt de resultaten bewerken met [4mdttred[0m:
 

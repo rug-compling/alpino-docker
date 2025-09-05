@@ -1,1 +1,14 @@
-tred
+#!/bin/bash
+
+if [ -f /work/data/.tredrc ]
+then
+    cp /work/data/.tredrc /work/.tredrc
+fi
+
+export "LD_LIBRARY_PATH=/opt/tred/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
+/opt/tred/tred "$@"
+
+if [ -f /work/.tredrc ]
+then
+    cp /work/.tredrc /work/data/.tredrc
+fi

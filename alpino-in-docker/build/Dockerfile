@@ -58,7 +58,8 @@ RUN mkdir -p /work/.tred.d/extensions/alpino && \
     unzip -d /work/.tred.d/extensions/alpino_full /alpino_full.zip && \
     rm /alpino.zip /alpino_full.zip && \
     echo  alpino        >   /work/.tred.d/extensions/extensions.lst && \
-    echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst
+    echo '!alpino_full' >>  /work/.tred.d/extensions/extensions.lst && \
+    echo 2.5236 > /work/.tred.d/last_version
 
 # TrEd
 ADD .tredrc /work
@@ -96,6 +97,9 @@ RUN chmod +x /Alpino/bin/dttred && \
     rm -fr extralibs && \
     grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && \
     mv env.sh.tmp env.sh
+
+ADD config.tar.gz /work/
+ENV HISTFILE=/work/data/.bash_history
 
 RUN mv /usr/bin/man.REAL /usr/bin/man
 
