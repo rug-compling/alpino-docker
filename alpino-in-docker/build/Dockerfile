@@ -89,7 +89,7 @@ ENV LIBGL_ALWAYS_INDIRECT=1
 ADD opt /opt
 
 COPY Alpino.tar.gz /
-RUN cd / && tar --no-same-owner vxzf Alpino.tar.gz && rm Alpino.tar.gz
+RUN cd / && tar vxzf Alpino.tar.gz --no-same-owner && rm Alpino.tar.gz
 ADD dttred /Alpino/bin
 RUN chmod +x /Alpino/bin/dttred && \
     find /Alpino -name '.nfs*' | xargs rm -f && \
@@ -100,7 +100,7 @@ RUN chmod +x /Alpino/bin/dttred && \
     mv env.sh.tmp env.sh
 
 COPY config.tar.gz /work
-RUN cd /work && tar --no-same-owner vxzf config.tar.gz && rm config.tar.gz
+RUN cd /work && tar vxzf config.tar.gz --no-same-owner && rm config.tar.gz
 ENV HISTFILE=/work/data/.bash_history
 
 RUN mv /usr/bin/man.REAL /usr/bin/man
