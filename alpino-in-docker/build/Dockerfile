@@ -98,7 +98,8 @@ ENV LIBGL_ALWAYS_INDIRECT=1
 
 ADD opt /opt
 
-ADD Alpino.tar.gz /
+COPY Alpino.tar.gz /
+RUN cd / && tar vxzf Alpino.tar.gz --no-same-owner && rm Alpino.tar.gz
 ADD dttred /Alpino/bin
 RUN chmod +x /Alpino/bin/dttred && \
     find /Alpino -name '.nfs*' | xargs rm -f && \
