@@ -88,7 +88,8 @@ ENV LIBGL_ALWAYS_INDIRECT=1
 
 ADD opt /opt
 
-ADD Alpino.tar.gz /
+COPY Alpino.tar.gz /
+RUN cd / && tar --no-same-owner vxzf Alpino.tar.gz && rm Alpino.tar.gz
 ADD dttred /Alpino/bin
 RUN chmod +x /Alpino/bin/dttred && \
     find /Alpino -name '.nfs*' | xargs rm -f && \
@@ -98,7 +99,8 @@ RUN chmod +x /Alpino/bin/dttred && \
     grep -v TCL_LIBRARY env.sh | grep -v TK_LIBRARY > env.sh.tmp && \
     mv env.sh.tmp env.sh
 
-ADD config.tar.gz /work/
+COPY config.tar.gz /work
+RUN cd /work && tar --no-same-owner vxzf config.tar.gz && rm config.tar.gz
 ENV HISTFILE=/work/data/.bash_history
 
 RUN mv /usr/bin/man.REAL /usr/bin/man
