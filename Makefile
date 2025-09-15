@@ -65,6 +65,7 @@ step2:	step1 ## installeer SICStus
 		/scripts/install-sp.sh
 
 step3:	step2 ## installeer Alpino en maak alpino/Alpino*.tar.gz
+	scripts/get-alpino.sh
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/alpino:/alpino \
 		-v $(PWD)/scripts:/scripts \

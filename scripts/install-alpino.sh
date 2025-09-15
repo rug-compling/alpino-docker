@@ -7,18 +7,7 @@ export LANG=en_US.utf8
 export LANGUAGE=en_US.utf8
 export LC_ALL=en_US.utf8
 
-git lfs install
-
-cd /alpino
-
-if [ ! -d Alpino/.git ]
-then
-    rm -fr Alpino
-    git clone --depth=1 https://github.com/rug-compling/Alpino
-fi
-
-cd Alpino
-git pull
+cd /alpino/Alpino
 
 if [ ! -f ../master ]
 then
