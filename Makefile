@@ -54,8 +54,9 @@ step1:	## maak/update het image dat in de volgende stappen gebruikt wordt
 	build/build.sh
 
 step2:	step1 ## installeer SICStus
-	if [ ! -f src/sp-3.12.11-x86_64-linux-glibc2.5/InstallSICStus ]; \
-		then cp -an /net/corpora/docker/alpino/src/sp-3.12.11-x86_64-linux-glibc2.5 src; fi
+	if [ ! -f src/sp-3.12.11-x86_64-linux-glibc2.5/COPIED ]; \
+		then cp -an /net/corpora/docker/alpino/src/sp-3.12.11-x86_64-linux-glibc2.5 src && \
+		touch src/sp-3.12.11-x86_64-linux-glibc2.5/COPIED; fi
 	docker run $(DOCKERARGS) --rm -i -t \
 		-v $(PWD)/work/sp:/sp \
 		-v $(PWD)/scripts:/scripts \
