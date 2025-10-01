@@ -23,11 +23,8 @@ fi
 make realclean
 
 export ALPINO_HOME=`pwd`
-echo '#!/bin/sh' > bin/Alpino
-chmod +x bin/Alpino
 . create_bin/env.sh
 make
-rm bin/Alpino
 make install
 
 rm -fr create_bin/extralibs
