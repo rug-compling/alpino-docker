@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# TODO: tijdelijke hack voor alto 0.4.3
-export GOPRIVATE=github.com/rug-compling go mod tidy
-
 set -e
 
 PATH=/go/bin:$PATH
