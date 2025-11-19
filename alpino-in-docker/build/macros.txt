@@ -9,6 +9,9 @@
 ## any macro definition that starts with //node should not
 ## have outer () brackets
 
+## DEP:ALPINODS:1.18
+ver_116 = """ ("1.16","1.17","1.18") """
+
 b = """ number(@begin) """
 e = """ number(@end) """
 i = """ number(@index) """
@@ -41,9 +44,9 @@ precedes_head_of_whq = """
 
 vorfeld = """
         (
-            (  /alpino_ds[@version = ("1.16", "1.17")] and @is_vorfeld )
+            (  /alpino_ds[@version = %ver_116%] and @is_vorfeld )
                or
-               ( /alpino_ds[not(@version = ("1.16", "1.17"))]
+               ( /alpino_ds[not(@version = %ver_116%)]
                and
                (
                    ( (  %precedes_head_of_smain%
@@ -690,13 +693,13 @@ basenp = """
 np = """
         (
             (
-                /alpino_ds[@version=("1.16","1.17")]
+                /alpino_ds[@version=%ver_116%]
                 and
                 @is_np
             )
             or
             (
-                /alpino_ds[not(@version=("1.16","1.17"))]
+                /alpino_ds[not(@version=%ver_116%)]
                 and
                 (
                     %basenp%
@@ -974,9 +977,9 @@ nachfeld_t = """
 
 nachfeld = """
         (
-            (  /alpino_ds[@version = ("1.16", "1.17")] and @is_nachfeld )
+            (  /alpino_ds[@version = %ver_116%] and @is_nachfeld )
                or
-               ( /alpino_ds[not(@version = ("1.16", "1.17"))]
+               ( /alpino_ds[not(@version = %ver_116%)]
                and
                (
                    %nachfeld_t%
